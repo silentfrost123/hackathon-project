@@ -56,6 +56,8 @@ MODEL = os.environ.get("GEMINI_MODEL", "gemini-3.8-flash").strip()
 FALLBACKS = os.environ.get("GEMINI_FALLBACK_MODELS", "gemini-3.1-flash-lite,gemini-3.5-flash,gemini-flash-latest")
 MODELS = [MODEL] + [m.strip() for m in FALLBACKS.split(",") if m.strip() and m.strip() != MODEL]
 PORT = int(os.environ.get("PORT", "5178"))
+# on a host like Railway (PORT is set) listen on all interfaces; locally only on this computer
+HOST = os.environ.get("HOST", "0.0.0.0" if "PORT" in os.environ else "127.0.0.1")
 
 QUESTIONS = 3
 SECONDS_PER_QUESTION = 100      # 3 x 100 s = 5 minutes
@@ -489,6 +491,6 @@ class Handler(SimpleHTTPRequestHandler):
 
 
 if __name__ == "__main__":
-    print(f"JISR running on http://localhost:{PORT}")
-    print(f"Defense Check AI: {'Gemini (' + MODEL + ')' if API_KEY else 'NOT CONFIGURED - demo mode (add GEMINI_API_KEY to .env)'}")
-    ThreadingHTTPServer(("127.0.0.1", PORT), Handler).serve_forever()
+    print(f"JISR running on http://{HOST}:{PORT}", flush=True)
+    print(f"Defense Check AI: {'Gemini (' + MODEL + ')' if API_KEY else 'NOT CONFIGURED - demo mode (add GEMINI_API_KEY to .env)'}", flush=True)
+    ThreadingHTTPServer((HOST, PORT), Handler).serve_forever()

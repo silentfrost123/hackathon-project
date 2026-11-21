@@ -1,0 +1,2 @@
+# No third-party packages: server.py uses only the Python standard library.
+# This file tells Railway (Railpack) that this is a Python app.
