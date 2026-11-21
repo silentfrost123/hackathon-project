@@ -773,7 +773,7 @@
      clock. Without it the same flow runs locally in clearly-labelled demo mode. */
   var MODE = { ai: null, seconds: 100, maxViolations: 3 };   // ai: null = checking, true/false
   var DC = { phase: 'idle', file: null, error: '', session: null, ack: false };
-  var ACCEPT = '.pdf,.docx,.xlsx,.pptx,.png,.jpg,.jpeg,.webp,.txt,.md,.csv,.json,.py,.js,.ts,.java,.c,.cpp,.cs,.go,.html,.css,.sql,.ipynb,.r,.tex';
+  var ACCEPT = '.pdf,.docx,.xlsx,.pptx,.png,.jpg,.jpeg,.webp,.txt,.md,.csv,.json,.xml,.py,.js,.ts,.java,.c,.cpp,.cs,.go,.html,.css,.sql,.ipynb,.r,.tex';
   var MAX_MB = 15;
 
   fetch('api/health', { cache: 'no-store' }).then(function (r) { return r.ok ? r.json() : null; })
