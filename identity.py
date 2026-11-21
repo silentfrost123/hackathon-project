@@ -111,19 +111,62 @@ def normalize_id(id_type, raw):
     return re.sub(r"[\s\-./_]", "", s)
 
 
+def luhn_ok(digits):
+    """The Emirates ID's last digit is a Luhn check digit over the other 14."""
+    total = 0
+    for i, ch in enumerate(reversed(digits)):
+        d = int(ch)
+        if i % 2 == 1:
+            d *= 2
+            if d > 9:
+                d -= 9
+        total += d
+    return total % 10 == 0
+
+
 def valid_id_format(id_type, norm):
     if id_type == "emirates_id":
-        # 784-YYYY-NNNNNNN-C: 15 digits starting with the UAE code 784
-        return bool(re.fullmatch(r"784\d{12}", norm))
+        # 784-YYYY-NNNNNNN-C: 15 digits starting with the UAE code 784, C = Luhn check digit
+        return bool(re.fullmatch(r"784\d{12}", norm)) and luhn_ok(norm)
     if id_type == "university_id":
         return bool(re.fullmatch(r"[A-Z0-9]{4,20}", norm))
     return False
 
 
+# Words that don't tell universities apart, and common short names -> one canonical key, so
+# "University of Sharjah", "Univ. of Sharjah", "UOS" and "جامعة الشارقة" are the SAME university
+# (otherwise one University ID could open several accounts just by spelling the university differently).
+_INST_FILLER = {"the", "of", "in", "at", "university", "univ", "uni", "universty", "college", "colleges", "campus",
+                "جامعة", "جامعه", "كلية", "في"}
+_INST_ALIASES = {
+    "sharjah": "sharjah", "uos": "sharjah", "الشارقة": "sharjah", "الشارقه": "sharjah",
+    "american sharjah": "aus", "aus": "aus", "الأمريكية الشارقة": "aus", "الامريكية الشارقة": "aus",
+    "united arab emirates": "uaeu", "uae": "uaeu", "uaeu": "uaeu", "الإمارات العربية المتحدة": "uaeu", "الامارات العربية المتحدة": "uaeu",
+    "khalifa": "khalifa", "ku": "khalifa", "خليفة": "khalifa",
+    "zayed": "zayed", "zu": "zayed", "زايد": "zayed",
+    "higher technology": "hct", "hct": "hct", "العليا للتقنية": "hct",
+    "american dubai": "aud", "aud": "aud",
+    "canadian dubai": "cud", "cud": "cud",
+    "wollongong dubai": "uowd", "uowd": "uowd", "wollongong": "uowd",
+    "new york abu dhabi": "nyuad", "nyu abu dhabi": "nyuad", "nyuad": "nyuad",
+    "abu dhabi": "adu", "adu": "adu", "أبوظبي": "adu", "ابوظبي": "adu",
+    "ajman": "ajman", "عجمان": "ajman",
+    "american ras al khaimah": "aurak", "aurak": "aurak",
+    "heriot watt dubai": "hwu", "heriot watt": "hwu", "hwu": "hwu",
+    "middlesex dubai": "mdx", "middlesex": "mdx", "mdx": "mdx",
+    "mohamed bin zayed artificial intelligence": "mbzuai", "mbzuai": "mbzuai",
+    "gulf medical": "gmu", "gmu": "gmu",
+    "dubai": "ud", "ud": "ud",
+}
+
+
 def normalize_institution(raw):
     s = unicodedata.normalize("NFKC", raw or "").casefold()
     s = re.sub(r"[^\w\s]", " ", s)
-    return re.sub(r"\s+", " ", s).strip()
+    s = re.sub(r"\s+", " ", s).strip()
+    words = [w for w in s.split(" ") if w and w not in _INST_FILLER]
+    key = " ".join(words)
+    return _INST_ALIASES.get(key, key)
 
 
 def id_hash(pepper, id_type, norm_number, institution=""):

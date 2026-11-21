@@ -7,8 +7,9 @@
   'use strict';
 
   var I = window.icon;
-  var ME_INITIALS = 'U';   // set by applyAccount: the signed-in person's initials, or U
-  var STATE_KEY = 'jisr.demo.v2';
+  var ME_INITIALS = 'U';
+  var ACCOUNT = null;       // the signed-in user from /api/auth/me, or null in the public demo   // set by applyAccount: the signed-in person's initials, or U
+  var STATE_KEY = 'jisr.demo.v2';   // switched to a per-account key after sign-in
   var view = document.getElementById('view');
 
   /* ------------------------------------------------------------------ i18n */
@@ -95,6 +96,8 @@
     pfNativeDesc: ['Native = work done on JISR, verified automatically.', 'أصيل = عمل أُنجز على جسر، موثّق تلقائيًا.'],
     pfPending: ['Awaiting mentor review', 'بانتظار مراجعة المرشد'],
     pfEmpty: ['No items with this badge yet.', 'لا توجد عناصر بهذه الشارة بعد.'],
+    pfEmptyNew: ['Nothing verified yet. Start with the claims in your CV.', 'لا شيء موثّق بعد. ابدأ بالادعاءات في سيرتك الذاتية.'],
+    pfGoCv: ['Verify my CV', 'وثّق سيرتي'],
 
     dcAiOn: ['AI: Gemini', 'الذكاء الاصطناعي: Gemini'],
     dcAiDemo: ['Demo mode', 'وضع تجريبي'],
@@ -680,7 +683,8 @@
   /* ------------------------------------------------------------------ derived */
   function trackScore(id) {
     var tr = TRACKS.find(function (x) { return x.id === id; });
-    var s = tr.score;
+    // signed in: start from the account's real score (KYC etc.), not the sample talent's
+    var s = ACCOUNT ? ((ACCOUNT.score && ACCOUNT.score.total) || 0) : tr.score;
     if (id === 'spec') {
       var works = S.verified.filter(function (v) { return v.kind === 'work' && v.status === 'passed'; }).length;
       var certs = S.verified.filter(function (v) { return v.kind === 'cert' && v.status === 'passed'; }).length;
@@ -1229,12 +1233,12 @@
       var proof = v.status === 'review' ? t('pfUnderReview') : v.kind === 'cert' ? t(v.report && v.report.verdict === 'verified' ? 'pfCertVerified' : 'pfCertClean') : t('pfWorkPassed', { s: v.score || 0 });
       items.push({ type: v.kind === 'cert' ? 'cert' : 'legacy', title: v.title, proof: proof, waiting: v.status === 'review', raw: true });
     });
-    PORTFOLIO.forEach(function (p) {
+    if (!ACCOUNT) PORTFOLIO.forEach(function (p) {
       if (p.id === 'dcf') { if (!S.verified.some(function (v) { return v.kind === 'work' && v.status !== 'failed'; })) items.push({ type: 'legacy', title: p.title, proof: { en: 'Upload it to verify', ar: 'ارفعه لتوثيقه' }, hint: true }); }
       else items.push({ type: p.type, title: p.title, proof: p.proof });
     });
     if (S.sprint.status === 'approved') items.unshift({ type: 'native', title: { en: 'Cash-flow forecasting sprint', ar: 'مشروع التنبؤ بالتدفقات النقدية' }, proof: { en: 'Mentor approved · just now', ar: 'اعتمده المرشد · الآن' } });
-    else items.push({ type: 'native', title: { en: 'Cash-flow forecasting sprint', ar: 'مشروع التنبؤ بالتدفقات النقدية' }, proof: { en: S.sprint.status === 'changes' ? 'Mentor asked for changes' : 'Submitted', ar: S.sprint.status === 'changes' ? 'طلب المرشد تعديلات' : 'تم التقديم' }, pending: true, waiting: true });
+    else if (S.sprint.status === 'pending' || S.sprint.status === 'changes') items.push({ type: 'native', title: { en: 'Cash-flow forecasting sprint', ar: 'مشروع التنبؤ بالتدفقات النقدية' }, proof: { en: S.sprint.status === 'changes' ? 'Mentor asked for changes' : 'Submitted', ar: S.sprint.status === 'changes' ? 'طلب المرشد تعديلات' : 'تم التقديم' }, pending: true, waiting: true });
 
     var shown = items.filter(function (x) { return UI.pf === 'all' || x.type === UI.pf; });
     var h = '<section class="card" aria-labelledby="pf-h"><div class="card-head"><h2 id="pf-h">' + t('pfTitle') + '</h2></div>' +
@@ -1242,7 +1246,9 @@
       [['all', t('pfAll')], ['legacy', t('legacy')], ['native', t('native')], ['cert', t('pfCert')]].map(function (f) {
         return '<button type="button" aria-pressed="' + (UI.pf === f[0]) + '" data-act="pf" data-arg="' + f[0] + '">' + f[1] + '</button>';
       }).join('') + '</div>';
-    if (!shown.length) h += '<div class="empty"><p>' + t('pfEmpty') + '</p></div>';
+    if (!shown.length) h += UI.pf === 'all' && !items.length
+      ? '<div class="empty"><p>' + t('pfEmptyNew') + '</p><button type="button" class="btn btn-primary btn-sm" data-act="ttab" data-arg="cv">' + I('file', 'icon-sm') + t('pfGoCv') + '</button></div>'
+      : '<div class="empty"><p>' + t('pfEmpty') + '</p></div>';
     else h += '<ul class="rows" role="list">' + shown.map(function (x) {
       var badge = x.type === 'cert' ? '<span class="badge badge-cert">' + I('award') + t('pfCert') + '</span>' : '<span class="badge badge-' + x.type + '">' + I(x.type === 'legacy' ? 'history' : 'sparkle') + t(x.type) + '</span>';
       return '<li class="row">' + badge +
@@ -1549,6 +1555,7 @@
   function filtered() {
     var q = UI.q.trim().toLowerCase();
     var list = PEOPLE.filter(function (p) {
+      if (ACCOUNT && p.id === 'la') return false;   // that card is the sample talent's record, not the signed-in person's
       if (UI.fTrack !== 'all' && p.track !== UI.fTrack) return false;
       if (p.score < Number(UI.fMin)) return false;
       if (UI.chips.native && !p.native) return false;
@@ -1662,7 +1669,7 @@
       else items += '<div class="review-actions"><button type="button" class="btn btn-primary" data-act="approve-escrow">' + I('check', 'icon-sm') + t('mApproveRelease', { amt: money(st.amount) }) + '</button><button type="button" class="btn btn-outline" data-act="changes" data-arg="escrow">' + I('edit', 'icon-sm') + t('mChanges') + '</button></div>';
       items += '</article>';
     }
-    if (S.sprint.status !== 'approved') {
+    if (S.sprint.status === 'pending' || S.sprint.status === 'changes') {
       items += '<article class="review"><div class="review-top"><span class="badge badge-native">' + I('sparkle') + t('mSprintKind') + '</span><span class="small muted">' + t('mSubmitted', { d: when('2026-11-20T00:00:00') }) + '</span></div>' +
         '<h3>' + t('mSprintTitle') + '</h3><p class="small muted">' + t('mSprintBody') + '</p>' +
         '<div class="evidence">' + [{ en: '12-month cash-flow model (.xlsx)', ar: 'نموذج تدفقات نقدية لـ12 شهرًا (.xlsx)' }, { en: 'Client brief and acceptance note', ar: 'موجز العميل ومذكرة القبول' }].map(function (e) { return '<div>' + I('file') + '<span>' + esc(L(e)) + '</span></div>'; }).join('') + '</div>';
@@ -2052,7 +2059,15 @@
     var me = PEOPLE.filter(function (p) { return p.id === 'la'; })[0];
     if (me) { me.name = { en: en.short, ar: ar.short }; me.i = ME_INITIALS; }
     if (CERT) CERT.name = parts.length ? en.full : '';
-    T.kycVerified = (u && u.identity && u.identity.type === 'emirates_id') ? ['KYC verified · Emirates ID', 'هوية موثّقة · الهوية الإماراتية'] : KYC_ORIG;
+    if (!u) {
+      T.tHello = ['Welcome to the JISR demo', 'أهلًا بك في العرض التجريبي لجسر'];
+      T.kycVerified = ['Sample profile · not signed in', 'ملف تجريبي · لم تسجّل الدخول'];
+    } else {
+      var idn = u.identity || {}, eid = idn.type === 'emirates_id';
+      var base = idn.status === 'review' ? (eid ? ['ID under review · Emirates ID', 'الهوية قيد المراجعة · الهوية الإماراتية'] : ['ID under review · University ID', 'الهوية قيد المراجعة · البطاقة الجامعية'])
+        : (eid ? ['KYC verified · Emirates ID', 'هوية موثّقة · الهوية الإماراتية'] : KYC_ORIG);
+      T.kycVerified = idn.demo ? [base[0] + ' (demo check)', base[1] + ' (فحص تجريبي)'] : base;
+    }
   }
   applyAccount(null);   // generic "User" until /api/auth/me says who is signed in
 
@@ -2072,8 +2087,12 @@
       el.href = 'auth.html' + (lang() === 'ar' ? '?lang=ar' : '') + '#signin';
     }
     el.id = 'auth-btn';
-    el.className = 'btn btn-outline-light btn-sm';
-    var label = function () { el.textContent = lang() === 'ar' ? (u ? 'تسجيل الخروج' : 'تسجيل الدخول') : (u ? 'Sign out' : 'Sign in'); };
+    el.className = 'btn btn-outline-light btn-sm auth-btn';
+    var label = function () {
+      var txt = lang() === 'ar' ? (u ? 'تسجيل الخروج' : 'تسجيل الدخول') : (u ? 'Sign out' : 'Sign in');
+      el.innerHTML = I(u ? 'x' : 'user', 'icon-sm') + '<span class="lbl"></span>';   // icon-only on phones so the header fits
+      el.querySelector('.lbl').textContent = txt; el.setAttribute('aria-label', txt);
+    };
     label();
     document.addEventListener('jisr:lang', label);
     host.parentNode.insertBefore(el, host.nextSibling);
@@ -2086,7 +2105,19 @@
       .then(function (r) { return r.ok ? r.json() : null; })
       .then(function (data) {
         accountButton(data && data.user);
-        if (data && data.user) { applyAccount(data.user); render(); }
+        if (data && data.user) {
+          ACCOUNT = data.user;
+          // each account keeps its own demo progress, starting fresh (not the sample talent's history)
+          STATE_KEY = 'jisr.demo.v2.acct.' + String(data.user.email || '').toLowerCase();
+          var fresh = initialState();
+          fresh.sprint = { status: 'none', note: null };
+          fresh.log = fresh.log.filter(function (e) { return e.ev !== 'evAudit'; });
+          try { var raw = localStorage.getItem(STATE_KEY); S = raw ? Object.assign(fresh, JSON.parse(raw)) : fresh; } catch (e) { S = fresh; }
+          if (!Array.isArray(S.verified)) S.verified = [];
+          var tk = { specialist: 'spec', researcher: 'res', inventor: 'inv', founder: 'fnd' }[data.user.track];
+          if (tk && !localStorage.getItem(STATE_KEY)) S.track = tk;
+          applyAccount(data.user); render();
+        }
       })
       .catch(function () { /* static hosting: keep the demo profile */ });
   });

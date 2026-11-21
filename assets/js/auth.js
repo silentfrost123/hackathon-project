@@ -68,7 +68,7 @@
     eid: ['Emirates ID', 'الهوية الإماراتية'], eidSub: ['National ID', 'الهوية الوطنية'],
     uid: ['University ID', 'البطاقة الجامعية'], uidSub: ['Student or staff card', 'بطاقة طالب أو موظف'],
     idNumber: ['ID number', 'رقم الهوية'],
-    eidHelp: ['15 digits starting with 784, e.g. 784-1999-1234567-1.', '15 رقمًا تبدأ بـ 784، مثل 784-1999-1234567-1.'],
+    eidHelp: ['15 digits starting with 784, e.g. 784-1999-1234567-7.', '15 رقمًا تبدأ بـ 784، مثل 784-1999-1234567-7.'],
     uidHelp: ['As printed on your card. Letters and numbers.', 'كما هو مطبوع على بطاقتك. حروف وأرقام.'],
     university: ['University', 'الجامعة'],
     nameOnId: ['Name as it appears on the ID', 'الاسم كما يظهر في الهوية'],
@@ -236,7 +236,7 @@
     idNumber: function (v) {
       var n = toAscii(v).toUpperCase().replace(/[\s\-./_]/g, '');
       if (!n) return 'e_required';
-      return S.ident.idType === 'emirates_id' ? (/^784\d{12}$/.test(n) ? '' : 'e_invalid_id') : (/^[A-Z0-9]{4,20}$/.test(n) ? '' : 'e_invalid_id');
+      return S.ident.idType === 'emirates_id' ? (/^784\d{12}$/.test(n) && luhnOk(n) ? '' : 'e_invalid_id') : (/^[A-Z0-9]{4,20}$/.test(n) ? '' : 'e_invalid_id');
     },
     nameOnId: function (v) { v = v.trim(); return v.length < 2 ? 'e_required' : /[<>{}\d@]/.test(v) ? 'e_invalid_id_name' : ''; },
     institution: function (v) { return S.ident.idType !== 'university_id' || v.trim().length >= 3 ? '' : 'e_invalid_institution'; }
@@ -431,6 +431,17 @@
       '<a class="btn btn-accent btn-lg btn-block" href="' + esc(dashUrl(u)) + '">' + esc(t(u.role === 'partner' ? 'toPartner' : 'toDashboard')) + ico('arrow-right', 'flip-rtl') + '</a>' +
       '</div>';
   }
+  // The Emirates ID's last digit is a Luhn check digit (the server checks it too).
+  function luhnOk(d) {
+    var sum = 0;
+    for (var i = 0; i < d.length; i++) {
+      var x = +d.charAt(d.length - 1 - i);
+      if (i % 2 === 1) { x *= 2; if (x > 9) x -= 9; }
+      sum += x;
+    }
+    return sum % 10 === 0;
+  }
+
   function dashUrl(u) { return 'app.html' + (lang() === 'ar' ? '?lang=ar' : '') + (u && u.role === 'partner' ? '#business' : '#talent'); }
 
   function viewSignup() {
@@ -632,4 +643,9 @@
   api('/api/auth/config').then(function (cfg) { S.cfg = cfg; render(); }).catch(function () { /* static hosting: errors show on submit */ });
   restore();
   route();
+  // Already signed in? Don't show an empty sign-in / sign-up form: go to the dashboard
+  // (except on the "Done" screen right after creating the account).
+  api('/api/auth/me').then(function (d) {
+    if (d && d.user && S.step !== 4) location.replace(dashUrl(d.user));
+  }).catch(function () {});
 })();

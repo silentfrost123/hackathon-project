@@ -101,7 +101,8 @@ def _pepper():
                 os.chmod(path, 0o600)
             except OSError:
                 pass
-        print("[auth] WARNING: JISR_ID_PEPPER is not set; using a development pepper in .data/.id-pepper", flush=True)
+        print(f"[auth] JISR_ID_PEPPER is not set; using the pepper kept in {path}. Keep that folder on a persistent volume, "
+              "and don't add JISR_ID_PEPPER later (a different pepper breaks duplicate detection for existing accounts).", flush=True)
     if len(p) < 32:
         raise RuntimeError("JISR_ID_PEPPER must be at least 32 characters")
     _PEPPER = p
@@ -461,7 +462,8 @@ def signup_identity(body, ctx):
         h = idn.id_hash(_pepper(), id_type, number, institution)
         now = int(time.time())
         match = idn.names_match(row["full_name"], name_on_id)
-        status = "review" if check.needs_review else "verified"
+        # A name that doesn't match the ID can't count as verified: it waits for review (no full trust points).
+        status = "review" if (check.needs_review or not match) else "verified"
         con.execute("BEGIN IMMEDIATE")
         try:
             # Friendly early answer; the UNIQUE constraints below are the real guarantee.
@@ -483,8 +485,10 @@ def signup_identity(body, ctx):
                  trade_license if row["role"] == "partner" else None, now))
             user_id = cur.lastrowid
             # Identity & Trust pillar (max 20) is earned by completing KYC.
-            con.execute("INSERT INTO scores (identity_id, identity_trust, updated_at) VALUES (?, 20, ?)", (identity_id, now))
-            con.execute("INSERT INTO badges (identity_id, kind, ref, awarded_at) VALUES (?, 'kyc_verified', '', ?)", (identity_id, now))
+            con.execute("INSERT INTO scores (identity_id, identity_trust, updated_at) VALUES (?, ?, ?)",
+                        (identity_id, 20 if status == "verified" else 10, now))
+            con.execute("INSERT INTO badges (identity_id, kind, ref, awarded_at) VALUES (?, ?, '', ?)",
+                        (identity_id, "kyc_verified" if status == "verified" else "kyc_review", now))
             con.execute("DELETE FROM signups WHERE token_hash = ?", (row["token_hash"],))
             sid = _new_session(con, user_id)
             con.execute("COMMIT")
@@ -511,7 +515,7 @@ def _new_session(con, user_id):
 def _me(con, user_id):
     r = con.execute(
         "SELECT u.id, u.full_name, u.email, u.phone_e164, u.role, u.track, u.kyb_status, "
-        "i.id AS identity_id, i.id_type, i.id_last4, i.kyc_status, i.name_match, "
+        "i.id AS identity_id, i.id_type, i.id_last4, i.kyc_status, i.name_match, i.kyc_provider, "
         "s.identity_trust, s.projects, s.work_on_jisr, s.timeliness, s.certificates "
         "FROM users u JOIN identities i ON i.id = u.identity_id LEFT JOIN scores s ON s.identity_id = i.id WHERE u.id = ?",
         (user_id,)).fetchone()
@@ -525,7 +529,8 @@ def _me(con, user_id):
         "phone": phone[:4] + " ••• " + phone[-3:],
         "role": r["role"], "track": r["track"], "kybStatus": r["kyb_status"],
         "identity": {"type": r["id_type"], "masked": idn.mask_id(r["id_last4"]), "status": r["kyc_status"],
-                     "nameMatch": bool(r["name_match"])},
+                     "nameMatch": bool(r["name_match"]),
+                     "demo": r["kyc_provider"] == "mock"},   # the ID was only format-checked by the demo provider
         "score": {"total": sum(parts.values()), **parts},
         "badges": badges,
     }
@@ -568,9 +573,9 @@ def _user_from_cookie(cookie_header):
 
 
 def me(body, ctx):
+    # Signed out is a normal state for a visitor, not an error: answer 200 with user null
+    # (a 401 here showed up as a console error on every portal visit).
     user, _ = _user_from_cookie(ctx.get("cookie"))
-    if not user:
-        raise AuthError(401, "not_signed_in", "You're not signed in.")
     return {"user": user}
 
 

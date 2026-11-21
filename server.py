@@ -362,7 +362,7 @@ ISSUER_SCHEMA = {
 NAME_SYSTEM = """Do these two names refer to the same person's name? Allow different order, missing middle names, initials, titles and Arabic/English transliteration differences. Answer "same", "different" or "unclear"."""
 NAME_SCHEMA = {"type": "OBJECT", "properties": {"verdict": {"type": "STRING", "enum": ["same", "different", "unclear"]}}, "required": ["verdict"]}
 
-HASH_FILE = os.path.join(ROOT, ".data", "cert_hashes.json")
+HASH_FILE = os.path.join(os.environ.get("JISR_DATA_DIR", os.path.join(ROOT, ".data")), "cert_hashes.json")   # on the persistent volume when hosted
 
 
 def _decode_upload(body):
@@ -688,8 +688,11 @@ class Handler(SimpleHTTPRequestHandler):
         ip = self.client_address[0]
         https = False
         if TRUST_PROXY:
-            ip = (self.headers.get("X-Forwarded-For") or ip).split(",")[0].strip()
-            https = self.headers.get("X-Forwarded-Proto", "") == "https"
+            # The proxy APPENDS the real client address, so take the LAST entry: the first ones are
+            # whatever the visitor chose to send and could be used to dodge rate limits.
+            hops = [h.strip() for h in (self.headers.get("X-Forwarded-For") or "").split(",") if h.strip()]
+            ip = hops[-1] if hops else ip
+            https = self.headers.get("X-Forwarded-Proto", "").split(",")[-1].strip() == "https"
         return {"ip": ip, "https": https, "cookie": self.headers.get("Cookie", ""),
                 "content_type": self.headers.get("Content-Type", "")}
 
@@ -711,7 +714,8 @@ class Handler(SimpleHTTPRequestHandler):
                                     "seconds": SECONDS_PER_QUESTION, "maxViolations": MAX_VIOLATIONS})
         # never serve secrets or server code
         name = path.rsplit("/", 1)[-1]
-        if name.startswith(".") or name.endswith(".py") or "/." in path or path.startswith(("/db/", "/tests/")):
+        if (name.startswith(".") or name.endswith((".py", ".md", ".sql", ".log", ".json")) or "/." in path
+                or path.startswith(("/db/", "/tests/", "/_refs/"))):
             return self._json(404, {"error": "not_found"})
         return super().do_GET()
 

@@ -992,3 +992,11 @@ body.is-locked { overflow: hidden; }
 .ela { margin: 14px 0 0; display: grid; gap: 6px; }
 .ela img { width: 100%; max-width: 480px; border-radius: var(--r-md); border: 1px solid var(--border); background: #000; }
 .ela figcaption { font-size: 13px; color: var(--text-muted); }
+
+/* sign in / sign out button in the portal header: icon-only on phones so the header fits */
+.auth-btn .icon { display: none; }
+@media (max-width: 639px) {
+  .auth-btn { min-width: 44px; min-height: 44px; padding: 0 10px; }
+  .auth-btn .icon { display: inline-block; }
+  .auth-btn .lbl { display: none; }
+}

@@ -29,7 +29,7 @@ def call(path, body=None, ip="10.0.0.1", cookie=""):
     return auth_api.handle(method, path, body or {}, {"ip": ip, "cookie": cookie, "content_type": JSON, "https": False})
 
 
-def signup(email="layla@example.com", phone="501234567", id_type="emirates_id", id_number="784-1999-1234567-1",
+def signup(email="layla@example.com", phone="501234567", id_type="emirates_id", id_number="784-1999-1234567-7",
            name="Layla Al Mansouri", institution="", ip="10.0.0.1", stop_at=None):
     """Runs the whole flow; returns the last (status, body, cookie)."""
     s, b, _ = call("/api/auth/signup/start", {"fullName": name, "email": email, "password": "bridge2026",
@@ -64,8 +64,8 @@ class Normalize(unittest.TestCase):
         self.assertIsNone(idn.normalize_phone("+999", "501234567"))
 
     def test_id(self):
-        self.assertEqual(idn.normalize_id("emirates_id", "784-1999 1234567-1"), "784199912345671")
-        self.assertTrue(idn.valid_id_format("emirates_id", "784199912345671"))
+        self.assertEqual(idn.normalize_id("emirates_id", "784-1999 1234567-7"), "784199912345677")
+        self.assertTrue(idn.valid_id_format("emirates_id", "784199912345677"))
         self.assertFalse(idn.valid_id_format("emirates_id", "123199912345671"))
         p = "x" * 40
         self.assertEqual(idn.id_hash(p, "university_id", "A123", "Khalifa University"),
@@ -82,14 +82,14 @@ class Flow(unittest.TestCase):
         s, b, cookie = signup()
         self.assertEqual(s, 200, b)
         u = b["user"]
-        self.assertEqual(u["identity"]["masked"], "****5671")
+        self.assertEqual(u["identity"]["masked"], "****5677")
         self.assertIn("kyc_verified", u["badges"])
         self.assertEqual(u["score"]["identity_trust"], 20)
         self.assertIn("HttpOnly", cookie)
         # the ID number is not stored anywhere in plain text
         import sqlite3
         dump = "\n".join(sqlite3.connect(os.environ["JISR_DB_PATH"]).iterdump())
-        self.assertNotIn("784199912345671", dump)
+        self.assertNotIn("784199912345677", dump)
         # sign in with a different spelling of the same Gmail-style address works
         s, b, cookie = call("/api/auth/login", {"email": " LAYLA@example.com", "password": "bridge2026"})
         self.assertEqual(s, 200)
@@ -99,21 +99,21 @@ class Flow(unittest.TestCase):
 
     def test_2_duplicate_email_alias(self):
         signup(email="omar.k@gmail.com", phone="501111111", id_number="784199011111111", name="Omar Khalid")
-        s, b, _ = signup(email="O.M.A.R.K+second@googlemail.com", phone="502222222", id_number="784199022222222",
+        s, b, _ = signup(email="O.M.A.R.K+second@googlemail.com", phone="502222222", id_number="784199022222220",
                          name="Omar Khalid", stop_at="email")
         self.assertEqual((s, b["error"]), (409, "identity_exists"))
         self.assertEqual(b["message"], auth_api.DUPLICATE_MSG)
         self.assertNotIn("field", b)
 
     def test_3_duplicate_phone(self):
-        signup(email="sara@example.com", phone="503333333", id_number="784199033333333", name="Sara Ali")
-        s, b, _ = signup(email="sara.new@example.com", phone="+971 50 333 3333", id_number="784199044444444",
+        signup(email="sara@example.com", phone="503333333", id_number="784199033333339", name="Sara Ali")
+        s, b, _ = signup(email="sara.new@example.com", phone="+971 50 333 3333", id_number="784199044444448",
                          name="Sara Ali", stop_at="phone")
         self.assertEqual((s, b["error"]), (409, "identity_exists"))
 
     def test_4_duplicate_id_with_different_formatting(self):
-        signup(email="noor@example.com", phone="505555555", id_number="784-2001-5555555-5", name="Noor Hassan")
-        s, b, _ = signup(email="noor.other@example.com", phone="506666666", id_number="784 2001 5555555 5",
+        signup(email="noor@example.com", phone="505555555", id_number="784-2001-5555555-8", name="Noor Hassan")
+        s, b, _ = signup(email="noor.other@example.com", phone="506666666", id_number="784 2001 5555555 8",
                          name="N Hassan")
         self.assertEqual((s, b["error"]), (409, "identity_exists"))
         self.assertNotIn("noor@example.com", str(b))
@@ -147,6 +147,41 @@ class Flow(unittest.TestCase):
     def test_8_requires_json(self):
         s, _, _ = auth_api.handle("POST", "/api/auth/login", {}, {"ip": "1", "content_type": "application/x-www-form-urlencoded"})
         self.assertEqual(s, 415)
+
+    def test_9_emirates_id_check_digit(self):
+        self.assertTrue(idn.valid_id_format("emirates_id", "784199912345677"))
+        self.assertFalse(idn.valid_id_format("emirates_id", "784199912345671"))   # wrong check digit
+        s, b, _ = signup(email="fake.eid@example.com", phone="507777777", id_number="784199099999991", name="Fake Person", ip="10.0.0.9")
+        self.assertEqual((s, b["error"]), (400, "invalid_id"))
+
+    def test_10_same_university_spelled_differently(self):
+        for a, b in [("University of Sharjah", "Univ. of Sharjah"), ("University of Sharjah", "UOS"),
+                     ("University of Sharjah", "جامعة الشارقة"), ("Khalifa University", "KU")]:
+            self.assertEqual(idn.normalize_institution(a), idn.normalize_institution(b), (a, b))
+        self.assertNotEqual(idn.normalize_institution("American University of Sharjah"), idn.normalize_institution("University of Sharjah"))
+        signup(email="uni.one@example.com", phone="508000001", id_type="university_id", id_number="U20231234",
+               name="Huda Saeed", institution="University of Sharjah", ip="10.0.0.10")
+        s, b, _ = signup(email="uni.two@example.com", phone="508000002", id_type="university_id", id_number="U20231234",
+                         name="Huda Saeed", institution="UOS", ip="10.0.0.10")
+        self.assertEqual((s, b["error"]), (409, "identity_exists"))
+
+    def test_11_name_mismatch_needs_review(self):
+        s, b, _ = call("/api/auth/signup/start", {"fullName": "Reem Khalid", "email": "reem@example.com", "password": "bridge2026",
+                                                  "role": "talent", "track": "founder"}, ip="10.0.0.11")
+        tok = b["signup"]["token"]
+        call("/api/auth/signup/verify-email", {"token": tok, "code": "123456"}, ip="10.0.0.11")
+        call("/api/auth/signup/phone", {"token": tok, "countryCode": "+971", "phone": "508111111"}, ip="10.0.0.11")
+        call("/api/auth/signup/verify-phone", {"token": tok, "code": "123456"}, ip="10.0.0.11")
+        s, b, _ = call("/api/auth/signup/identity", {"token": tok, "idType": "emirates_id", "idNumber": "784199066666662",
+                                                     "nameOnId": "Somebody Else Entirely"}, ip="10.0.0.11")
+        self.assertEqual(s, 200)
+        self.assertEqual(b["user"]["identity"]["status"], "review")
+        self.assertEqual(b["user"]["score"]["identity_trust"], 10)
+        self.assertTrue(b["user"]["identity"]["demo"])
+
+    def test_12_me_when_signed_out_is_not_an_error(self):
+        s, b, _ = call("/api/auth/me")
+        self.assertEqual((s, b["user"]), (200, None))
 
 
 if __name__ == "__main__":
