@@ -7,7 +7,7 @@
   'use strict';
 
   var I = window.icon;
-  var ME_INITIALS = 'LA';   // replaced by the signed-in person's initials (see applyAccount)
+  var ME_INITIALS = 'U';   // set by applyAccount: the signed-in person's initials, or U
   var STATE_KEY = 'jisr.demo.v2';
   var view = document.getElementById('view');
 
@@ -1257,7 +1257,7 @@
      (matched to the claim, then a locked Defense Check), each certificate by the certificate check.
      Certificates: free forensics (edits, editing tools, pasted patches) + AI read + issuer page. */
   var CVF = { file: null, error: '', phase: 'idle', replacing: false };
-  var CERT = { file: null, error: '', phase: 'idle', claim: null, name: 'Layla Ahmed' };
+  var CERT = { file: null, error: '', phase: 'idle', claim: null, name: '' };
   var ELA = {};   // heat-map images, kept in memory only (too big for localStorage)
 
   function latestFor(claimId) {
@@ -1497,7 +1497,7 @@
 
   function squadCard() {
     var team = [
-      { i: 'LA', name: { en: 'Layla A. (' + t('you') + ')', ar: 'ليلى أ. (' + t('you') + ')' }, role: S.track === 'inv' ? { en: 'Inventor', ar: 'مخترعة' } : { en: 'Founder · finance', ar: 'مؤسسة · مالية' } },
+      { i: ME_INITIALS, name: { en: T.whoTalent[0] + ' (' + t('you') + ')', ar: T.whoTalent[1] + ' (' + t('you') + ')' }, role: S.track === 'inv' ? { en: 'Inventor', ar: 'مخترعة' } : { en: 'Founder · finance', ar: 'مؤسسة · مالية' } },
       { i: 'HS', name: { en: 'Hessa S.', ar: 'حصة س.' }, role: { en: 'Founder · engineering', ar: 'مؤسسة · هندسة' } }
     ];
     var sugg = PEOPLE.filter(function (p) { return p.track === 'spec' && p.id !== 'la'; }).slice(0, 3);
@@ -2020,29 +2020,41 @@
   window.addEventListener('storage', function (e) { if (e.key === STATE_KEY) { S = load(); render(); } });
 
   /* ------------------------------------------------------------------ signed-in account
-     When the person signed in through auth.html, the Talent view uses their real name
-     and verified ID type instead of the sample profile "Layla A.". Everything else stays
-     demo data. With no session (or static hosting) the demo is unchanged. */
+     The Talent view shows the signed-in person's real name and verified ID type. With no
+     session it shows a generic "User" (never the old sample name). Swaps always start from
+     the original strings, so they can be applied again after sign-in. */
+  var T_ORIG = {};
+  Object.keys(T).forEach(function (k) { T_ORIG[k] = T[k].slice(); });
+  var KYC_ORIG = T.kycVerified.slice();
   function applyAccount(u) {
-    var parts = String(u.fullName || '').trim().split(/\s+/).filter(Boolean);
-    if (!parts.length) return;
-    var first = parts[0], last = parts.length > 1 ? parts[parts.length - 1] : '';
-    var short = first + (last ? ' ' + last.charAt(0) + '.' : '');
-    var full = parts.join(' ');
-    ME_INITIALS = esc((first.charAt(0) + (last ? last.charAt(0) : '')).toUpperCase());
-    var swaps = [['Layla Ahmed', full], ['Layla A.', short], ['ليلى أ.', short], ['Layla', first], ['ليلى', first]];
-    Object.keys(T).forEach(function (k) {
-      T[k] = T[k].map(function (str) {
+    var parts = String((u && u.fullName) || '').trim().split(/\s+/).filter(Boolean);
+    var en, ar;
+    if (parts.length) {
+      var first = parts[0], last = parts.length > 1 ? parts[parts.length - 1] : '';
+      var short = first + (last ? ' ' + last.charAt(0) + '.' : '');
+      en = { full: parts.join(' '), short: short, first: first, lFirst: 'ل' + first };
+      ar = en;
+      ME_INITIALS = esc((first.charAt(0) + (last ? last.charAt(0) : '')).toUpperCase());
+    } else {
+      en = { full: 'User', short: 'User', first: 'User' };
+      ar = { full: 'المستخدم', short: 'المستخدم', first: 'المستخدم', lFirst: 'للمستخدم' };
+      ME_INITIALS = 'U';
+    }
+    var swaps = function (n) { return [['Layla Ahmed', n.full], ['Layla A.', n.short], ['Layla', n.first], ['ليلى أ.', n.short], ['لليلى', n.lFirst || n.first], ['ليلى', n.first]]; };
+    var sw = [swaps(en), swaps(ar)];
+    Object.keys(T_ORIG).forEach(function (k) {
+      T[k] = T_ORIG[k].map(function (str, i) {
         if (typeof str !== 'string') return str;
-        swaps.forEach(function (sw) { str = str.split(sw[0]).join(sw[1]); });
+        (sw[i] || sw[0]).forEach(function (x) { str = str.split(x[0]).join(x[1]); });
         return str;
       });
     });
     var me = PEOPLE.filter(function (p) { return p.id === 'la'; })[0];
-    if (me) { me.name = { en: short, ar: short }; me.i = ME_INITIALS; }
-    if (CERT) CERT.name = full;
-    if (u.identity && u.identity.type === 'emirates_id') T.kycVerified = ['KYC verified · Emirates ID', 'هوية موثّقة · الهوية الإماراتية'];
+    if (me) { me.name = { en: en.short, ar: ar.short }; me.i = ME_INITIALS; }
+    if (CERT) CERT.name = parts.length ? en.full : '';
+    T.kycVerified = (u && u.identity && u.identity.type === 'emirates_id') ? ['KYC verified · Emirates ID', 'هوية موثّقة · الهوية الإماراتية'] : KYC_ORIG;
   }
+  applyAccount(null);   // generic "User" until /api/auth/me says who is signed in
 
   function accountButton(u) {
     var host = document.getElementById('who');
