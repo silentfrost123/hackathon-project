@@ -717,7 +717,66 @@ class Handler(SimpleHTTPRequestHandler):
         if (name.startswith(".") or name.endswith((".py", ".md", ".sql", ".log", ".json")) or "/." in path
                 or path.startswith(("/db/", "/tests/", "/_refs/"))):
             return self._json(404, {"error": "not_found"})
+        if path.startswith("/assets/video/") and path.endswith(".mp4"):
+            return self._send_video(path)
         return super().do_GET()
+
+    def _send_video(self, path):
+        """Serve an MP4 with byte ranges so browsers can seek (Safari won't play video without them)."""
+        root = os.path.realpath(os.path.join(ROOT, "assets", "video"))
+        full = os.path.realpath(os.path.join(ROOT, path.lstrip("/").replace("/", os.sep)))
+        if not full.startswith(root + os.sep) or not os.path.isfile(full):
+            return self._json(404, {"error": "not_found"})
+        size = os.path.getsize(full)
+        start, end, status = 0, size - 1, 200
+        rng = (self.headers.get("Range") or "").strip()
+        if rng.startswith("bytes="):
+            a, _, b = rng[6:].split(",")[0].partition("-")
+            try:
+                if a.strip():
+                    start = int(a); end = min(int(b), size - 1) if b.strip() else size - 1
+                else:                                   # "bytes=-500": the last 500 bytes
+                    start = max(0, size - int(b)); end = size - 1
+            except ValueError:
+                start, end = 0, size - 1
+            if start > end or start >= size:
+                self.send_response(416)
+                self.send_header("Content-Range", f"bytes */{size}")
+                self.send_header("Content-Length", "0")
+                self.end_headers()
+                return
+            status = 206
+        self.send_response(status)
+        self.send_header("Content-Type", "video/mp4")
+        self.send_header("Accept-Ranges", "bytes")
+        self.send_header("Content-Length", str(end - start + 1))
+        if status == 206:
+            self.send_header("Content-Range", f"bytes {start}-{end}/{size}")
+        self.end_headers()
+        if self.command == "HEAD":
+            return
+        try:
+            with open(full, "rb") as f:
+                f.seek(start)
+                left = end - start + 1
+                while left > 0:
+                    chunk = f.read(min(256 * 1024, left))
+                    if not chunk:
+                        break
+                    self.wfile.write(chunk)
+                    left -= len(chunk)
+        except (BrokenPipeError, ConnectionResetError, ConnectionAbortedError):
+            pass  # the browser stopped this request to ask for another range
+
+    def do_HEAD(self):
+        path = self.path.split("?", 1)[0]
+        name = path.rsplit("/", 1)[-1]
+        if (name.startswith(".") or name.endswith((".py", ".md", ".sql", ".log", ".json")) or "/." in path
+                or path.startswith(("/db/", "/tests/", "/_refs/", "/api/"))):
+            return self._json(404, {"error": "not_found"})
+        if path.startswith("/assets/video/") and path.endswith(".mp4"):
+            return self._send_video(path)
+        return super().do_HEAD()
 
     def do_POST(self):
         path = self.path.split("?", 1)[0]

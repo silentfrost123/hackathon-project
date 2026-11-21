@@ -214,3 +214,28 @@ html[lang="ar"] .f-fine { font-family: var(--font-ar); }
 
 /* focus on dark sections */
 .stage :focus-visible, .ink :focus-visible, .h-bar :focus-visible, .f-bar :focus-visible { outline-color: var(--gold-400); }
+
+/* ---------- Inside the demo: business, mentor, admin ---------- */
+.inside { padding: 96px 0; }
+.inside .lede { max-width: 680px; }
+.tour { margin: 0 0 56px; }
+.tour video { display: block; width: 100%; aspect-ratio: 16 / 9; background: #050b14; border-radius: 6px; border: 1px solid rgba(255,255,255,.14); }
+.tour figcaption { margin-top: 14px; font-family: var(--font-mono); font-size: 13px; color: #A9B6C8; }
+html[lang="ar"] .tour figcaption { font-family: var(--font-ar); }
+ul.portals { list-style: none; margin: 0; padding: 0; display: grid; gap: 24px; }
+@media (min-width: 820px) { ul.portals { grid-template-columns: repeat(3, 1fr); } }
+.portal { display: flex; flex-direction: column; height: 100%; color: inherit; text-decoration: none; border: 1px solid rgba(255,255,255,.14); border-radius: 6px; overflow: hidden; background: rgba(255,255,255,.025); transition: border-color .2s, transform .2s; }
+.portal:hover { border-color: var(--gold-500); transform: translateY(-2px); color: inherit; }
+.portal img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; border-bottom: 1px solid rgba(255,255,255,.1); }
+.portal .pb { display: flex; flex-direction: column; gap: 8px; padding: 20px 22px 24px; flex: 1; }
+.portal .pk { font-family: var(--font-mono); font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--gold-400); }
+.portal .ph { font-size: 22px; font-weight: 700; color: #fff; line-height: 1.2; }
+.portal .pd { font-size: 16px; line-height: 1.55; color: #C9D2DE; flex: 1; }
+.portal .go { margin-top: 8px; font-weight: 600; color: #fff; }
+.portal:hover .go { color: var(--gold-400); }
+.portal .go .arrow { display: inline-block; transition: transform .2s; }
+.portal:hover .go .arrow { transform: translateX(4px); }
+[dir="rtl"] .portal .go .arrow { transform: scaleX(-1); }
+[dir="rtl"] .portal:hover .go .arrow { transform: scaleX(-1) translateX(4px); }
+html[lang="ar"] .portal .pk { font-family: var(--font-ar); letter-spacing: 0; text-transform: none; font-size: 14px; }
+@media (prefers-reduced-motion: reduce) { .portal, .portal .go .arrow { transition: none; } .portal:hover { transform: none; } }
