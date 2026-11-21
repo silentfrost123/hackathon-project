@@ -177,6 +177,7 @@
     Object.assign(S.acct, r.acct || {}); Object.assign(S.phone, r.phone || {});
     // a sign-up started before the Media path may still say "specialist" etc.
     if (!TRACKS.some(function (tr) { return tr[0] === S.acct.track; })) S.acct.track = 'video';
+    S.acct.role = 'talent';
     api('/api/auth/signup/status', { token: S.token }).then(function (res) {
       S.signup = res.signup;
       // never land past what the server says is verified
@@ -330,17 +331,14 @@
   function stepAccount() {
     if (S.sub === 'code') return codeView('email');
     var a = S.acct;
-    var roles = [['talent', 'user', 'talentSub'], ['partner', 'building', 'partnerSub']].map(function (r) {
-      return '<label class="choice"><input type="radio" name="role" value="' + r[0] + '"' + (a.role === r[0] ? ' checked' : '') + '>' + ico(r[1]) +
-        '<span>' + esc(t(r[0])) + '<small>' + esc(t(r[2])) + '</small></span></label>';
-    }).join('');
+    a.role = 'talent';   // sign-up is for talent only; businesses are shown in the demo
     var tracks = a.role !== 'talent' ? '' : '<fieldset class="field"><legend>' + esc(t('track')) + '</legend><div class="choice-grid tracks">' +
       TRACKS.map(function (tr) {
         return '<label class="choice"><input type="radio" name="track" value="' + tr[0] + '"' + (a.track === tr[0] ? ' checked' : '') + '>' + ico(tr[1]) + '<span>' + esc(t(tr[0])) + '</span></label>';
       }).join('') + '</div></fieldset>';
     var verified = S.signup && S.signup.emailVerified && sameEmail();
     return '<form data-form="account" novalidate>' + formError() +
-      '<fieldset class="field"><legend>' + esc(t('iAm')) + '</legend><div class="choice-grid">' + roles + '</div></fieldset>' + tracks +
+      tracks +
       field({ name: 'fullName', label: t('fullName'), value: a.fullName, autocomplete: 'name', help: t('fullNameHelp'), maxlength: 80 }) +
       field({ name: 'email', label: t('email'), type: 'email', value: a.email, autocomplete: 'email', dir: 'ltr', inputmode: 'email', maxlength: 254,
         help: verified ? '✓ ' + t('emailVerified') : '' }) +

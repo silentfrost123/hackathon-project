@@ -51,9 +51,9 @@
     rsNext: ['Next step', 'الخطوة التالية'],
     lvl0: ['Building', 'قيد البناء'], lvl1: ['Emerging', 'واعد'], lvl2: ['Ready', 'جاهز'], lvl3: ['Top talent', 'موهبة متميزة'],
     lvlDesc0: ['Keep adding verified work to reach paid opportunities.', 'استمر في إضافة أعمال موثّقة لتفتح الفرص المدفوعة.'],
-    lvlDesc1: ['Visible to partners. Entry-level opportunities are open to you.', 'ظاهر للشركاء. فُتحت لك فرص المستوى المبتدئ.'],
+    lvlDesc1: ['Visible to businesses. Entry-level opportunities are open to you.', 'ظاهر للشركات. فُتحت لك فرص المستوى المبتدئ.'],
     lvlDesc2: ['Ready for paid client work.', 'جاهز لأعمال العملاء المدفوعة في هذا المسار.'],
-    lvlDesc3: ['Featured to partners first.', 'تظهر للشركاء أولًا.'],
+    lvlDesc3: ['Featured to businesses first.', 'تظهر للشركات أولًا.'],
     scaleAria: ['Score scale: 0–49 building, 50–69 emerging, 70–84 ready, 85–100 top talent', 'مقياس المؤشر: 0–49 قيد البناء، 50–69 واعد، 70–84 جاهز، 85–100 موهبة متميزة'],
 
     oppTitle: ['Opportunities for you', 'فرص مناسبة لك'],
@@ -334,7 +334,7 @@
     ventureSub: ['6-part documentary series · Safe Box escrow', 'سلسلة وثائقية من 6 حلقات · ضمان صندوق الأمان'],
 
     // business
-    bKicker: ['Partner portal · Gulf Media Group (sample)', 'بوابة الشركاء · مجموعة الخليج للإعلام (مثال)'],
+    bKicker: ['Business portal · Gulf Media Group (sample)', 'بوابة الأعمال · مجموعة الخليج للإعلام (مثال)'],
     bTitle: ['Find verified talent', 'ابحث عن مواهب موثّقة'],
     bTabFind: ['Find talent', 'ابحث عن مواهب'],
     bTabShort: ['Shortlist', 'القائمة المختصرة'],
@@ -590,7 +590,7 @@
     { key: 'stProduction', pct: 40, amount: 16000,
       evidence: [{ en: 'Rough cut of episodes 1–3', ar: 'نسخة أولية للحلقات 1–3' }, { en: 'Raw footage log', ar: 'سجل اللقطات الخام' }] },
     { key: 'stDelivery', pct: 30, amount: 12000,
-      evidence: [{ en: 'Final masters with Arabic and English subtitles', ar: 'النسخ النهائية مع ترجمة عربية وإنجليزية' }, { en: 'Delivery receipt from the streaming partner', ar: 'إيصال استلام من شريك البث' }] }
+      evidence: [{ en: 'Final masters with Arabic and English subtitles', ar: 'النسخ النهائية مع ترجمة عربية وإنجليزية' }, { en: 'Delivery receipt from the streaming platform', ar: 'إيصال استلام من منصة البث' }] }
   ];
   var SAFEBOX = 40000;
   var NDA_FEE = 2000;

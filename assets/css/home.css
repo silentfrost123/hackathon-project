@@ -239,3 +239,11 @@ ul.portals { list-style: none; margin: 0; padding: 0; display: grid; gap: 24px; 
 [dir="rtl"] .portal:hover .go .arrow { transform: scaleX(-1) translateX(4px); }
 html[lang="ar"] .portal .pk { font-family: var(--font-ar); letter-spacing: 0; text-transform: none; font-size: 14px; }
 @media (prefers-reduced-motion: reduce) { .portal, .portal .go .arrow { transition: none; } .portal:hover { transform: none; } }
+
+/* ---------- How the payment works (inside the How section) ---------- */
+.pay { margin-top: 64px; }
+.pay-title { font-size: 26px; font-weight: 700; letter-spacing: -.01em; margin: 0; }
+ul.pay-steps { margin-top: 20px; }
+.pay-steps b { display: block; margin-top: 8px; font-size: 19px; font-weight: 700; color: var(--text); }
+.pay-steps p { margin-top: 6px; }
+.pay-note { margin-top: 24px; max-width: 780px; font-size: 16px; color: var(--text-muted); }
