@@ -3,6 +3,7 @@
 A responsive static website (no build step, no dependencies besides Google Fonts).
 
 - `index.html` — landing page
+- `auth.html` — sign in + 4-step KYC sign-up (see `KYC.md`)
 - `app.html` — interactive demo portals: `#talent` (also `#talent/spec|res|inv|fnd`), `#business`, `#mentor`, `#admin`
 - `assets/css/styles.css` — design tokens + all styles (mobile-first, RTL via logical properties)
 - `assets/js/site.js` — EN/AR switch (RTL), mobile menu, scroll reveal, toasts

@@ -52,6 +52,10 @@ def _load_env():
 
 _load_env()
 
+import auth_api  # noqa: E402  (accounts + KYC; reads .env, so it's imported after _load_env)
+
+TRUST_PROXY = os.environ.get("TRUST_PROXY", "").strip() == "1"   # set to 1 behind Railway/Render/nginx
+
 API_KEY = os.environ.get("GEMINI_API_KEY", "").strip()
 MODEL = os.environ.get("GEMINI_MODEL", "gemini-3.8-flash").strip()
 # tried in order when the main model is busy, rate-limited or retired
@@ -668,6 +672,10 @@ class Handler(SimpleHTTPRequestHandler):
         self.send_header("Content-Type", "application/json; charset=utf-8")
         self.send_header("Cache-Control", "no-store")
         self.send_header("Content-Length", str(len(data)))
+        cookie = getattr(self, "_cookie", None)
+        if cookie:
+            self.send_header("Set-Cookie", cookie)
+            self._cookie = None
         self.end_headers()
         self.wfile.write(data)
 
@@ -676,19 +684,48 @@ class Handler(SimpleHTTPRequestHandler):
             self.send_header("Cache-Control", "no-cache")
         super().end_headers()
 
+    def _auth_ctx(self):
+        ip = self.client_address[0]
+        https = False
+        if TRUST_PROXY:
+            ip = (self.headers.get("X-Forwarded-For") or ip).split(",")[0].strip()
+            https = self.headers.get("X-Forwarded-Proto", "") == "https"
+        return {"ip": ip, "https": https, "cookie": self.headers.get("Cookie", ""),
+                "content_type": self.headers.get("Content-Type", "")}
+
+    def _auth(self, method, path, body):
+        try:
+            status, obj, cookie = auth_api.handle(method, path, body, self._auth_ctx())
+        except Exception as e:  # pragma: no cover
+            print(f"[auth] {type(e).__name__}: {e}")
+            status, obj, cookie = 500, {"error": "server_error", "message": "Something went wrong on the server."}, None
+        self._cookie = cookie
+        return self._json(status, obj)
+
     def do_GET(self):
         path = self.path.split("?", 1)[0]
+        if path.startswith("/api/auth/"):
+            return self._auth("GET", path, {})
         if path == "/api/health":
             return self._json(200, {"ai": bool(API_KEY), "model": MODEL if API_KEY else None,
                                     "seconds": SECONDS_PER_QUESTION, "maxViolations": MAX_VIOLATIONS})
         # never serve secrets or server code
         name = path.rsplit("/", 1)[-1]
-        if name.startswith(".") or name.endswith(".py") or "/." in path:
+        if name.startswith(".") or name.endswith(".py") or "/." in path or path.startswith(("/db/", "/tests/")):
             return self._json(404, {"error": "not_found"})
         return super().do_GET()
 
     def do_POST(self):
         path = self.path.split("?", 1)[0]
+        if path.startswith("/api/auth/"):
+            try:
+                length = int(self.headers.get("Content-Length", 0))
+                if length > auth_api.MAX_ID_IMAGE_BYTES * 1.4 + 10_000:
+                    return self._json(413, {"error": "image_too_big", "message": "The ID image must be under 5 MB."})
+                body = json.loads(self.rfile.read(length) or b"{}")
+            except (ValueError, json.JSONDecodeError):
+                return self._json(400, {"error": "bad_request", "message": "Bad request."})
+            return self._auth("POST", path, body)
         fn = ROUTES.get(path)
         if not fn:
             return self._json(404, {"error": "not_found", "message": "Unknown endpoint."})
@@ -712,6 +749,8 @@ class Handler(SimpleHTTPRequestHandler):
 
 
 if __name__ == "__main__":
+    info = auth_api.init()
     print(f"JISR running on http://{HOST}:{PORT}", flush=True)
+    print(f"Accounts/KYC: provider={info['provider']} db={info['db']}", flush=True)
     print(f"Defense Check AI: {'Gemini (' + MODEL + ')' if API_KEY else 'NOT CONFIGURED - demo mode (add GEMINI_API_KEY to .env)'}", flush=True)
     ThreadingHTTPServer((HOST, PORT), Handler).serve_forever()

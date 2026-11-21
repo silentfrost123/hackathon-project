@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-ar="جسر JISR — تسجيل الدخول وإنشاء حساب">JISR جسر — Sign in or create your verified account</title>
+<meta name="description" content="Sign in to JISR, or create one verified account with email, phone and ID checks (KYC).">
+<meta name="theme-color" content="#0B1626">
+<meta name="robots" content="noindex">
+<script>(function(){try{var q=new URLSearchParams(location.search).get('lang');var l=q||localStorage.getItem('jisr.lang');if(l==='ar'){document.documentElement.lang='ar';document.documentElement.dir='rtl';}}catch(e){}})();</script>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23E9A93A'/%3E%3Cg fill='none' stroke='%230B1626' stroke-width='2.6' stroke-linecap='round'%3E%3Cpath d='M5 22h22'/%3E%3Cpath d='M8 22c0-6 3.5-9.5 8-9.5s8 3.5 8 9.5'/%3E%3Cpath d='M12.5 22v-4.5'/%3E%3Cpath d='M19.5 22v-4.5'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="stylesheet" href="assets/css/auth.css">
+</head>
+<body class="auth-page">
+<script src="assets/js/icons.js"></script>
+<a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
+
+<header class="site-header">
+  <div class="container bar">
+    <a class="brand" href="index.html" data-keep-lang aria-label="JISR home" data-i18n-attr="aria-label:app.home">
+      <span class="brand-mark"><svg class="icon" aria-hidden="true"><use href="#i-bridge"></use></svg></span>
+      <span class="brand-name"><span class="brand-latin">JISR</span><span class="brand-arabic" lang="ar">جسر</span></span>
+    </a>
+    <div class="header-actions">
+      <button type="button" class="lang-toggle" data-lang-toggle aria-label="التبديل إلى العربية">
+        <svg class="icon icon-sm" aria-hidden="true"><use href="#i-globe"></use></svg><span class="lang-label lang-label-ar">العربية</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="auth-main on-dark">
+  <div class="container auth-inner">
+    <section class="auth-intro" aria-labelledby="auth-intro-h">
+      <span class="hero-pill"><span class="dot" aria-hidden="true"></span><span data-i18n="auth.pill">One verified person · one account</span></span>
+      <h1 id="auth-intro-h" data-i18n="auth.introTitle">Your score belongs to <span class="accent">the real you.</span></h1>
+      <p class="hero-lead" data-i18n="auth.introLead">We verify your email, phone and ID once. Your Readiness Score and badges are tied to that identity, so nobody can start over with a new account or borrow your reputation.</p>
+      <ul class="auth-points" role="list">
+        <li><svg class="icon" aria-hidden="true"><use href="#i-send"></use></svg><span data-i18n="auth.pt1">Email and phone confirmed with a one-time code</span></li>
+        <li><svg class="icon" aria-hidden="true"><use href="#i-shield"></use></svg><span data-i18n="auth.pt2">University ID or Emirates ID checked, stored only as a secure hash</span></li>
+        <li><svg class="icon" aria-hidden="true"><use href="#i-star"></use></svg><span data-i18n="auth.pt3">Score and badges follow your verified identity</span></li>
+      </ul>
+    </section>
+
+    <div class="auth-card-wrap">
+      <div class="auth-card" id="auth-root" aria-live="off">
+        <noscript><p>Sign-in needs JavaScript enabled.</p></noscript>
+      </div>
+      <p class="auth-demo-note"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-info"></use></svg><span data-i18n="auth.demoNote">Prototype: codes and ID checks are simulated. Don't enter a real ID number.</span></p>
+    </div>
+  </div>
+</main>
+
+<div id="toasts" class="toast-region" aria-live="polite"></div>
+
+<script src="assets/js/i18n-ar.js"></script>
+<script src="assets/js/i18n-ar-auth.js"></script>
+<script src="assets/js/site.js"></script>
+<script src="assets/js/auth.js"></script>
+</body>
+</html>
