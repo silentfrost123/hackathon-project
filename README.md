@@ -41,6 +41,25 @@ Privacy: uploaded files are sent to Google's Gemini API. On the free tier Google
 to improve its products — use a paid key before handling real users' files.
 Sessions live in server memory (45 min) and the document is dropped once graded.
 
+## CV and certificate verification
+
+**My CV** (talent portal): Gemini lists the provable claims in the uploaded CV (projects, jobs,
+certifications, degrees). Each project/job is proved by uploading the work: Gemini first checks the
+file really is that work (a wrong file is rejected with a reason), then the locked Defense Check runs.
+Businesses see "X of Y claims verified".
+
+**Certificates** (no paid APIs):
+- file forensics in `verify.py`: PDF re-saved after creation, editing tools (Photoshop, iLovePDF…),
+  modified long after it was issued, text in a non-embedded font, digital signature intact or not;
+  images: editing software, error-level analysis (JPEG) and a pasted-patch detector
+- Gemini reads holder / issuer / course / ID / verification link and looks for visual edits
+- if there's a verification link on a known issuer site (Coursera, Credly, Microsoft, edX…), the
+  server opens it and Gemini compares it with the certificate — the strongest free proof
+- name on the certificate vs the talent's name, and the same file uploaded under another name
+- verdicts: confirmed with issuer · no signs of tampering · needs review (mentor queue) · signs of tampering
+
+These checks catch common edits; they can't prove a certificate is genuine without the issuer.
+
 Append `?lang=ar` to any URL to open it in Arabic.
 
 Apart from the Defense Check, all portal data is **demo data** stored in the browser's localStorage
