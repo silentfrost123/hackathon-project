@@ -9,8 +9,6 @@ body.auth-page { background: var(--navy-900); }
 .auth-main {
   min-height: calc(100vh - var(--header-h));
   background:
-    radial-gradient(900px 480px at 85% -10%, rgba(42,157,146,.22), transparent 60%),
-    radial-gradient(700px 420px at -10% 110%, rgba(233,169,58,.12), transparent 60%),
     var(--navy-900);
 }
 .auth-inner { display: grid; gap: 32px; padding-block: 24px 56px; align-items: start; }
