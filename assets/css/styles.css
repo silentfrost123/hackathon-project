@@ -967,3 +967,28 @@ body.is-locked { overflow: hidden; }
 .ld-w-card h2 { font-size: 22px; }
 .ld-w-card p { color: var(--navy-200); }
 .ld-w-card .btn { width: 100%; margin-top: 6px; }
+
+/* ==========================================================================
+   CV + certificate verification
+   ========================================================================== */
+.badge-cert { background: var(--navy-100); color: var(--navy-700); box-shadow: inset 0 0 0 1px #D3DBE6; }
+.claim-row { align-items: flex-start; }
+.claim-row .grow { gap: 3px; }
+.claim-row .row-actions { align-items: center; flex-wrap: wrap; justify-content: flex-end; }
+.verdict { display: grid; gap: 4px; padding: 14px 16px; border-radius: var(--r-md); }
+.verdict strong { display: flex; align-items: center; gap: 8px; font-size: 16px; }
+.verdict p { font-size: 14px; }
+.verdict-ok { background: var(--teal-50); color: var(--teal-800); border: 1px solid var(--teal-100); }
+.verdict-warn { background: var(--gold-50); color: var(--gold-700); border: 1px solid var(--gold-100); }
+.verdict-bad { background: var(--red-50); color: var(--red-700); border: 1px solid #F6C9C4; }
+.cert-details summary { cursor: pointer; font-weight: 600; font-size: 14px; min-height: 36px; display: flex; align-items: center; }
+.checks { list-style: none; margin: 6px 0 0; padding: 0; display: grid; gap: 8px; }
+.chk { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; color: var(--text); }
+.chk .icon { width: 18px; height: 18px; margin-top: 2px; }
+.chk-pass .icon { color: var(--teal-600); }
+.chk-warn .icon { color: var(--gold-600); }
+.chk-fail .icon { color: var(--red-700); }
+.chk-info .icon { color: var(--text-subtle); }
+.ela { margin: 14px 0 0; display: grid; gap: 6px; }
+.ela img { width: 100%; max-width: 480px; border-radius: var(--r-md); border: 1px solid var(--border); background: #000; }
+.ela figcaption { font-size: 13px; color: var(--text-muted); }

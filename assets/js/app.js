@@ -175,6 +175,141 @@
     mDcReject: ['Don\'t approve', 'لا تعتمد'],
     evDcReview: ['Defense Check sent for mentor review (Layla A.)', 'إحالة فحص دفاع لمراجعة المرشد (ليلى أ.)'],
     evDcFail: ['Defense Check not verified (Layla A.)', 'عدم توثيق فحص دفاع (ليلى أ.)'],
+    tabOverview: ['Overview', 'نظرة عامة'],
+    tabCv: ['My CV', 'سيرتي الذاتية'],
+    tabCerts: ['Certificates', 'الشهادات'],
+    cvUpTitle: ['Verify your CV', 'وثّق سيرتك الذاتية'],
+    cvUpIntro: ['The AI lists the projects, jobs and certificates in your CV. Then you prove each one by uploading the work or the certificate.', 'يستخرج الذكاء الاصطناعي المشاريع والوظائف والشهادات من سيرتك الذاتية، ثم تثبت كلًّا منها برفع العمل أو الشهادة.'],
+    cvChoose: ['Choose your CV', 'اختر سيرتك الذاتية'],
+    cvTypes: ['PDF or Word (.docx) · up to 15 MB', 'PDF أو Word (.docx) · حتى 15 ميغابايت'],
+    cvScan: ['Scan my CV', 'افحص سيرتي'],
+    cvScanning: ['Reading your CV…', 'جارٍ قراءة سيرتك…'],
+    cvScanningSub: ['Finding the projects, jobs and certificates you can prove. This usually takes 10–30 seconds.', 'نبحث عن المشاريع والوظائف والشهادات التي يمكنك إثباتها. يستغرق ذلك عادةً 10–30 ثانية.'],
+    cvPrivacy: ['Your CV is sent to Google Gemini to find the claims.', 'تُرسل سيرتك إلى Google Gemini لاستخراج الادعاءات.'],
+    cvNoAi: ['This check needs the AI, which isn’t connected on this server.', 'يحتاج هذا الفحص إلى الذكاء الاصطناعي، وهو غير متصل بهذا الخادم.'],
+    cvErrType: ['Upload your CV as a PDF or Word (.docx) file.', 'ارفع سيرتك بصيغة PDF أو Word (.docx).'],
+    cvYour: ['Your CV', 'سيرتك الذاتية'],
+    cvProgress: ['{v} of {n} claims verified', 'تم توثيق {v} من {n}'],
+    cvReplace: ['Upload a new CV', 'ارفع سيرة جديدة'],
+    cvCancelReplace: ['Keep current CV', 'احتفظ بالسيرة الحالية'],
+    cvGroupWork: ['Projects & work', 'المشاريع والأعمال'],
+    cvGroupCert: ['Certifications', 'الشهادات'],
+    cvGroupEdu: ['Education', 'التعليم'],
+    cvSelf: ['Self-reported', 'غير موثّق'],
+    cvVerified: ['Verified', 'موثّق'],
+    cvReview: ['Under review', 'قيد المراجعة'],
+    cvFailed: ['Not verified', 'لم يُوثّق'],
+    cvUploadWork: ['Upload the work', 'ارفع العمل'],
+    cvUploadCert: ['Upload certificate', 'ارفع الشهادة'],
+    cvRetry: ['Try again', 'حاول مجددًا'],
+    cvViewResult: ['View result', 'اعرض النتيجة'],
+    cvEduNote: ['Degree checks aren’t part of this demo yet.', 'التحقق من الشهادات الجامعية غير متاح في هذا العرض بعد.'],
+    cvEvidence: ['Proof: {e}', 'الإثبات: {e}'],
+    cvDone: ['CV scanned — {n} claims found.', 'تم فحص السيرة — وُجد {n} ادعاءات.'],
+    cvHowTitle: ['How CV verification works', 'كيف يتم توثيق السيرة'],
+    cvHow1: ['Upload your CV — the AI lists each claim.', 'ارفع سيرتك — يستخرج الذكاء الاصطناعي كل ادعاء.'],
+    cvHow2: ['For each project or job, upload the work. The AI checks it matches, then asks you about it in a locked Defense Check.', 'لكل مشروع أو وظيفة، ارفع العمل. يتحقق الذكاء الاصطناعي من تطابقه، ثم يسألك عنه في فحص دفاع مقفل.'],
+    cvHow3: ['For each certificate, upload the file. We check it for edits and confirm it with the issuer where possible.', 'لكل شهادة، ارفع الملف. نفحصه بحثًا عن تعديلات ونتأكد منه لدى الجهة المانحة عند الإمكان.'],
+    cvHow4: ['Businesses see which claims are verified and which are only self-reported.', 'ترى الشركات أي الادعاءات موثّقة وأيها غير موثّق.'],
+    vfWorkFor: ['Verify: {title}', 'توثيق: {title}'],
+    vfCancelClaim: ['Cancel', 'إلغاء'],
+    certTitle: ['Check a certificate', 'افحص شهادة'],
+    certFor: ['Verify: {title}', 'توثيق: {title}'],
+    certIntro: ['We check the file for signs of editing, read it with AI, and confirm it on the issuer’s website when it has a verification link.', 'نفحص الملف بحثًا عن علامات تعديل، ونقرؤه بالذكاء الاصطناعي، ونتأكد منه على موقع الجهة المانحة عند وجود رابط تحقق.'],
+    certName: ['Your full name (as on your ID)', 'اسمك الكامل (كما في هويتك)'],
+    certNameHelp: ['Demo: in the live product this comes from your KYC check.', 'عرض توضيحي: في المنتج الفعلي يُؤخذ من التحقق من هويتك.'],
+    certNameMust: ['Enter your name so we can match it to the certificate.', 'أدخل اسمك لنطابقه مع الشهادة.'],
+    certChoose: ['Choose the certificate', 'اختر الشهادة'],
+    certTypes: ['PDF or image (JPG, PNG) · up to 15 MB — the original PDF works best', 'PDF أو صورة (JPG، PNG) · حتى 15 ميغابايت — ملف PDF الأصلي هو الأفضل'],
+    certCheck: ['Check certificate', 'افحص الشهادة'],
+    certChecking: ['Checking your certificate…', 'جارٍ فحص شهادتك…'],
+    certCheckingSub: ['Looking for edits, reading it with AI and contacting the issuer. This can take up to a minute.', 'نبحث عن تعديلات ونقرؤها بالذكاء الاصطناعي ونتواصل مع الجهة المانحة. قد يستغرق ذلك دقيقة.'],
+    certPrivacy: ['The certificate is sent to Google Gemini; verification links are opened by our server.', 'تُرسل الشهادة إلى Google Gemini، ويفتح خادمنا روابط التحقق.'],
+    certNone: ['No certificates checked yet', 'لم تُفحص أي شهادة بعد'],
+    certNoneBody: ['Upload a certificate above — or start from a certificate listed in your CV.', 'ارفع شهادة أعلاه — أو ابدأ من شهادة مذكورة في سيرتك.'],
+    certHolder: ['Name on certificate', 'الاسم في الشهادة'],
+    certIssuer: ['Issuer', 'الجهة المانحة'],
+    certCourse: ['Course / title', 'الدورة / العنوان'],
+    certDate: ['Issued', 'تاريخ الإصدار'],
+    certId: ['Credential ID', 'رقم الشهادة'],
+    certChecks: ['What we checked', 'ما الذي فحصناه'],
+    certFindings: ['AI visual check', 'الفحص البصري بالذكاء الاصطناعي'],
+    certOpenIssuer: ['Open the issuer’s verification page', 'افتح صفحة التحقق لدى الجهة المانحة'],
+    certEla: ['Image analysis', 'تحليل الصورة'],
+    certElaCap: ['bright or unusually flat areas that don’t match their surroundings can mean edited content.', 'المناطق الساطعة أو المسطحة بشكل غير معتاد مقارنة بما حولها قد تعني محتوى معدّلًا.'],
+    certHonest: ['These checks catch common edits but can’t prove a certificate is genuine — only the issuer can. Issuer-confirmed certificates are marked as such.', 'تكشف هذه الفحوصات التعديلات الشائعة لكنها لا تثبت أصالة الشهادة — وحدها الجهة المانحة تستطيع ذلك. تُميَّز الشهادات المؤكدة من الجهة المانحة.'],
+    certErrType: ['Upload a PDF or an image (JPG, PNG, WebP).', 'ارفع ملف PDF أو صورة (JPG، PNG، WebP).'],
+    certRemove: ['Remove', 'إزالة'],
+    certMentorOk: ['A mentor reviewed this certificate and accepted it.', 'راجع مرشد هذه الشهادة وقبلها.'],
+    certMentorNo: ['A mentor reviewed this certificate and didn’t accept it.', 'راجع مرشد هذه الشهادة ولم يقبلها.'],
+    certHowTitle: ['How certificate checks work', 'كيف يتم فحص الشهادات'],
+    certHow1: ['File check: was it edited and re-saved, made in an editing tool, or does part of it look pasted in?', 'فحص الملف: هل عُدّل وأُعيد حفظه، أو صُنع بأداة تحرير، أو يبدو جزء منه ملصقًا؟'],
+    certHow2: ['AI reads the name, issuer, course and credential ID, and looks for visual signs of editing.', 'يقرأ الذكاء الاصطناعي الاسم والجهة والدورة ورقم الشهادة، ويبحث عن علامات تعديل بصرية.'],
+    certHow3: ['If it has a verification link, we open the issuer’s page and compare — the strongest proof.', 'إن وُجد رابط تحقق، نفتح صفحة الجهة المانحة ونقارن — وهو أقوى إثبات.'],
+    certHow4: ['Clear results count right away; anything doubtful goes to a mentor.', 'النتائج الواضحة تُحتسب فورًا، وأي شك يُحال إلى مرشد.'],
+    vdVerified: ['Confirmed with the issuer', 'مؤكدة من الجهة المانحة'],
+    vdVerifiedD: ['The issuer’s own page (or an intact digital signature) confirms this certificate.', 'تؤكد صفحة الجهة المانحة (أو توقيع رقمي سليم) هذه الشهادة.'],
+    vdClean: ['No signs of tampering', 'لا توجد علامات تلاعب'],
+    vdCleanD: ['We found no evidence of editing. It isn’t confirmed by the issuer, so businesses see it as “checked”, not “confirmed”.', 'لم نجد دليلًا على التعديل. لكنها غير مؤكدة من الجهة المانحة، لذا تظهر للشركات كـ«مفحوصة» لا «مؤكدة».'],
+    vdReview: ['Needs a closer look', 'تحتاج إلى مراجعة'],
+    vdReviewD: ['Some checks raised questions. A mentor will review it before it counts.', 'أثارت بعض الفحوصات تساؤلات. سيراجعها مرشد قبل احتسابها.'],
+    vdSuspicious: ['Signs of tampering', 'علامات تلاعب'],
+    vdSuspiciousD: ['One or more strong signs that this file was altered or doesn’t belong to you. It won’t be added to your profile.', 'علامة قوية أو أكثر على أن الملف معدّل أو لا يخصك. لن يُضاف إلى ملفك.'],
+    sg_pdf_signed_intact: ['Digitally signed, and unchanged since it was signed', 'موقّع رقميًا ولم يتغير منذ توقيعه'],
+    sg_pdf_signed_changed: ['Has a digital signature, but the file was changed after signing', 'يحمل توقيعًا رقميًا لكن الملف تغيّر بعد التوقيع'],
+    sg_pdf_resaved: ['Saved again {n} time(s) after it was first created', 'أُعيد حفظه {n} مرة بعد إنشائه'],
+    sg_pdf_editor: ['Last saved with an editing tool ({tool})', 'حُفظ آخر مرة بأداة تحرير ({tool})'],
+    sg_pdf_design_tool: ['Made with {tool} — common for small organisers, but also used for fakes', 'صُنع بأداة {tool} — شائع لدى الجهات الصغيرة لكنه يُستخدم أيضًا في التزوير'],
+    sg_pdf_modified_later: ['Modified {days} days after it was created', 'عُدّل بعد {days} يومًا من إنشائه'],
+    sg_pdf_font_mismatch: ['Some text uses a font that isn’t embedded like the rest ({fonts}) — often a sign of text added later', 'بعض النص بخط غير مضمّن مثل البقية ({fonts}) — وغالبًا ما يدل على نص أُضيف لاحقًا'],
+    sg_pdf_structure_ok: ['No signs of editing in the file structure', 'لا علامات تعديل في بنية الملف'],
+    sg_not_pdf: ['Not a valid PDF file', 'ليس ملف PDF صالحًا'],
+    sg_img_checks_unavailable: ['Image checks aren’t available on this server', 'فحوصات الصور غير متاحة على هذا الخادم'],
+    sg_img_unreadable: ['The image couldn’t be read', 'تعذّرت قراءة الصورة'],
+    sg_img_editor: ['Edited with {tool}', 'عُدّلت بأداة {tool}'],
+    sg_img_design_tool: ['Made with {tool}', 'صُنعت بأداة {tool}'],
+    sg_img_ela_uneven: ['Some areas were compressed differently from the rest — possible pasted-in content', 'بعض المناطق مضغوطة بشكل مختلف عن البقية — قد يكون محتوى ملصقًا'],
+    sg_img_ela_even: ['Compression is even across the image', 'الضغط متساوٍ في كامل الصورة'],
+    sg_img_lossless: ['PNG/WebP image — compression analysis isn’t possible; the original PDF is better', 'صورة PNG/WebP — لا يمكن تحليل الضغط؛ ملف PDF الأصلي أفضل'],
+    sg_img_smooth_patch: ['A flat patch breaks the background pattern — something may have been covered and retyped', 'رقعة مسطحة تقطع نمط الخلفية — ربما غُطّي شيء وأُعيدت كتابته'],
+    sg_img_no_meta: ['No editing-software trace in the file (screenshots and exports often have none)', 'لا أثر لبرامج تحرير في الملف (لقطات الشاشة والملفات المصدّرة غالبًا بلا أثر)'],
+    sg_not_certificate: ['This doesn’t look like a certificate', 'لا يبدو هذا شهادة'],
+    sg_ai_visual_pass: ['AI visual check found no signs of editing', 'لم يجد الفحص البصري أي علامات تعديل'],
+    sg_ai_visual_warn: ['AI visual check found {n} possible sign(s) of editing', 'وجد الفحص البصري {n} علامة تعديل محتملة'],
+    sg_ai_visual_fail: ['AI visual check found {n} strong sign(s) of editing', 'وجد الفحص البصري {n} علامة تعديل قوية'],
+    sg_name_match_pass: ['Name matches your ID ({name})', 'الاسم يطابق هويتك ({name})'],
+    sg_name_match_warn: ['Name on the certificate might not match your ID ({name})', 'قد لا يطابق الاسم في الشهادة هويتك ({name})'],
+    sg_name_match_fail: ['Name on the certificate doesn’t match your ID ({name})', 'الاسم في الشهادة لا يطابق هويتك ({name})'],
+    sg_name_missing: ['No holder name found on the certificate', 'لم يُعثر على اسم صاحب الشهادة'],
+    sg_issuer_match: ['Confirmed on the issuer’s verification page', 'مؤكدة على صفحة التحقق لدى الجهة المانحة'],
+    sg_issuer_mismatch: ['The issuer’s page doesn’t confirm this certificate', 'صفحة الجهة المانحة لا تؤكد هذه الشهادة'],
+    sg_issuer_unclear: ['Issuer page opened but couldn’t confirm the details', 'فُتحت صفحة الجهة المانحة لكن تعذّر تأكيد التفاصيل'],
+    sg_issuer_empty: ['Issuer page needs a login or JavaScript — check the link manually', 'صفحة الجهة المانحة تتطلب تسجيل دخول أو JavaScript — افحص الرابط يدويًا'],
+    sg_issuer_unreachable: ['Couldn’t reach the issuer’s page right now', 'تعذّر الوصول إلى صفحة الجهة المانحة حاليًا'],
+    sg_issuer_not_allowed: ['The verification link isn’t on a known issuer site, so it wasn’t opened', 'رابط التحقق ليس على موقع جهة معروفة، لذا لم يُفتح'],
+    sg_issuer_no_link: ['No verification link on the certificate — the issuer can’t be checked automatically', 'لا يوجد رابط تحقق في الشهادة — لا يمكن التحقق من الجهة تلقائيًا'],
+    sg_duplicate_other_name: ['The same file was already uploaded under a different name', 'رُفع الملف نفسه سابقًا باسم مختلف'],
+    pfCert: ['Certificate', 'شهادة'],
+    pfCertVerified: ['Confirmed with issuer', 'مؤكدة من الجهة المانحة'],
+    pfCertClean: ['Checked · no signs of tampering', 'مفحوصة · لا علامات تلاعب'],
+    pfWorkPassed: ['Defense Check passed · {s}/100', 'اجتاز فحص الدفاع · {s}/100'],
+    pfUnderReview: ['Under mentor review', 'قيد مراجعة المرشد'],
+    pfDcfHint: ['Upload it to verify', 'ارفعه لتوثيقه'],
+    bCvL: ['CV', 'السيرة'],
+    bCvLine: ['{v} of {n} claims verified', 'تم توثيق {v} من {n}'],
+    bCertL: ['Certificates', 'الشهادات'],
+    bCertLine: ['{c} confirmed with issuer · {k} checked', '{c} مؤكدة من الجهة · {k} مفحوصة'],
+    mCertKind: ['Certificate review', 'مراجعة شهادة'],
+    mCertTitle: ['Layla A. — {title}', 'ليلى أ. — {title}'],
+    mCertApprove: ['Accept certificate', 'اقبل الشهادة'],
+    mCertReject: ['Reject', 'ارفض'],
+    mCertToastOk: ['Certificate accepted.', 'قُبلت الشهادة.'],
+    mCertToastNo: ['Certificate rejected.', 'رُفضت الشهادة.'],
+    evCvScan: ['CV scanned (Layla A.) · {n} claims found', 'فحص السيرة الذاتية (ليلى أ.) · {n} ادعاءات'],
+    evCertVerified: ['Certificate confirmed with issuer (Layla A.)', 'شهادة مؤكدة من الجهة المانحة (ليلى أ.)'],
+    evCertOk: ['Certificate checked · no signs of tampering (Layla A.)', 'فحص شهادة · لا علامات تلاعب (ليلى أ.)'],
+    evCertReview: ['Certificate sent for mentor review (Layla A.)', 'إحالة شهادة لمراجعة المرشد (ليلى أ.)'],
+    evCertBad: ['Certificate rejected · signs of tampering (Layla A.)', 'رفض شهادة · علامات تلاعب (ليلى أ.)'],
     vaultTitle: ['Your IP Vault', 'خزنة ملكيتك الفكرية'],
     vaultStamped: ['Date-stamped {date}', 'مختوم بتاريخ {date}'],
     vaultWaiting: ['A scout viewed your public summary. Full blueprints stay locked until they sign an NDA.', 'اطّلع أحد الباحثين عن الفرص على ملخصك العام. تبقى المخططات مقفلة حتى يوقّع اتفاقية عدم الإفصاح.'],
@@ -488,7 +623,9 @@
   function initialState() {
     return {
       track: 'spec',
-      dc: { status: 'idle', result: null, attest: null, inProgress: false },
+      dc: { status: 'idle', result: null, attest: null, inProgress: false, inProgressClaim: null },
+      verified: [],
+      cv: null,
       opps: {},
       squad: {},
       shortlist: {},
@@ -511,8 +648,21 @@
   }
   var S = load();
   (function migrate() {
+    if (!Array.isArray(S.verified)) S.verified = [];
     var d = S.dc || (S.dc = {});
+    if (d.result && !d.result.vid && (d.status === 'passed' || d.status === 'review')) {   // older saved state
+      var vid0 = 'v' + Date.now();
+      d.result.vid = vid0;
+      S.verified.push({ id: vid0, kind: 'work', title: d.result.title || d.result.filename, filename: d.result.filename, status: d.status, score: d.result.score, at: new Date().toISOString(), claimId: null, result: d.result });
+    }
     if (['idle', 'passed', 'review', 'failed'].indexOf(d.status) < 0 || (d.status !== 'idle' && !d.result)) { d.status = 'idle'; d.result = null; }
+    if (d.inProgress && d.inProgressClaim) {   // reloaded/closed during a CV-claim check
+      var cl = S.cv && S.cv.claims.find(function (c) { return c.id === d.inProgressClaim; });
+      S.verified.push({ id: 'v' + Date.now(), kind: 'work', title: cl ? cl.title : '', status: 'failed', score: 0, at: new Date().toISOString(), claimId: d.inProgressClaim,
+        result: { result: 'failed', reason: 'abandoned', score: 0, questions: [], integrity: { violations: ['left_page'], flags: [], terminated: true } } });
+      d.inProgress = false; d.inProgressClaim = null;
+      S.log.push({ at: new Date().toISOString(), type: 'verify', ev: 'evDcFail', by: 'bySystem', amt: null });
+    }
     if (d.inProgress) {   // the page was reloaded or closed during locked mode
       d.inProgress = false; d.status = 'failed';
       d.result = { result: 'failed', reason: 'abandoned', score: 0, questions: [], integrity: { violations: ['left_page'], flags: [], terminated: true } };
@@ -524,27 +674,36 @@
   function log(type, ev, by, amt, params) { S.log.push({ at: new Date().toISOString(), type: type, ev: ev, by: by, amt: amt == null ? null : amt, p: params || null }); }
 
   // UI-only (not persisted)
-  var UI = { bizTab: 'find', q: '', fTrack: 'all', fMin: 0, sort: 'score', chips: { native: false, bi: false, uae: false }, pf: 'all', ledger: 'all' };
+  var UI = { talentTab: 'overview', bizTab: 'find', q: '', fTrack: 'all', fMin: 0, sort: 'score', chips: { native: false, bi: false, uae: false }, pf: 'all', ledger: 'all' };
 
   /* ------------------------------------------------------------------ derived */
   function trackScore(id) {
     var tr = TRACKS.find(function (x) { return x.id === id; });
     var s = tr.score;
-    if (id === 'spec') { if (S.dc.status === 'passed') s += 4; if (S.sprint.status === 'approved') s += 3; }
+    if (id === 'spec') {
+      var works = S.verified.filter(function (v) { return v.kind === 'work' && v.status === 'passed'; }).length;
+      var certs = S.verified.filter(function (v) { return v.kind === 'cert' && v.status === 'passed'; }).length;
+      s += Math.min(8, works * 4) + Math.min(3, certs);
+      if (S.sprint.status === 'approved') s += 3;
+    }
     if (id === 'fnd' && Object.keys(S.squad).some(function (k) { return S.squad[k]; })) s += 2;
     return Math.min(100, s);
   }
   function level(score) { return score >= 85 ? 3 : score >= 70 ? 2 : score >= 50 ? 1 : 0; }
   function released() { return STAGES.slice(0, S.escrow.stage).reduce(function (a, x) { return a + x.amount; }, 0); }
-  function pendingCount() { return (S.escrow.stage < 3 && !S.escrow.changes ? 1 : 0) + (S.sprint.status === 'pending' ? 1 : 0) + (S.dc.status === 'review' ? 1 : 0); }
+  function pendingCount() { return (S.escrow.stage < 3 && !S.escrow.changes ? 1 : 0) + (S.sprint.status === 'pending' ? 1 : 0) + S.verified.filter(function (v) { return v.status === 'review'; }).length; }
 
   /* ------------------------------------------------------------------ router */
   var ROLES = ['talent', 'business', 'mentor', 'admin'];
   function route() {
     var h = (location.hash || '#talent').slice(1).split('/');
     var role = ROLES.indexOf(h[0]) > -1 ? h[0] : 'talent';
-    if (role === 'talent' && h[1] && TRACKS.some(function (x) { return x.id === h[1]; })) {
-      if (S.track !== h[1]) { S.track = h[1]; save(); }
+    if (role === 'talent') {
+      if (h[1] === 'cv' || h[1] === 'certs') UI.talentTab = h[1];
+      else {
+        UI.talentTab = 'overview';
+        if (h[1] && TRACKS.some(function (x) { return x.id === h[1]; }) && S.track !== h[1]) { S.track = h[1]; save(); }
+      }
     }
     return role;
   }
@@ -584,6 +743,10 @@
     var lv = level(score);
 
     var h = pageHead(t('tKicker'), t('tHello'), '<span class="badge badge-verified">' + I('shield') + t('kycVerified') + '</span>');
+    h += talentTabs();
+    h += '<div id="talent-panel" role="tabpanel">';
+    if (UI.talentTab === 'cv') return h + renderCvTab() + '</div>';
+    if (UI.talentTab === 'certs') return h + renderCertTab() + '</div>';
 
     // track tabs
     h += '<div class="track-tabs" role="tablist" aria-label="' + esc(t('tTracks')) + '">' + TRACKS.map(function (x) {
@@ -622,9 +785,9 @@
     if (tr.id === 'inv' || tr.id === 'fnd') h += squadCard();
 
     h += '</div><div class="stack">';
-    h += defenseCard();
+    h += DC.claim ? '' : defenseCard();
     h += portfolioCard();
-    h += '</div></div>';
+    h += '</div></div></div>';
     return h;
   }
 
@@ -648,10 +811,10 @@
 
   function defenseCard() {
     var d = S.dc, h;
-    var resultShown = DC.phase === 'idle' && d.status !== 'idle' && d.result;
+    var resultShown = !DC.claim && DC.phase === 'idle' && d.status !== 'idle' && d.result;
     var step = { idle: 0, analysing: 1, ready: 1, locked: 2, grading: 2 }[DC.phase] || 0;
     if (resultShown) step = 3;
-    h = '<section class="card dark" aria-labelledby="dc-h" id="dc-card"><div class="card-head"><h2 id="dc-h" tabindex="-1">' + t('dcTitle') + '</h2>' +
+    h = '<section class="card dark" aria-labelledby="dc-h" id="dc-card"><div class="card-head"><h2 id="dc-h" tabindex="-1">' + (DC.claim ? t('vfWorkFor', { title: esc(DC.claim.title) }) : t('dcTitle')) + '</h2>' +
       (MODE.ai === true ? '<span class="badge badge-native">' + I('sparkle') + t('dcAiOn') + '</span>' : MODE.ai === false ? '<span class="badge badge-demo">' + t('dcAiDemo') + '</span>' : '') + '</div>' +
       '<div class="dc-steps" aria-hidden="true">' + [1, 2, 3].map(function (i) { return '<span class="' + (i <= step ? 'on' : '') + '"></span>'; }).join('') + '</div>';
 
@@ -659,13 +822,14 @@
 
     if (DC.phase === 'idle') {
       var f = DC.file;
-      h += '<p>' + t('dcIntro2') + '</p>' +
+      h += '<p>' + t('dcIntro2') + '</p>' + (DC.claim && DC.claim.evidence ? '<p class="small">' + inline('file') + t('cvEvidence', { e: esc(DC.claim.evidence) }) + '</p>' : '') +
         '<div class="dropzone' + (f ? ' has-file' : '') + '"><input type="file" id="dc-file" class="dz-input" accept="' + ACCEPT + '" aria-describedby="dc-types dc-ferr">' +
         '<label for="dc-file" class="dz-label">' + I(f ? 'file' : 'download') + '<span><strong>' + (f ? '<span dir="ltr">' + esc(f.name) + '</span>' : t('dcChoose')) + '</strong>' +
         '<small id="dc-types">' + (f ? fmtSize(f.size) + ' · ' + t('dcChange') : t('dcTypes')) + '</small></span></label></div>' +
         '<p class="error-msg" id="dc-ferr" role="alert"' + (DC.error ? '' : ' hidden') + '>' + I('alert') + esc(DC.error) + '</p>' +
         '<p class="small" style="opacity:.85">' + inline('info') + (MODE.ai ? t('dcPrivacy') : t('dcDemoNote')) + '</p>' +
-        '<button type="button" class="btn btn-accent" style="justify-self:start" data-act="dc-analyse"' + (f ? '' : ' disabled') + '>' + I('sparkle', 'icon-sm') + t('dcAnalyse') + '</button>';
+        '<div class="row-gap"><button type="button" class="btn btn-accent" data-act="dc-analyse"' + (f ? '' : ' disabled') + '>' + I('sparkle', 'icon-sm') + t('dcAnalyse') + '</button>' +
+        (DC.claim ? '<button type="button" class="btn btn-outline-light" data-act="dc-unclaim">' + t('vfCancelClaim') + '</button>' : '') + '</div>';
     } else if (DC.phase === 'analysing') {
       h += '<div class="dc-file"><span class="spinner" aria-hidden="true" style="width:20px;height:20px"></span><div><div class="name">' + t('dcReading') + '</div><div class="meta" dir="ltr">' + esc(DC.file ? DC.file.name : '') + '</div></div></div><p role="status">' + t('dcReadingSub') + '</p>';
     } else if (DC.phase === 'ready') {
@@ -812,7 +976,7 @@
     if (!DC.file || MODE.ai === null) return;
     DC.phase = 'analysing'; DC.error = ''; render(); refocus('#dc-h');
     var file = DC.file;
-    var go = MODE.ai ? readBase64(file).then(function (b64) { return post('start', { filename: file.name, data: b64, lang: lang() }); }) : Demo.start(file);
+    var go = MODE.ai ? readBase64(file).then(function (b64) { return post('start', { filename: file.name, data: b64, lang: lang(), claim: DC.claim ? { title: DC.claim.title, summary: DC.claim.summary } : undefined }); }) : Demo.start(file);
     go.then(function (s) {
       DC.session = s; DC.phase = 'ready'; DC.ack = false;
       if (currentRole === 'talent') { render(); refocus('#dc-ack'); }
@@ -836,7 +1000,7 @@
 
     LD = { i: 0, total: DC.session.count, deadline: 0, keys: 0, busy: false, warned: 0, lastHard: 0, fs: fsSupported, timer: null, ended: false };
     DC.phase = 'locked';
-    S.dc.inProgress = true; save();
+    S.dc.inProgress = true; S.dc.inProgressClaim = DC.claim ? DC.claim.id : null; save();
     buildOverlay();
     ['visibilitychange', 'fullscreenchange'].forEach(function (ev) { document.addEventListener(ev, onLockEvent); });
     window.addEventListener('blur', onLockEvent);
@@ -999,11 +1163,16 @@
       r.filename = r.filename || (DC.file && DC.file.name) || '';
       r.title = r.title || (DC.session && DC.session.title) || '';
       teardown();
-      S.dc.status = r.result; S.dc.result = r; S.dc.inProgress = false;
+      var entry = { id: 'v' + Date.now(), kind: 'work', title: r.title || r.filename, filename: r.filename, status: r.result, score: r.score, at: new Date().toISOString(), claimId: DC.claim ? DC.claim.id : null, result: r };
+      S.verified.push(entry);
+      if (!DC.claim) { S.dc.status = r.result; S.dc.result = r; r.vid = entry.id; }
+      S.dc.inProgress = false; S.dc.inProgressClaim = null;
+      var wasClaim = !!DC.claim;
+      DC.claim = null;
       log('verify', r.result === 'passed' ? 'evDc' : r.result === 'review' ? 'evDcReview' : 'evDcFail', 'bySystem', null);
       save();
       DC.phase = 'idle'; DC.file = null; DC.session = null;
-      render(); refocus('#dc-h');
+      render(); refocus(wasClaim ? '#cvc-h' : '#dc-h');
       window.JISR.toast(t(r.result === 'passed' ? 'dcPassed' : r.result === 'review' ? 'dcReview' : 'dcFailed'), r.result === 'failed' ? 'error' : null);
     }, gradeError);
   }
@@ -1017,7 +1186,7 @@
       '<div class="row-gap" style="justify-content:center"><button type="button" class="btn btn-accent" id="ld-retry">' + I('refresh', 'icon-sm') + t('ldGradeRetry') + '</button><button type="button" class="btn btn-outline-light" id="ld-close">' + t('close') + '</button></div></div>';
     body.querySelector('#ld-retry').addEventListener('click', function () { LD.ended = false; LD.grading = false; finishCheck(); });
     body.querySelector('#ld-close').addEventListener('click', function () {
-      teardown(); S.dc.inProgress = false; save();
+      teardown(); S.dc.inProgress = false; S.dc.inProgressClaim = null; save();
       DC.phase = 'idle'; DC.session = null; DC.error = t('ldGradeClosed');
       render(); refocus('#dc-file');
     });
@@ -1031,7 +1200,7 @@
     body.innerHTML = '<div class="ld-grading" role="alert">' + I('alert', 'icon-lg') + '<h2 id="ld-q">' + t('ldErrTitle') + '</h2><p>' + esc((e && e.message) || t('dcErrGeneric')) + '</p><button type="button" class="btn btn-accent" id="ld-close">' + t('close') + '</button></div>';
     LD.ended = true;
     body.querySelector('#ld-close').addEventListener('click', function () {
-      teardown(); S.dc.inProgress = false; save();
+      teardown(); S.dc.inProgress = false; S.dc.inProgressClaim = null; save();
       DC.phase = 'idle'; DC.session = null; DC.error = (e && e.message) || t('dcErrGeneric');
       render(); refocus('#dc-file');
     });
@@ -1054,13 +1223,14 @@
   }
 
   function portfolioCard() {
-    var r = S.dc.result, verified = r && (S.dc.status === 'passed' || S.dc.status === 'review');
-    var items = PORTFOLIO.map(function (p) {
-      if (p.id === 'dcf' && verified) return { type: 'legacy', title: { en: r.title || r.filename, ar: r.title || r.filename },
-        proof: S.dc.status === 'passed' ? { en: 'Defense Check passed' + (r.score ? ' · ' + r.score + '/100' : ''), ar: 'اجتاز فحص الدفاع' + (r.score ? ' · ' + r.score + '/100' : '') } : { en: 'Defense Check done', ar: 'اكتمل فحص الدفاع' },
-        waiting: S.dc.status === 'review' };
-      var proof = p.id === 'dcf' ? { en: 'Upload it to the Defense Check to verify', ar: 'ارفعه إلى فحص الدفاع لتوثيقه' } : p.proof;
-      return { type: p.type, title: p.title, proof: proof };
+    var items = [];
+    S.verified.filter(function (v) { return v.status === 'passed' || v.status === 'review'; }).slice().reverse().forEach(function (v) {
+      var proof = v.status === 'review' ? t('pfUnderReview') : v.kind === 'cert' ? t(v.report && v.report.verdict === 'verified' ? 'pfCertVerified' : 'pfCertClean') : t('pfWorkPassed', { s: v.score || 0 });
+      items.push({ type: v.kind === 'cert' ? 'cert' : 'legacy', title: v.title, proof: proof, waiting: v.status === 'review', raw: true });
+    });
+    PORTFOLIO.forEach(function (p) {
+      if (p.id === 'dcf') { if (!S.verified.some(function (v) { return v.kind === 'work' && v.status !== 'failed'; })) items.push({ type: 'legacy', title: p.title, proof: { en: 'Upload it to verify', ar: 'ارفعه لتوثيقه' }, hint: true }); }
+      else items.push({ type: p.type, title: p.title, proof: p.proof });
     });
     if (S.sprint.status === 'approved') items.unshift({ type: 'native', title: { en: 'Cash-flow forecasting sprint', ar: 'مشروع التنبؤ بالتدفقات النقدية' }, proof: { en: 'Mentor approved · just now', ar: 'اعتمده المرشد · الآن' } });
     else items.push({ type: 'native', title: { en: 'Cash-flow forecasting sprint', ar: 'مشروع التنبؤ بالتدفقات النقدية' }, proof: { en: S.sprint.status === 'changes' ? 'Mentor asked for changes' : 'Submitted', ar: S.sprint.status === 'changes' ? 'طلب المرشد تعديلات' : 'تم التقديم' }, pending: true, waiting: true });
@@ -1068,16 +1238,246 @@
     var shown = items.filter(function (x) { return UI.pf === 'all' || x.type === UI.pf; });
     var h = '<section class="card" aria-labelledby="pf-h"><div class="card-head"><h2 id="pf-h">' + t('pfTitle') + '</h2></div>' +
       '<div class="seg" role="group" aria-label="' + esc(t('pfTitle')) + '">' +
-      [['all', t('pfAll')], ['legacy', t('legacy')], ['native', t('native')]].map(function (f) {
+      [['all', t('pfAll')], ['legacy', t('legacy')], ['native', t('native')], ['cert', t('pfCert')]].map(function (f) {
         return '<button type="button" aria-pressed="' + (UI.pf === f[0]) + '" data-act="pf" data-arg="' + f[0] + '">' + f[1] + '</button>';
       }).join('') + '</div>';
     if (!shown.length) h += '<div class="empty"><p>' + t('pfEmpty') + '</p></div>';
     else h += '<ul class="rows" role="list">' + shown.map(function (x) {
-      return '<li class="row"><span class="badge badge-' + x.type + '">' + I(x.type === 'legacy' ? 'history' : 'sparkle') + t(x.type) + '</span>' +
-        '<div class="grow"><span class="title">' + esc(L(x.title)) + '</span><span class="meta">' + (x.waiting ? I('clock', 'icon-sm').replace('class="icon', 'style="display:inline;vertical-align:-3px;margin-inline-end:4px" class="icon') + t('pfPending') + ' · ' : '') + esc(L(x.proof)) + '</span></div></li>';
+      var badge = x.type === 'cert' ? '<span class="badge badge-cert">' + I('award') + t('pfCert') + '</span>' : '<span class="badge badge-' + x.type + '">' + I(x.type === 'legacy' ? 'history' : 'sparkle') + t(x.type) + '</span>';
+      return '<li class="row">' + badge +
+        '<div class="grow"><span class="title" dir="auto">' + esc(x.raw ? x.title : L(x.title)) + '</span><span class="meta">' + (x.waiting ? I('clock', 'icon-sm').replace('class="icon', 'style="display:inline;vertical-align:-3px;margin-inline-end:4px" class="icon') : '') + esc(x.raw ? x.proof : L(x.proof)) + '</span></div></li>';
     }).join('') + '</ul>';
     h += '<div class="legend"><span>' + '<span class="badge badge-legacy">' + I('history') + t('legacy') + '</span>' + t('pfLegacyDesc').replace(/^[^=]+=\s*/, '') + '</span><span><span class="badge badge-native">' + I('sparkle') + t('native') + '</span>' + t('pfNativeDesc').replace(/^[^=]+=\s*/, '') + '</span></div>';
     return h + '</section>';
+  }
+
+  /* ================================================================== CV + CERTIFICATE VERIFICATION
+     My CV: the AI lists the claims in the CV; each project/job is proved by uploading the work
+     (matched to the claim, then a locked Defense Check), each certificate by the certificate check.
+     Certificates: free forensics (edits, editing tools, pasted patches) + AI read + issuer page. */
+  var CVF = { file: null, error: '', phase: 'idle', replacing: false };
+  var CERT = { file: null, error: '', phase: 'idle', claim: null, name: 'Layla Ahmed' };
+  var ELA = {};   // heat-map images, kept in memory only (too big for localStorage)
+
+  function latestFor(claimId) {
+    var list = S.verified.filter(function (v) { return v.claimId === claimId; });
+    return list.length ? list[list.length - 1] : null;
+  }
+  function statusBadge(status) {
+    var m = { passed: ['badge-verified', 'check-circle', 'cvVerified'], review: ['badge-warn', 'clock', 'cvReview'], failed: ['badge-danger', 'alert', 'cvFailed'] }[status] ||
+            ['badge-neutral', 'user', 'cvSelf'];
+    return '<span class="badge ' + m[0] + '">' + I(m[1]) + t(m[2]) + '</span>';
+  }
+  function certStatus(verdict) { return { verified: 'passed', clean: 'passed', review: 'review', suspicious: 'failed' }[verdict] || 'review'; }
+  function cvCounts() {
+    if (!S.cv) return { v: 0, n: 0 };
+    var provable = S.cv.claims.filter(function (c) { return c.kind !== 'education'; });
+    return { n: provable.length, v: provable.filter(function (c) { var e = latestFor(c.id); return e && e.status === 'passed'; }).length };
+  }
+
+  function talentTabs() {
+    var c = cvCounts();
+    var certN = S.verified.filter(function (v) { return v.kind === 'cert'; }).length;
+    return '<div class="seg" role="tablist" aria-label="' + esc(t('tKicker')) + '" style="margin-bottom:24px;max-width:560px">' +
+      [['overview', t('tabOverview'), 'chart', ''], ['cv', t('tabCv'), 'file', S.cv ? c.v + '/' + c.n : ''], ['certs', t('tabCerts'), 'award', certN ? String(certN) : '']].map(function (x) {
+        var sel = UI.talentTab === x[0];
+        return '<button type="button" role="tab" aria-selected="' + sel + '" tabindex="' + (sel ? 0 : -1) + '" data-act="ttab" data-arg="' + x[0] + '">' + I(x[2], 'icon-sm') + x[1] +
+          (x[3] ? '<span class="count">' + x[3] + '</span>' : '') + '</button>';
+      }).join('') + '</div>';
+  }
+
+  function dropzone(id, file, accept, chooseKey, typesKey) {
+    return '<div class="dropzone' + (file ? ' has-file' : '') + '"><input type="file" id="' + id + '" class="dz-input" accept="' + accept + '" aria-describedby="' + id + '-types ' + id + '-err">' +
+      '<label for="' + id + '" class="dz-label">' + I(file ? 'file' : 'download') + '<span><strong>' + (file ? '<span dir="ltr">' + esc(file.name) + '</span>' : t(chooseKey)) + '</strong>' +
+      '<small id="' + id + '-types">' + (file ? fmtSize(file.size) + ' · ' + t('dcChange') : t(typesKey)) + '</small></span></label></div>';
+  }
+  function aiOffNote() { return MODE.ai === false ? '<p class="note-box">' + I('info') + '<span>' + t('cvNoAi') + '</span></p>' : ''; }
+
+  /* ---------- My CV tab ---------- */
+  function renderCvTab() {
+    var h = '';
+    if (DC.claim) h += '<div style="margin-bottom:24px">' + defenseCard() + '</div>';
+    h += '<div class="grid-main"><div class="stack">';
+    if (!S.cv || CVF.replacing) h += cvUploadCard();
+    if (S.cv) h += cvClaimsCard();
+    h += '</div><div class="stack">' + howCard('cvHowTitle', ['cvHow1', 'cvHow2', 'cvHow3', 'cvHow4']) + '</div></div>';
+    return h;
+  }
+
+  function cvUploadCard() {
+    var h = '<section class="card dark" aria-labelledby="cvu-h"><div class="card-head"><h2 id="cvu-h" tabindex="-1">' + t('cvUpTitle') + '</h2></div><p>' + t('cvUpIntro') + '</p>';
+    if (CVF.phase === 'scanning') {
+      return h + '<div class="dc-file"><span class="spinner" aria-hidden="true" style="width:20px;height:20px"></span><div><div class="name">' + t('cvScanning') + '</div><div class="meta" dir="ltr">' + esc(CVF.file ? CVF.file.name : '') + '</div></div></div><p role="status">' + t('cvScanningSub') + '</p></section>';
+    }
+    h += dropzone('cv-file', CVF.file, '.pdf,.docx', 'cvChoose', 'cvTypes') +
+      '<p class="error-msg" id="cv-file-err" role="alert"' + (CVF.error ? '' : ' hidden') + '>' + I('alert') + esc(CVF.error) + '</p>' + aiOffNote() +
+      '<p class="small" style="opacity:.85">' + inline('info') + t('cvPrivacy') + '</p>' +
+      '<div class="row-gap"><button type="button" class="btn btn-accent" data-act="cv-scan"' + (CVF.file && MODE.ai ? '' : ' disabled') + '>' + I('sparkle', 'icon-sm') + t('cvScan') + '</button>' +
+      (CVF.replacing ? '<button type="button" class="btn btn-outline-light" data-act="cv-keep">' + t('cvCancelReplace') + '</button>' : '') + '</div>';
+    return h + '</section>';
+  }
+
+  function cvClaimsCard() {
+    var c = cvCounts();
+    var h = '<section class="card" aria-labelledby="cvc-h"><div class="card-head"><div><h2 id="cvc-h" tabindex="-1">' + t('cvYour') + '</h2><p class="small muted" dir="auto">' + esc(S.cv.filename) + '</p></div>' +
+      (CVF.replacing ? '' : '<button type="button" class="btn btn-outline btn-sm" data-act="cv-replace">' + I('refresh', 'icon-sm') + t('cvReplace') + '</button>') + '</div>' +
+      '<div><div class="prog-top" style="margin-bottom:8px"><b>' + t('cvProgress', { v: c.v, n: c.n }) + '</b><span>' + (c.n ? Math.round(c.v / c.n * 100) : 0) + '%</span></div>' +
+      '<div class="progress" role="progressbar" aria-label="' + esc(t('cvProgress', { v: c.v, n: c.n })) + '" aria-valuemin="0" aria-valuemax="' + c.n + '" aria-valuenow="' + c.v + '"><span style="width:' + (c.n ? c.v / c.n * 100 : 0) + '%"></span></div></div>';
+    [['work', 'cvGroupWork'], ['certification', 'cvGroupCert'], ['education', 'cvGroupEdu']].forEach(function (g) {
+      var list = S.cv.claims.filter(function (x) { return x.kind === g[0]; });
+      if (!list.length) return;
+      h += '<div><p class="small muted" style="font-weight:600;margin-bottom:8px">' + t(g[1]) + '</p><ul class="rows" role="list">' + list.map(function (cl) {
+        var e = latestFor(cl.id), st = e ? e.status : 'self';
+        var meta = [cl.organisation, cl.period].filter(Boolean).map(esc).join(' · ');
+        var action = '';
+        if (g[0] === 'work') {
+          if (!e || e.status === 'failed') action = '<button type="button" class="btn ' + (e ? 'btn-outline' : 'btn-primary') + ' btn-sm" data-act="claim-work" data-arg="' + cl.id + '">' + I(e ? 'refresh' : 'download', 'icon-sm') + t(e ? 'cvRetry' : 'cvUploadWork') + '<span class="sr-only">: ' + esc(cl.title) + '</span></button>';
+          else action = '<button type="button" class="btn btn-ghost btn-sm" data-act="vres" data-arg="' + e.id + '">' + t('cvViewResult') + '<span class="sr-only">: ' + esc(cl.title) + '</span></button>';
+        } else if (g[0] === 'certification') {
+          if (!e || e.status === 'failed') action = '<button type="button" class="btn ' + (e ? 'btn-outline' : 'btn-primary') + ' btn-sm" data-act="claim-cert" data-arg="' + cl.id + '">' + I(e ? 'refresh' : 'award', 'icon-sm') + t(e ? 'cvRetry' : 'cvUploadCert') + '<span class="sr-only">: ' + esc(cl.title) + '</span></button>';
+          else action = '<button type="button" class="btn btn-ghost btn-sm" data-act="ttab" data-arg="certs">' + t('cvViewResult') + '<span class="sr-only">: ' + esc(cl.title) + '</span></button>';
+        }
+        return '<li class="row wrap-sm claim-row"><div class="grow"><span class="title" dir="auto">' + esc(cl.title) + '</span>' + (meta ? '<span class="meta" dir="auto">' + meta + '</span>' : '') +
+          '<span class="meta" dir="auto">' + esc(cl.summary) + '</span>' +
+          (g[0] === 'education' ? '<span class="meta">' + inline('info') + t('cvEduNote') + '</span>' : cl.evidence && (!e || e.status === 'failed') ? '<span class="meta">' + inline('file') + t('cvEvidence', { e: esc(cl.evidence) }) + '</span>' : '') +
+          '</div><div class="row-actions">' + (g[0] === 'education' ? '' : statusBadge(st)) + action + '</div></li>';
+      }).join('') + '</ul></div>';
+    });
+    return h + '</section>';
+  }
+
+  function howCard(titleKey, keys) {
+    return '<section class="card" aria-labelledby="how-' + titleKey + '"><div class="card-head"><h2 id="how-' + titleKey + '">' + t(titleKey) + '</h2></div><ol class="steps" role="list">' +
+      keys.map(function (k) { return '<li class="step"><div><span>' + t(k) + '</span></div></li>'; }).join('') + '</ol></section>';
+  }
+
+  function pickCv(file) {
+    CVF.error = '';
+    var ext = file ? (file.name.match(/\.[^.]+$/) || [''])[0].toLowerCase() : '';
+    if (!file) CVF.file = null;
+    else if (['.pdf', '.docx'].indexOf(ext) < 0) { CVF.file = null; CVF.error = t('cvErrType'); }
+    else if (file.size > MAX_MB * 1048576) { CVF.file = null; CVF.error = t('dcErrSize'); }
+    else CVF.file = file;
+    render(); refocus(CVF.file ? '[data-act="cv-scan"]' : '#cv-file');
+  }
+  function scanCv() {
+    if (!CVF.file || !MODE.ai) return;
+    var file = CVF.file;
+    CVF.phase = 'scanning'; render(); refocus('#cvu-h');
+    readBase64(file).then(function (b64) { return post('../cv/scan', { filename: file.name, data: b64, lang: lang() }); }).then(function (r) {
+      S.cv = { filename: r.filename, name: r.name, claims: r.claims, at: new Date().toISOString() };
+      log('verify', 'evCvScan', 'bySystem', null, { n: r.claims.length });
+      save();
+      CVF.phase = 'idle'; CVF.file = null; CVF.replacing = false;
+      if (currentRole === 'talent') { render(); refocus('#cvc-h'); }
+      window.JISR.toast(t('cvDone', { n: r.claims.length }));
+    }, function (e) {
+      CVF.phase = 'idle'; CVF.error = e.message || t('dcErrGeneric');
+      if (currentRole === 'talent') { render(); refocus('#cv-file'); }
+    });
+  }
+
+  /* ---------- Certificates tab ---------- */
+  function renderCertTab() {
+    var h = '<div class="grid-main"><div class="stack">' + certUploadCard();
+    var list = S.verified.filter(function (v) { return v.kind === 'cert'; }).slice().reverse();
+    if (!list.length) h += '<div class="empty"><span class="ei">' + I('award') + '</span><h3>' + t('certNone') + '</h3><p>' + t('certNoneBody') + '</p></div>';
+    else h += list.map(function (v, i) { return certReport(v, i === 0); }).join('');
+    h += '</div><div class="stack">' + howCard('certHowTitle', ['certHow1', 'certHow2', 'certHow3', 'certHow4']) + '</div></div>';
+    return h;
+  }
+
+  function certUploadCard() {
+    var h = '<section class="card dark" aria-labelledby="ctu-h"><div class="card-head"><h2 id="ctu-h" tabindex="-1">' + (CERT.claim ? t('certFor', { title: esc(CERT.claim.title) }) : t('certTitle')) + '</h2></div><p>' + t('certIntro') + '</p>';
+    if (CERT.phase === 'checking') {
+      return h + '<div class="dc-file"><span class="spinner" aria-hidden="true" style="width:20px;height:20px"></span><div><div class="name">' + t('certChecking') + '</div><div class="meta" dir="ltr">' + esc(CERT.file ? CERT.file.name : '') + '</div></div></div><p role="status">' + t('certCheckingSub') + '</p></section>';
+    }
+    h += '<div class="field"><label for="cert-name" style="color:#fff">' + t('certName') + '</label><input id="cert-name" class="input" autocomplete="name" value="' + esc(CERT.name) + '" aria-describedby="cert-name-help cert-name-err">' +
+      '<p class="help" id="cert-name-help" style="color:var(--navy-200)">' + t('certNameHelp') + '</p><p class="error-msg" id="cert-name-err" hidden>' + I('alert') + t('certNameMust') + '</p></div>' +
+      dropzone('cert-file', CERT.file, '.pdf,.png,.jpg,.jpeg,.webp', 'certChoose', 'certTypes') +
+      '<p class="error-msg" id="cert-file-err" role="alert"' + (CERT.error ? '' : ' hidden') + '>' + I('alert') + esc(CERT.error) + '</p>' + aiOffNote() +
+      '<p class="small" style="opacity:.85">' + inline('info') + t('certPrivacy') + '</p>' +
+      '<div class="row-gap"><button type="button" class="btn btn-accent" data-act="cert-check"' + (CERT.file && MODE.ai ? '' : ' disabled') + '>' + I('shield', 'icon-sm') + t('certCheck') + '</button>' +
+      (CERT.claim ? '<button type="button" class="btn btn-outline-light" data-act="cert-unclaim">' + t('cancel') + '</button>' : '') + '</div>';
+    return h + '</section>';
+  }
+
+  function signalText(s) {
+    var p = s.params || {};
+    var key = T['sg_' + s.code + '_' + s.status] ? 'sg_' + s.code + '_' + s.status : 'sg_' + s.code;
+    return T[key] ? t(key, p) : s.code;
+  }
+  var SIG_ICON = { pass: 'check-circle', warn: 'alert', fail: 'x', info: 'info' };
+
+  function certReport(v, open) {
+    var r = v.report, f = r.fields || {};
+    var vd = { verified: ['vdVerified', 'vdVerifiedD', 'ok'], clean: ['vdClean', 'vdCleanD', 'ok'], review: ['vdReview', 'vdReviewD', 'warn'], suspicious: ['vdSuspicious', 'vdSuspiciousD', 'bad'] }[r.verdict];
+    var mentorNote = v.mentor ? (v.status === 'passed' ? t('certMentorOk') : t('certMentorNo')) : '';
+    var h = '<section class="card cert-report" aria-labelledby="cr-' + v.id + '"><div class="card-head"><div><h2 id="cr-' + v.id + '" dir="auto">' + esc(f.title || v.title || r.filename) + '</h2><p class="small muted" dir="auto">' + esc(r.filename) + ' · ' + when(v.at, true) + '</p></div>' + statusBadge(v.status) + '</div>' +
+      '<div class="verdict verdict-' + vd[2] + '"><strong>' + I(vd[2] === 'ok' ? 'shield' : 'alert') + t(vd[0]) + '</strong><p>' + (mentorNote || t(vd[1])) + '</p></div>' +
+      '<dl class="kv">' + [['certHolder', f.holder_name], ['certIssuer', f.issuer], ['certCourse', f.title], ['certDate', f.issue_date], ['certId', f.credential_id]].filter(function (x) { return x[1]; }).map(function (x) {
+        return '<dt>' + t(x[0]) + '</dt><dd dir="auto">' + esc(x[1]) + '</dd>';
+      }).join('') + '</dl>';
+    if (r.online && r.online.url) {
+      h += '<p class="small">' + inline('globe') + '<a href="' + esc(r.online.url) + '" target="_blank" rel="noopener noreferrer" dir="ltr">' + t('certOpenIssuer') + '</a>' + (r.online.reason ? ' — <span dir="auto">' + esc(r.online.reason) + '</span>' : '') + '</p>';
+    }
+    h += '<details class="cert-details"' + (open ? ' open' : '') + '><summary>' + t('certChecks') + ' (' + r.signals.length + ')</summary><ul class="checks" role="list">' +
+      r.signals.map(function (s) { return '<li class="chk chk-' + s.status + '">' + I(SIG_ICON[s.status]) + '<span>' + esc(signalText(s)) + '</span></li>'; }).join('') + '</ul>';
+    if (r.findings && r.findings.length) {
+      h += '<p class="small" style="font-weight:600;margin:12px 0 6px">' + t('certFindings') + '</p><ul class="checks" role="list">' + r.findings.map(function (x) {
+        return '<li class="chk chk-' + (x.severity === 'high' ? 'fail' : x.severity === 'medium' ? 'warn' : 'info') + '">' + I('eye') + '<span dir="auto">' + esc(x.issue) + '</span></li>';
+      }).join('') + '</ul>';
+    } else if (r.visual_summary) {
+      h += '<p class="small muted" style="margin-top:10px" dir="auto">' + esc(r.visual_summary) + '</p>';
+    }
+    if (ELA[v.id]) h += '<figure class="ela"><img src="' + ELA[v.id] + '" alt="' + esc(t('certEla')) + '" loading="lazy"><figcaption>' + t('certEla') + ' — ' + t('certElaCap') + '</figcaption></figure>';
+    h += '</details><p class="small muted">' + inline('info') + t('certHonest') + '</p>';
+    if (v.status === 'failed') h += '<button type="button" class="btn btn-outline btn-sm" style="justify-self:start" data-act="cert-remove" data-arg="' + v.id + '">' + I('trash', 'icon-sm') + t('certRemove') + '</button>';
+    return h + '</section>';
+  }
+
+  function pickCert(file) {
+    CERT.error = '';
+    var ext = file ? (file.name.match(/\.[^.]+$/) || [''])[0].toLowerCase() : '';
+    if (!file) CERT.file = null;
+    else if (['.pdf', '.png', '.jpg', '.jpeg', '.webp'].indexOf(ext) < 0) { CERT.file = null; CERT.error = t('certErrType'); }
+    else if (file.size > MAX_MB * 1048576) { CERT.file = null; CERT.error = t('dcErrSize'); }
+    else CERT.file = file;
+    render(); refocus(CERT.file ? '[data-act="cert-check"]' : '#cert-file');
+  }
+  function checkCert() {
+    var nameEl = document.getElementById('cert-name');
+    CERT.name = nameEl ? nameEl.value.trim() : CERT.name;
+    if (!CERT.name) { fieldError(nameEl, document.getElementById('cert-name-err'), true); nameEl.focus(); return; }
+    if (!CERT.file || !MODE.ai) return;
+    var file = CERT.file, claim = CERT.claim;
+    CERT.phase = 'checking'; render(); refocus('#ctu-h');
+    readBase64(file).then(function (b64) { return post('../cert/check', { filename: file.name, data: b64, lang: lang(), expectedName: CERT.name }); }).then(function (r) {
+      var id = 'v' + Date.now();
+      if (r.ela) { ELA[id] = r.ela; delete r.ela; }
+      var entry = { id: id, kind: 'cert', title: (r.fields && r.fields.title) || r.filename, filename: r.filename, status: certStatus(r.verdict), at: new Date().toISOString(), claimId: claim ? claim.id : null, report: r };
+      S.verified.push(entry);
+      log('verify', { verified: 'evCertVerified', clean: 'evCertOk', review: 'evCertReview', suspicious: 'evCertBad' }[r.verdict], 'bySystem', null);
+      save();
+      CERT.phase = 'idle'; CERT.file = null; CERT.claim = null;
+      if (currentRole === 'talent') { render(); refocus('#cr-' + id); }
+      window.JISR.toast(t({ verified: 'vdVerified', clean: 'vdClean', review: 'vdReview', suspicious: 'vdSuspicious' }[r.verdict]), r.verdict === 'suspicious' ? 'error' : null);
+    }, function (e) {
+      CERT.phase = 'idle'; CERT.error = e.message || t('dcErrGeneric');
+      if (currentRole === 'talent') { render(); refocus('#cert-file'); }
+    });
+  }
+
+  function claimById(id) { return S.cv ? S.cv.claims.find(function (c) { return c.id === id; }) : null; }
+
+  function workResultModal(v) {
+    var r = v.result || {};
+    openModal({ title: esc(v.title), sub: esc(v.filename || ''),
+      body: '<div class="score-row"><div class="ring" style="--val:' + (r.score || 0) + ';--size:72px;--thick:8px;--ring-bg:var(--bg)" role="img" aria-label="' + (r.score || 0) + '/100"><div class="ring-val"><strong>' + (r.score || 0) + '</strong></div></div><div>' + statusBadge(v.status) + '</div></div>' +
+        (r.questions && r.questions.length ? '<ol style="margin:0;padding-inline-start:20px;display:grid;gap:10px">' + r.questions.map(function (q) {
+          return '<li><p dir="auto" style="font-weight:600">' + esc(q.question) + '</p><p class="small muted" dir="auto">' + q.score + '/10' + (q.feedback ? ' · ' + esc(q.feedback) : '') + '</p></li>';
+        }).join('') + '</ol>' : '') + (r.overall ? '<p class="small" dir="auto">' + esc(r.overall) + '</p>' : ''),
+      cancel: true, cancelLabel: t('close') });
   }
 
   function vaultCard() {
@@ -1181,6 +1581,13 @@
     box.innerHTML = '<ul class="cand-grid" role="list">' + list.map(candCard).join('') + '</ul>';
   }
 
+  function verifySummary() {
+    var out = '', c = cvCounts();
+    if (S.cv) out += '<dt>' + t('bCvL') + '</dt><dd>' + t('bCvLine', { v: c.v, n: c.n }) + '</dd>';
+    var certs = S.verified.filter(function (v) { return v.kind === 'cert' && v.status === 'passed'; });
+    if (certs.length) out += '<dt>' + t('bCertL') + '</dt><dd>' + t('bCertLine', { c: certs.filter(function (v) { return v.report && v.report.verdict === 'verified'; }).length, k: certs.length }) + '</dd>';
+    return out;
+  }
   function personLangs(p) { return p.langs.map(function (l) { return t(l === 'ar' ? 'langAr' : 'langEn'); }).join(' · '); }
 
   function candCard(p) {
@@ -1262,13 +1669,24 @@
       else items += '<div class="review-actions"><button type="button" class="btn btn-primary" data-act="approve-sprint">' + I('check', 'icon-sm') + t('mApprove') + '</button><button type="button" class="btn btn-outline" data-act="changes" data-arg="sprint">' + I('edit', 'icon-sm') + t('mChanges') + '</button></div>';
       items += '</article>';
     }
-    if (S.dc.status === 'review' && S.dc.result) {
-      var dr = S.dc.result;
-      items += '<article class="review urgent"><div class="review-top"><span class="badge badge-legacy">' + I('history') + t('mDcKind') + '</span><span class="small muted">' + t('mDcScore', { s: dr.score }) + '</span></div>' +
-        '<h3>' + t('mDcTitle', { title: esc(dr.title || dr.filename || '') }) + '</h3><p class="small muted">' + (dr.reason === 'integrity' ? t('mDcWhyIntegrity', { list: esc(flagText(dr.integrity.violations.concat(dr.integrity.flags)) || '—') }) : t('mDcWhyBorder')) + '</p>' +
-        '<div class="evidence">' + (dr.questions || []).map(function (q) { return '<div>' + I('message') + '<span>' + esc(q.question) + ' — <strong>' + q.score + '/10</strong></span></div>'; }).join('') + '</div>' +
-        '<div class="review-actions"><button type="button" class="btn btn-primary" data-act="dc-approve">' + I('check', 'icon-sm') + t('mDcApprove') + '</button><button type="button" class="btn btn-outline" data-act="dc-reject">' + I('x', 'icon-sm') + t('mDcReject') + '</button></div></article>';
-    }
+    S.verified.filter(function (v) { return v.status === 'review'; }).forEach(function (v) {
+      if (v.kind === 'work') {
+        var dr = v.result || {};
+        items += '<article class="review urgent"><div class="review-top"><span class="badge badge-legacy">' + I('history') + t('mDcKind') + '</span><span class="small muted">' + t('mDcScore', { s: dr.score || 0 }) + '</span></div>' +
+          '<h3 dir="auto">' + t('mDcTitle', { title: esc(v.title || '') }) + '</h3><p class="small muted">' + (dr.reason === 'integrity' ? t('mDcWhyIntegrity', { list: esc(flagText((dr.integrity || { violations: [], flags: [] }).violations.concat(dr.integrity ? dr.integrity.flags : [])) || '—') }) : t('mDcWhyBorder')) + '</p>' +
+          '<div class="evidence">' + (dr.questions || []).map(function (q) { return '<div>' + I('message') + '<span dir="auto">' + esc(q.question) + ' — <strong>' + q.score + '/10</strong></span></div>'; }).join('') + '</div>' +
+          '<div class="review-actions"><button type="button" class="btn btn-primary" data-act="v-approve" data-arg="' + v.id + '">' + I('check', 'icon-sm') + t('mDcApprove') + '</button><button type="button" class="btn btn-outline" data-act="v-reject" data-arg="' + v.id + '">' + I('x', 'icon-sm') + t('mDcReject') + '</button></div></article>';
+      } else {
+        var rp = v.report || { signals: [], fields: {} };
+        var flagged = rp.signals.filter(function (s2) { return s2.status === 'warn' || s2.status === 'fail'; });
+        items += '<article class="review urgent"><div class="review-top"><span class="badge badge-cert">' + I('award') + t('mCertKind') + '</span><span class="small muted">' + t('vdReview') + '</span></div>' +
+          '<h3 dir="auto">' + t('mCertTitle', { title: esc(v.title || '') }) + '</h3>' +
+          '<div class="evidence">' + flagged.map(function (s2) { return '<div>' + I('alert') + '<span>' + esc(signalText(s2)) + '</span></div>'; }).join('') +
+          (rp.findings || []).map(function (f2) { return '<div>' + I('eye') + '<span dir="auto">' + esc(f2.issue) + '</span></div>'; }).join('') + '</div>' +
+          (rp.online && rp.online.url ? '<p class="small"><a href="' + esc(rp.online.url) + '" target="_blank" rel="noopener noreferrer">' + t('certOpenIssuer') + '</a></p>' : '') +
+          '<div class="review-actions"><button type="button" class="btn btn-primary" data-act="v-approve" data-arg="' + v.id + '">' + I('check', 'icon-sm') + t('mCertApprove') + '</button><button type="button" class="btn btn-outline" data-act="v-reject" data-arg="' + v.id + '">' + I('x', 'icon-sm') + t('mCertReject') + '</button></div></article>';
+      }
+    });
     h += items || '<div class="empty"><span class="ei">' + I('check-circle') + '</span><h3>' + t('mAllDone') + '</h3><p>' + t('mAllDoneBody') + '</p></div>';
     h += '</section>';
 
@@ -1292,8 +1710,8 @@
 
   /* ================================================================== ADMIN */
   function evText(e) {
-    var p = {};
-    if (e.p && e.p.stage) p.stage = t(e.p.stage);
+    var p = Object.assign({}, e.p || {});
+    if (p.stage) p.stage = t(p.stage);
     return t(e.ev, p);
   }
   function evAmount(e) {
@@ -1408,6 +1826,18 @@
   /* ================================================================== ACTIONS */
   function refocus(sel) { var el = view.querySelector(sel); if (el) el.focus(); }
 
+  function mentorDecide(id, ok) {
+    var v = S.verified.find(function (x) { return x.id === id; });
+    if (!v) return;
+    v.status = ok ? 'passed' : 'failed'; v.mentor = true;
+    if (S.dc.result && S.dc.result.vid === id) { S.dc.status = v.status; S.dc.result.mentor = true; if (!ok) S.dc.result.reason = 'mentor'; }
+    S.reviewed++;
+    log('verify', v.kind === 'cert' ? (ok ? 'evCertOk' : 'evCertBad') : (ok ? 'evDc' : 'evDcFail'), 'byHamad', null);
+    save(); render();
+    window.JISR.toast(t(v.kind === 'cert' ? (ok ? 'mCertToastOk' : 'mCertToastNo') : (ok ? 'dcMentorToastOk' : 'dcMentorToastNo')));
+    var nx = view.querySelector('[data-act="v-approve"],[data-act="approve-escrow"],[data-act="approve-sprint"]'); if (nx) nx.focus();
+  }
+
   var actions = {
     reset: function () {
       openModal({ title: t('resetTitle'), body: '<p class="muted">' + t('resetBody') + '</p>', confirm: t('resetBtn'), confirmCls: 'btn-dark',
@@ -1427,14 +1857,23 @@
     'dc-lock': lockStart,
     'dc-reset': function () { DC.phase = 'idle'; DC.session = null; render(); refocus('#dc-file'); },
     'dc-again': function () { S.dc.status = 'idle'; S.dc.result = null; save(); DC.phase = 'idle'; DC.file = null; DC.error = ''; render(); refocus('#dc-file'); },
-    'dc-approve': function () {
-      S.dc.status = 'passed'; S.dc.result.mentor = true; S.reviewed++; log('verify', 'evDc', 'byHamad', null); save(); render();
-      window.JISR.toast(t('dcMentorToastOk'));
+    'v-approve': function (id) { mentorDecide(id, true); },
+    'v-reject': function (id) { mentorDecide(id, false); },
+    'dc-unclaim': function () { DC.claim = null; DC.file = null; DC.error = ''; DC.phase = 'idle'; render(); refocus('#cvc-h'); },
+    ttab: function (tab) { location.hash = '#talent/' + (tab === 'overview' ? S.track : tab); },
+    'cv-scan': scanCv,
+    'cv-replace': function () { CVF.replacing = true; CVF.file = null; CVF.error = ''; render(); refocus('#cv-file'); },
+    'cv-keep': function () { CVF.replacing = false; CVF.file = null; render(); refocus('#cvc-h'); },
+    'claim-work': function (id) {
+      var cl = claimById(id); if (!cl) return;
+      DC.claim = cl; DC.phase = 'idle'; DC.file = null; DC.error = ''; DC.session = null;
+      render(); var hd = document.getElementById('dc-h'); if (hd) { hd.focus(); hd.scrollIntoView({ block: 'center' }); }
     },
-    'dc-reject': function () {
-      S.dc.status = 'failed'; S.dc.result.reason = 'mentor'; S.reviewed++; log('verify', 'evDcFail', 'byHamad', null); save(); render();
-      window.JISR.toast(t('dcMentorToastNo'));
-    },
+    'claim-cert': function (id) { var cl = claimById(id); if (!cl) return; CERT.claim = cl; CERT.file = null; CERT.error = ''; location.hash = '#talent/certs'; },
+    'cert-unclaim': function () { CERT.claim = null; render(); refocus('#ctu-h'); },
+    'cert-check': checkCert,
+    'cert-remove': function (id) { S.verified = S.verified.filter(function (v) { return v.id !== id; }); delete ELA[id]; save(); render(); refocus('#ctu-h'); },
+    vres: function (id) { var v = S.verified.find(function (x) { return x.id === id; }); if (v) workResultModal(v); },
     attest: function () {
       openModal({ title: t('atTitle'), sub: t('atSub'),
         body: '<div class="field"><label for="at-email">' + t('atEmail') + '</label><input id="at-email" class="input" type="email" autocomplete="off" dir="ltr" aria-describedby="at-help at-err"><p class="help" id="at-help">' + t('atHelp') + '</p><p class="error-msg" id="at-err" hidden>' + I('alert') + t('atBad') + '</p></div><p class="small muted">' + t('demoNoProcess') + '</p>',
@@ -1478,7 +1917,7 @@
           '<div><p class="small muted" style="margin-bottom:8px;font-weight:600">' + t('bVerifiedWork') + '</p><ul class="rows" role="list">' + p.work.map(function (w) {
             return '<li class="row"><span class="badge badge-' + w[0] + '">' + I(w[0] === 'legacy' ? 'history' : 'sparkle') + t(w[0]) + '</span><span class="grow title">' + esc(L(w[1])) + '</span></li>';
           }).join('') + '</ul></div>' +
-          '<dl class="kv"><dt>' + t('bTrackL') + '</dt><dd>' + esc(L(tr.label)) + '</dd><dt>' + t('bLocation') + '</dt><dd>' + esc(L(p.city)) + '</dd><dt>' + t('bLanguages') + '</dt><dd>' + personLangs(p) + '</dd></dl>',
+          '<dl class="kv"><dt>' + t('bTrackL') + '</dt><dd>' + esc(L(tr.label)) + '</dd><dt>' + t('bLocation') + '</dt><dd>' + esc(L(p.city)) + '</dd><dt>' + t('bLanguages') + '</dt><dd>' + personLangs(p) + '</dd>' + (id === 'la' ? verifySummary() : '') + '</dl>',
         confirm: on ? t('bRemove') : t('bAdd'), confirmCls: on ? 'btn-outline' : 'btn-primary', cancelLabel: t('close'),
         onConfirm: function () { return function () { actions.shortlist(id); }; } });
     },
@@ -1557,6 +1996,8 @@
   });
   view.addEventListener('change', function (e) {
     if (e.target.id === 'dc-file') { pickFile(e.target.files && e.target.files[0]); return; }
+    if (e.target.id === 'cv-file') { pickCv(e.target.files && e.target.files[0]); return; }
+    if (e.target.id === 'cert-file') { CERT.name = (document.getElementById('cert-name') || {}).value || CERT.name; pickCert(e.target.files && e.target.files[0]); return; }
     if (e.target.id === 'dc-ack') { DC.ack = e.target.checked; var er = document.getElementById('dc-ack-err'); if (er && DC.ack) { er.hidden = true; e.target.removeAttribute('aria-invalid'); } return; }
     var k = e.target.dataset.filter;
     if (k && k !== 'q') { UI[k] = e.target.value; renderResults(); }

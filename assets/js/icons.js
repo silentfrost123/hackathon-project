@@ -50,6 +50,7 @@
     filter: '<path d="M4 5h16l-6 7.5V19l-4 2v-8.5L4 5z"/>',
     sort: '<path d="M7 4v16"/><path d="M3 8l4-4 4 4"/><path d="M17 20V4"/><path d="M13 16l4 4 4-4"/>',
     hash: '<path d="M5 9h14"/><path d="M4 15h14"/><path d="M10 3L8 21"/><path d="M16 3l-2 18"/>',
+    award: '<circle cx="12" cy="9" r="6"/><path d="M8.5 14.5L7 22l5-3 5 3-1.5-7.5"/><path d="M9.5 9l1.7 1.7L14.5 7.5"/>',
     vault: '<rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="12" cy="12" r="3.5"/><path d="M12 8.5V7"/><path d="M15.5 12H17"/><path d="M6 20v1.5"/><path d="M18 20v1.5"/>'
   };
   var svg = '<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">';
