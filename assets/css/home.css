@@ -165,7 +165,7 @@ html[lang="ar"] .craft dt { text-transform: none; line-height: 1.3; font-size: c
 @media (min-width: 1024px) { .hiring-grid { grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; } }
 ul.plain { list-style: none; margin: 30px 0 32px; padding: 0; }
 .plain li { padding: 15px 0; border-top: 1px solid rgba(255,255,255,.12); color: #C9D2DE; font-size: 17px; }
-.callsheet { border: 1px solid rgba(255,255,255,.16); border-radius: 3px; font-size: 15px; }
+.callsheet { border: 1px solid rgba(255,255,255,.12); border-radius: 3px; font-size: 15px; background: var(--navy-700); }
 .cs-row { display: grid; grid-template-columns: 1.35fr 1.25fr .55fr .65fr; gap: 12px; padding: 14px 18px; border-bottom: 1px solid rgba(255,255,255,.08); align-items: center; }
 .cs-head { font-family: var(--font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: #8E9BB0; }
 html[lang="ar"] .cs-head { font-family: var(--font-ar); letter-spacing: 0; font-size: 13px; }
@@ -224,8 +224,8 @@ html[lang="ar"] .f-fine { font-family: var(--font-ar); }
 html[lang="ar"] .tour figcaption { font-family: var(--font-ar); }
 ul.portals { list-style: none; margin: 0; padding: 0; display: grid; gap: 24px; }
 @media (min-width: 820px) { ul.portals { grid-template-columns: repeat(3, 1fr); } }
-.portal { display: flex; flex-direction: column; height: 100%; color: inherit; text-decoration: none; border: 1px solid rgba(255,255,255,.14); border-radius: 6px; overflow: hidden; background: rgba(255,255,255,.025); transition: border-color .2s, transform .2s; }
-.portal:hover { border-color: var(--gold-500); transform: translateY(-2px); color: inherit; }
+.portal { display: flex; flex-direction: column; height: 100%; color: inherit; text-decoration: none; border: 1px solid rgba(255,255,255,.12); border-radius: 6px; overflow: hidden; background: var(--navy-700); transition: border-color .2s, transform .2s; }
+.portal:hover { border-color: var(--gold-500); background: var(--navy-600); transform: translateY(-2px); color: inherit; }
 .portal img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; border-bottom: 1px solid rgba(255,255,255,.1); }
 .portal .pb { display: flex; flex-direction: column; gap: 8px; padding: 20px 22px 24px; flex: 1; }
 .portal .pk { font-family: var(--font-mono); font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--gold-400); }
