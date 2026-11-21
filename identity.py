@@ -38,7 +38,9 @@ COUNTRY_CODES = {
 }
 
 ID_TYPES = ("emirates_id", "university_id")
-TRACKS = ("specialist", "researcher", "inventor", "founder")
+# One path (Media); talent pick a specialty, stored in users.track.
+TRACKS = ("video", "design", "content", "journalism")
+LEGACY_TRACKS = ("specialist", "researcher", "inventor", "founder")   # accounts created before the Media path
 ROLES = ("talent", "partner")
 
 # Arabic-Indic and Eastern Arabic-Indic digits -> ASCII, so "٧٨٤" and "784" compare equal.

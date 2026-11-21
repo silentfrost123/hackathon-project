@@ -36,34 +36,34 @@
 
     // who
     whoTalent: ['Layla A.', 'ليلى أ.'],
-    whoBusiness: ['Gulf Retail Group', 'مجموعة الخليج للتجزئة'],
+    whoBusiness: ['Gulf Media Group', 'مجموعة الخليج للإعلام'],
     whoMentor: ['Dr. Hamad', 'د. حمد'],
     whoAdmin: ['Shams team', 'فريق شمس'],
 
     // talent
     tKicker: ['Talent dashboard', 'لوحة الموهبة'],
     tHello: ['Welcome back, Layla', 'أهلًا بعودتك يا ليلى'],
-    tTracks: ['Your tracks', 'مساراتك'],
+    tTracks: ['Your path', 'مسارك'],
     tTrackScore: ['Score {n}', 'المؤشر {n}'],
     rsTitle: ['Readiness Score', 'مؤشر الجاهزية'],
-    rsHint: ['{track} track', 'مسار {track}'],
-    rsWhat: ['How ready you are for paid work on this track, from verified evidence only.', 'مدى جاهزيتك للعمل المدفوع في هذا المسار، بناءً على أدلة موثّقة فقط.'],
+    rsHint: ['{track} path', 'مسار {track}'],
+    rsWhat: ['How ready you are for paid media work, from verified evidence only.', 'مدى جاهزيتك للعمل المدفوع في هذا المسار، بناءً على أدلة موثّقة فقط.'],
     rsNext: ['Next step', 'الخطوة التالية'],
     lvl0: ['Building', 'قيد البناء'], lvl1: ['Emerging', 'واعد'], lvl2: ['Ready', 'جاهز'], lvl3: ['Top talent', 'موهبة متميزة'],
     lvlDesc0: ['Keep adding verified work to unlock paid opportunities.', 'استمر في إضافة أعمال موثّقة لتفتح الفرص المدفوعة.'],
     lvlDesc1: ['Visible to partners. Entry-level opportunities unlocked.', 'ظاهر للشركاء. فُتحت لك فرص المستوى المبتدئ.'],
-    lvlDesc2: ['Ready for paid client work on this track.', 'جاهز لأعمال العملاء المدفوعة في هذا المسار.'],
+    lvlDesc2: ['Ready for paid client work.', 'جاهز لأعمال العملاء المدفوعة في هذا المسار.'],
     lvlDesc3: ['Featured to partners first.', 'تظهر للشركاء أولًا.'],
     scaleAria: ['Score scale: 0–49 building, 50–69 emerging, 70–84 ready, 85–100 top talent', 'مقياس المؤشر: 0–49 قيد البناء، 50–69 واعد، 70–84 جاهز، 85–100 موهبة متميزة'],
 
     oppTitle: ['Opportunities for you', 'فرص مناسبة لك'],
     oppHint: ['Matched to your {track} score', 'مطابقة لمؤشرك في مسار {track}'],
-    oppEmpty: ['No open opportunities on this track yet.', 'لا توجد فرص مفتوحة في هذا المسار حاليًا.'],
+    oppEmpty: ['No open opportunities yet.', 'لا توجد فرص مفتوحة في هذا المسار حاليًا.'],
     oppDoneToast: ['Done — "{title}" is now marked as {status}.', 'تم — أصبحت «{title}» بحالة: {status}.'],
 
     dcTitle: ['Defense Check', 'فحص الدفاع'],
     dcFor: ['Verifies a Legacy item', 'يوثّق عملًا سابقًا'],
-    dcFile: ['Retail_DCF_model_v7.xlsx', 'Retail_DCF_model_v7.xlsx'],
+    dcFile: ['Brand_launch_film.prproj', 'Brand_launch_film.prproj'],
     dcFileMeta: ['Source file and edit history found', 'تم العثور على الملف المصدر وسجل التعديلات'],
     dcIntro: ['Answer 3 short questions about your own file to prove you made it. You have 5 minutes.', 'أجب عن 3 أسئلة قصيرة حول ملفك لتثبت أنك صاحبه. لديك 5 دقائق.'],
     dcStart: ['Start 5-minute check', 'ابدأ الفحص (5 دقائق)'],
@@ -78,7 +78,7 @@
     dcTooShort: ['Please write at least 15 characters.', 'يرجى كتابة 15 حرفًا على الأقل.'],
     dcFix: ['Answer all three questions to continue.', 'أجب عن الأسئلة الثلاثة للمتابعة.'],
     dcPassed: ['Passed — Legacy badge added', 'تم الاجتياز — أُضيفت الشارة السابقة'],
-    dcPassedBody: ['Your Specialist score went up by 4. You can also ask a professor or past client to confirm the work.', 'ارتفع مؤشرك في مسار المتخصصين 4 نقاط. يمكنك أيضًا أن تطلب من أستاذ أو عميل سابق تأكيد العمل.'],
+    dcPassedBody: ['Your Media score went up by 4. You can also ask a professor or past client to confirm the work.', 'ارتفع مؤشرك في مسار الإعلام 4 نقاط. يمكنك أيضًا أن تطلب من أستاذ أو عميل سابق تأكيد العمل.'],
     dcDemo: ['Demo: answers stay in your browser and are not graded by a real AI.', 'عرض توضيحي: تبقى الإجابات في متصفحك ولا يقيّمها ذكاء اصطناعي حقيقي.'],
     dcAttest: ['Request attestation', 'اطلب شهادة'],
     dcAttested: ['Attestation requested from {email}.', 'تم طلب الشهادة من {email}.'],
@@ -121,7 +121,7 @@
     dcAckMust: ['Please confirm before you start.', 'يرجى التأكيد قبل البدء.'],
     dcEnter: ['Enter locked mode', 'ادخل الوضع المقفل'],
     dcInProgress: ['Check in progress…', 'الفحص جارٍ…'],
-    dcPassedBody2: ['Score {score}/100. Your Specialist score went up by 4.', 'الدرجة {score}/100. ارتفع مؤشرك في مسار المتخصصين 4 نقاط.'],
+    dcPassedBody2: ['Score {score}/100. Your Media score went up by 4.', 'الدرجة {score}/100. ارتفع مؤشرك في مسار الإعلام 4 نقاط.'],
     dcMentorOk: ['A mentor reviewed your check and approved the badge.', 'راجع مرشد فحصك واعتمد الشارة.'],
     dcReview: ['Sent for mentor review', 'أُرسل لمراجعة المرشد'],
     dcReviewIntegrity: ['Your answers were good, but the lock-down recorded {n} issue(s). A mentor will confirm before the badge is issued.', 'إجاباتك جيدة، لكن الوضع المقفل سجّل {n} ملاحظة. سيؤكد مرشد قبل إصدار الشارة.'],
@@ -316,13 +316,13 @@
     evCertBad: ['Certificate rejected · signs of tampering (Layla A.)', 'رفض شهادة · علامات تلاعب (ليلى أ.)'],
     vaultTitle: ['Your IP Vault', 'خزنة ملكيتك الفكرية'],
     vaultStamped: ['Date-stamped {date}', 'مختوم بتاريخ {date}'],
-    vaultWaiting: ['A scout viewed your public summary. Full blueprints stay locked until they sign an NDA.', 'اطّلع أحد الباحثين عن الفرص على ملخصك العام. تبقى المخططات مقفلة حتى يوقّع اتفاقية عدم الإفصاح.'],
-    vaultSigned: ['Gulf Retail Group signed the NDA and paid the option fee. Your deal room is open.', 'وقّعت مجموعة الخليج للتجزئة اتفاقية عدم الإفصاح ودفعت رسم الخيار. غرفة الصفقة مفتوحة.'],
+    vaultWaiting: ['A buyer viewed your public summary. The full treatment and scripts stay locked until they sign an NDA.', 'اطّلع مشترٍ على ملخصك العام. تبقى المعالجة الكاملة والنصوص مقفلة حتى يوقّع اتفاقية عدم الإفصاح.'],
+    vaultSigned: ['Gulf Media Group signed the NDA and paid the option fee. Your deal room is open.', 'وقّعت مجموعة الخليج للإعلام اتفاقية عدم الإفصاح ودفعت رسم الخيار. غرفة الصفقة مفتوحة.'],
 
     squadTitle: ['Squad Builder', 'منشئ الفريق'],
-    squadSub: ['Add a verified specialist from another track to your team.', 'أضف متخصصًا موثّقًا من مسار آخر إلى فريقك.'],
+    squadSub: ['Team up with other verified media talent — say an editor, a designer and a writer for one campaign.', 'كوّن فريقًا مع مواهب إعلامية موثّقة — مثل محرر ومصمم وكاتب لحملة واحدة.'],
     squadTeam: ['Your team', 'فريقك'],
-    squadSuggest: ['Suggested specialists', 'متخصصون مقترحون'],
+    squadSuggest: ['Suggested teammates', 'زملاء مقترحون'],
     squadInvite: ['Invite', 'دعوة'],
     squadInvited: ['Invited', 'تمت الدعوة'],
     squadCancel: ['Cancel invite', 'إلغاء الدعوة'],
@@ -330,18 +330,18 @@
     squadCancelToast: ['Invitation to {name} cancelled.', 'أُلغيت الدعوة إلى {name}.'],
     you: ['You', 'أنت'],
 
-    ventureTitle: ['Your venture: Desert Cool', 'مشروعك: ديزرت كول'],
-    ventureSub: ['Evaporative cooling vest · Safe Box escrow', 'سترة تبريد بالتبخير · ضمان صندوق الأمان'],
+    ventureTitle: ['Your production: Souq Stories', 'إنتاجك: حكايات السوق'],
+    ventureSub: ['6-part documentary series · Safe Box escrow', 'سلسلة وثائقية من 6 حلقات · ضمان صندوق الأمان'],
 
     // business
-    bKicker: ['Partner portal · Gulf Retail Group (sample)', 'بوابة الشركاء · مجموعة الخليج للتجزئة (مثال)'],
+    bKicker: ['Partner portal · Gulf Media Group (sample)', 'بوابة الشركاء · مجموعة الخليج للإعلام (مثال)'],
     bTitle: ['Find verified talent', 'ابحث عن مواهب موثّقة'],
     bTabFind: ['Find talent', 'ابحث عن مواهب'],
     bTabShort: ['Shortlist', 'القائمة المختصرة'],
     bTabDeals: ['Deals & escrow', 'الصفقات والضمان'],
     bSearch: ['Search by name, skill or city', 'ابحث بالاسم أو المهارة أو المدينة'],
-    bTrack: ['Track', 'المسار'],
-    bAllTracks: ['All tracks', 'كل المسارات'],
+    bTrack: ['Specialty', 'التخصص'],
+    bAllTracks: ['All specialties', 'كل التخصصات'],
     bMin: ['Minimum score', 'الحد الأدنى للمؤشر'],
     bAny: ['Any score', 'أي مؤشر'],
     bSort: ['Sort by', 'ترتيب حسب'],
@@ -368,13 +368,13 @@
     bVerifiedWork: ['Verified work', 'أعمال موثّقة'],
     bLanguages: ['Languages', 'اللغات'],
     bLocation: ['Location', 'الموقع'],
-    bTrackL: ['Track', 'المسار'],
+    bTrackL: ['Specialty', 'التخصص'],
     bLegacyN: ['{n} Legacy', '{n} سابق'],
     bNativeN: ['{n} Native', '{n} أصيل'],
     langAr: ['Arabic', 'العربية'], langEn: ['English', 'الإنجليزية'],
 
-    escTitle: ['Backed venture: Desert Cool', 'مشروع مدعوم: ديزرت كول'],
-    escSub: ['Evaporative cooling vest · founder squad of 3 · mentor: Dr. Hamad', 'سترة تبريد بالتبخير · فريق من 3 مؤسسين · المرشد: د. حمد'],
+    escTitle: ['Backed production: Souq Stories', 'إنتاج مدعوم: حكايات السوق'],
+    escSub: ['6-part documentary series · crew of 3 · mentor: Dr. Hamad', 'سلسلة وثائقية من 6 حلقات · فريق من 3 · المرشد: د. حمد'],
     escInBox: ['In Safe Box', 'في صندوق الأمان'],
     escReleased: ['Released so far', 'المصروف حتى الآن'],
     escNote: ['Each release needs the mentor\'s sign-off. Open the Mentor view to review the next stage.', 'كل دفعة تحتاج اعتماد المرشد. افتح واجهة المرشد لمراجعة المرحلة التالية.'],
@@ -383,26 +383,26 @@
     stAwaiting: ['Awaiting mentor', 'بانتظار المرشد'],
     stChanges: ['Changes requested', 'طُلبت تعديلات'],
     stLocked: ['Locked', 'مقفل'],
-    stPrototype: ['Prototype', 'النموذج الأولي'],
+    stPrototype: ['Pre-production', 'ما قبل الإنتاج'],
     stProduction: ['Production', 'الإنتاج'],
     stDelivery: ['Delivery', 'التسليم'],
 
-    ipTitle: ['IP Vault: low-water irrigation valve', 'خزنة الملكية: صمام ري موفّر للمياه'],
-    ipMeta: ['Inventor track · Khalid A. (sample)', 'مسار المخترعين · خالد أ. (مثال)'],
-    ipSummary: ['Public summary: a pressure-sensing valve that cuts drip-irrigation water use on date-palm farms. Seeking a licence or buyout.', 'الملخص العام: صمام يستشعر الضغط ويخفض استهلاك مياه الري بالتنقيط في مزارع النخيل. يبحث عن ترخيص أو استحواذ.'],
-    ipLocked: ['Full blueprints are locked. Sign the one-click NDA and place the option fee in escrow to open the deal room.', 'المخططات الكاملة مقفلة. وقّع اتفاقية عدم الإفصاح بنقرة وضع رسم الخيار في الضمان لفتح غرفة الصفقة.'],
+    ipTitle: ['IP Vault: “The Last Pearl Divers” series', 'خزنة الملكية: سلسلة «آخر غواصي اللؤلؤ»'],
+    ipMeta: ['Media path · Khalid A. (sample)', 'مسار الإعلام · خالد أ. (مثال)'],
+    ipSummary: ['Public summary: an original 6-part documentary series about the last pearl divers of the Gulf. Seeking a streaming licence or co-production.', 'الملخص العام: سلسلة وثائقية أصلية من 6 حلقات عن آخر غواصي اللؤلؤ في الخليج. تبحث عن ترخيص بث أو إنتاج مشترك.'],
+    ipLocked: ['The full treatment and scripts are locked. Sign the one-click NDA and place the option fee in escrow to open the deal room.', 'المعالجة الكاملة والنصوص مقفلة. وقّع اتفاقية عدم الإفصاح بنقرة وضع رسم الخيار في الضمان لفتح غرفة الصفقة.'],
     ipSign: ['Sign NDA & unlock', 'وقّع واطّلع'],
     ipOpen: ['NDA signed — deal room open', 'تم التوقيع — غرفة الصفقة مفتوحة'],
-    ipOpenBody: ['Blueprints, field-test data and the inventor\'s terms are now visible. 7% brokerage applies if the deal closes.', 'أصبحت المخططات وبيانات الاختبار الميداني وشروط المخترع متاحة. تُطبَّق عمولة 7٪ عند إتمام الصفقة.'],
+    ipOpenBody: ['The treatment, pilot script and mood reel are now visible, with the creator’s terms. 7% brokerage applies if the deal closes.', 'أصبحت المعالجة ونص الحلقة التجريبية وفيديو المزاج متاحة مع شروط صاحب الفكرة. تُطبَّق عمولة 7٪ عند إتمام الصفقة.'],
     ipFiles: ['Illustrative files — not downloadable in the demo.', 'ملفات توضيحية — غير قابلة للتنزيل في العرض.'],
     ndaTitle: ['Sign NDA and open deal room', 'توقيع اتفاقية عدم الإفصاح وفتح غرفة الصفقة'],
-    ndaSub: ['Low-water irrigation valve · Khalid A.', 'صمام ري موفّر للمياه · خالد أ.'],
+    ndaSub: ['“The Last Pearl Divers” · Khalid A.', '«آخر غواصي اللؤلؤ» · خالد أ.'],
     ndaTerms: ['What you\'re agreeing to', 'ما توافق عليه'],
-    ndaT1: ['Keep all blueprints and test data confidential for 3 years.', 'الحفاظ على سرية المخططات وبيانات الاختبار لمدة 3 سنوات.'],
-    ndaT2: ['No reverse-engineering or filing of related patents.', 'عدم الهندسة العكسية أو تسجيل براءات ذات صلة.'],
+    ndaT1: ['Keep the treatment, scripts and footage confidential for 3 years.', 'الحفاظ على سرية المعالجة والنصوص واللقطات لمدة 3 سنوات.'],
+    ndaT2: ['No copying or developing the concept without a signed deal.', 'عدم نسخ الفكرة أو تطويرها دون صفقة موقّعة.'],
     ndaT3: ['Option fee is held in escrow and credited to the deal if it closes.', 'يُحفظ رسم الخيار في الضمان ويُحتسب ضمن الصفقة عند إتمامها.'],
     ndaFee: ['Option fee (held in escrow)', 'رسم الخيار (محفوظ في الضمان)'],
-    ndaAgree: ['I have read and agree to the NDA terms on behalf of Gulf Retail Group.', 'قرأت شروط اتفاقية عدم الإفصاح وأوافق عليها نيابة عن مجموعة الخليج للتجزئة.'],
+    ndaAgree: ['I have read and agree to the NDA terms on behalf of Gulf Media Group.', 'قرأت شروط اتفاقية عدم الإفصاح وأوافق عليها نيابة عن مجموعة الخليج للإعلام.'],
     ndaMust: ['Please confirm you agree to the terms.', 'يرجى تأكيد موافقتك على الشروط.'],
     ndaConfirm: ['Sign & open deal room', 'وقّع وافتح غرفة الصفقة'],
     ndaToast: ['NDA signed. The deal room is open.', 'تم توقيع الاتفاقية. غرفة الصفقة مفتوحة.'],
@@ -418,10 +418,10 @@
     mAllDone: ['You\'re all caught up', 'لا توجد مراجعات معلّقة'],
     mAllDoneBody: ['New milestones and sprint submissions will appear here.', 'ستظهر هنا المراحل الجديدة والمشاريع المقدَّمة.'],
     mEscrowKind: ['Escrow release · {share}', 'صرف من الضمان · {share}'],
-    mEscrowTitle: ['Desert Cool — {stage} stage', 'ديزرت كول — مرحلة {stage}'],
+    mEscrowTitle: ['Souq Stories — {stage} stage', 'حكايات السوق — مرحلة {stage}'],
     mSprintKind: ['Sprint review', 'مراجعة مشروع'],
-    mSprintTitle: ['Layla A. — Cash-flow forecasting sprint', 'ليلى أ. — مشروع التنبؤ بالتدفقات النقدية'],
-    mSprintBody: ['Approving adds a Native badge to her portfolio and raises her Specialist score.', 'الاعتماد يضيف شارة أصيلة إلى ملفها ويرفع مؤشرها في مسار المتخصصين.'],
+    mSprintTitle: ['Layla A. — Café social campaign sprint', 'ليلى أ. — مشروع حملة تواصل لمقهى'],
+    mSprintBody: ['Approving adds a Native badge to her portfolio and raises her Media score.', 'الاعتماد يضيف شارة أصيلة إلى ملفها ويرفع مؤشرها في مسار الإعلام.'],
     mSubmitted: ['Submitted {d}', 'قُدِّم {d}'],
     mEvidence: ['Evidence submitted', 'الأدلة المقدَّمة'],
     mApproveRelease: ['Verify & release {amt}', 'اعتمد واصرف {amt}'],
@@ -432,12 +432,12 @@
     mSimResubmit: ['Simulate resubmission', 'محاكاة إعادة التقديم'],
     mResubToast: ['Resubmitted — back in your queue.', 'أُعيد التقديم — عاد إلى قائمتك.'],
     apTitle: ['Verify the {stage} stage?', 'اعتماد مرحلة {stage}؟'],
-    apBody: ['You confirm the evidence meets the milestone. {amt} will be released from the Safe Box to the Desert Cool team.', 'أنت تؤكد أن الأدلة تحقق المرحلة. سيُصرف {amt} من صندوق الأمان لفريق ديزرت كول.'],
+    apBody: ['You confirm the evidence meets the milestone. {amt} will be released from the Safe Box to the Souq Stories crew.', 'أنت تؤكد أن الأدلة تحقق المرحلة. سيُصرف {amt} من صندوق الأمان لفريق حكايات السوق.'],
     apWarn: ['Releases can\'t be reversed once made.', 'لا يمكن التراجع عن الصرف بعد تنفيذه.'],
     apConfirm: ['Verify & release', 'اعتمد واصرف'],
     apToast: ['{amt} released for the {stage} stage.', 'صُرف {amt} لمرحلة {stage}.'],
     spTitle: ['Approve this sprint?', 'اعتماد هذا المشروع؟'],
-    spBody: ['Layla receives a Native badge for "Cash-flow forecasting sprint" and +3 on her Specialist score.', 'ستحصل ليلى على شارة أصيلة لـ«مشروع التنبؤ بالتدفقات النقدية» و+3 في مؤشر المتخصصين.'],
+    spBody: ['Layla receives a Native badge for “Café social campaign sprint” and +3 on her Media score.', 'ستحصل ليلى على شارة أصيلة لـ«مشروع حملة تواصل لمقهى» و+3 في مؤشر الإعلام.'],
     spConfirm: ['Approve sprint', 'اعتماد المشروع'],
     spToast: ['Sprint approved — Native badge issued to Layla.', 'تم اعتماد المشروع — أُصدرت شارة أصيلة لليلى.'],
     rcTitle: ['Request changes', 'طلب تعديلات'],
@@ -455,7 +455,7 @@
     aKicker: ['Shams programme admin', 'إدارة برنامج شمس'],
     aTitle: ['Programme overview', 'نظرة عامة على البرنامج'],
     aK1: ['KYC-verified talent', 'مواهب موثّقة الهوية'],
-    aK1n: ['Across 4 tracks', 'عبر 4 مسارات'],
+    aK1n: ['Across 4 media specialties', 'عبر 4 تخصصات إعلامية'],
     aK2: ['Badges issued', 'الشارات الصادرة'],
     aK2n: ['Legacy + Native', 'سابقة + أصيلة'],
     aK3: ['Talent scoring 50+', 'مواهب بمؤشر 50+'],
@@ -483,18 +483,18 @@
     aNoRows: ['No entries of this type yet.', 'لا توجد سجلات من هذا النوع بعد.'],
 
     // ledger events
-    evFunded: ['Desert Cool Safe Box funded', 'تمويل صندوق أمان ديزرت كول'],
+    evFunded: ['Souq Stories Safe Box funded', 'تمويل صندوق أمان حكايات السوق'],
     evRelease: ['Released: {stage} stage', 'صرف: مرحلة {stage}'],
     evChanges: ['Changes requested: {stage} stage', 'طلب تعديلات: مرحلة {stage}'],
-    evNda: ['NDA signed · irrigation valve deal room', 'توقيع اتفاقية · غرفة صفقة صمام الري'],
+    evNda: ['NDA signed · “The Last Pearl Divers” deal room', 'توقيع اتفاقية · غرفة صفقة «آخر غواصي اللؤلؤ»'],
     evDc: ['Legacy badge issued · Defense Check (Layla A.)', 'إصدار شارة سابقة · فحص الدفاع (ليلى أ.)'],
-    evSprint: ['Native badge issued · cash-flow sprint (Layla A.)', 'إصدار شارة أصيلة · مشروع التدفقات (ليلى أ.)'],
-    evSprintChanges: ['Changes requested · cash-flow sprint', 'طلب تعديلات · مشروع التدفقات'],
-    evKyb: ['KYB verified · Gulf Retail Group', 'توثيق شركة · مجموعة الخليج للتجزئة'],
-    evAudit: ['Native badge issued · audit simulation (Layla A.)', 'إصدار شارة أصيلة · محاكاة التدقيق (ليلى أ.)'],
+    evSprint: ['Native badge issued · café social sprint (Layla A.)', 'إصدار شارة أصيلة · مشروع حملة المقهى (ليلى أ.)'],
+    evSprintChanges: ['Changes requested · café social sprint', 'طلب تعديلات · مشروع حملة المقهى'],
+    evKyb: ['KYB verified · Gulf Media Group', 'توثيق شركة · مجموعة الخليج للإعلام'],
+    evAudit: ['Native badge issued · retouching sandbox (Layla A.)', 'إصدار شارة أصيلة · محاكاة تعديل الصور (ليلى أ.)'],
     byBackers: ['Backers (pre-orders)', 'الداعمون (طلبات مسبقة)'],
     byHamad: ['Dr. Hamad (mentor)', 'د. حمد (مرشد)'],
-    byGulf: ['Gulf Retail Group', 'مجموعة الخليج للتجزئة'],
+    byGulf: ['Gulf Media Group', 'مجموعة الخليج للإعلام'],
     bySystem: ['System', 'النظام'],
     feeHeld: ['{amt} option fee held', 'رسم خيار {amt} محفوظ']
   };
@@ -515,118 +515,96 @@
   }
 
   /* ------------------------------------------------------------------ data */
+  // One path: Media. The four specialties are filters and labels, not separate tracks.
   var TRACKS = [
-    { id: 'spec', icon: 'briefcase', label: { en: 'Specialist', ar: 'المتخصصين' }, short: { en: 'Specialist', ar: 'متخصص' }, score: 72,
-      next: { en: 'Finish one mentor-reviewed paid sprint to add about 8 points.', ar: 'أنجز مشروعًا مدفوعًا واحدًا يراجعه مرشد لتضيف نحو 8 نقاط.' } },
-    { id: 'res', icon: 'flask', label: { en: 'Researcher', ar: 'الباحثين' }, short: { en: 'Researcher', ar: 'باحث' }, score: 64,
-      next: { en: 'Publish one verified study summary to reach corporate lab sponsors.', ar: 'انشر ملخص دراسة موثّقًا واحدًا لتصل إلى رعاة المختبرات من الشركات.' } },
-    { id: 'inv', icon: 'bulb', label: { en: 'Inventor', ar: 'المخترعين' }, short: { en: 'Inventor', ar: 'مخترع' }, score: 58,
-      next: { en: 'Add test data to your vaulted invention to strengthen deal-room offers.', ar: 'أضف بيانات اختبار إلى اختراعك المحفوظ لتقوية عروض غرفة الصفقة.' } },
-    { id: 'fnd', icon: 'rocket', label: { en: 'Founder', ar: 'المؤسسين' }, short: { en: 'Founder', ar: 'مؤسس' }, score: 49,
-      next: { en: 'Recruit one verified specialist with the Squad Builder to pass 50.', ar: 'ضُمّ متخصصًا موثّقًا عبر منشئ الفريق لتتجاوز 50.' } }
+    { id: 'media', icon: 'video', label: { en: 'Media', ar: 'الإعلام' }, short: { en: 'Media', ar: 'الإعلام' }, score: 72,
+      next: { en: 'Finish one mentor-reviewed paid project to add about 8 points.', ar: 'أنجز مشروعًا مدفوعًا واحدًا يراجعه مرشد لتضيف نحو 8 نقاط.' } }
   ];
+  var SPECS = [
+    { id: 'video', icon: 'video', label: { en: 'Video & motion', ar: 'الفيديو والموشن' } },
+    { id: 'design', icon: 'camera', label: { en: 'Design & photo', ar: 'التصميم والتصوير' } },
+    { id: 'content', icon: 'message', label: { en: 'Content & social', ar: 'المحتوى والتواصل الاجتماعي' } },
+    { id: 'journalism', icon: 'mic', label: { en: 'Journalism & audio', ar: 'الصحافة والصوت' } }
+  ];
+  function specOf(id) { return SPECS.find(function (s) { return s.id === id; }) || SPECS[0]; }
 
   var OPPS = {
-    spec: [
-      { id: 's1', kind: { en: 'Job', ar: 'وظيفة' }, title: { en: 'Junior FP&A analyst', ar: 'محلل تخطيط وتحليل مالي مبتدئ' }, meta: { en: 'Retail group · Dubai · Full-time', ar: 'مجموعة تجزئة · دبي · دوام كامل' },
-        body: { en: 'Build monthly forecasts and variance reports for 40 stores. Requires a Specialist score of 65+ and at least one verified model.', ar: 'إعداد توقعات شهرية وتقارير انحراف لـ40 متجرًا. يتطلب مؤشر متخصص 65+ ونموذجًا موثّقًا واحدًا على الأقل.' },
+    media: [
+      { id: 'm1', kind: { en: 'Job', ar: 'وظيفة' }, title: { en: 'Junior video editor', ar: 'محرر فيديو مبتدئ' }, meta: { en: 'Creative agency · Dubai · Full-time', ar: 'وكالة إبداعية · دبي · دوام كامل' },
+        body: { en: 'Cut social ads and brand films for retail and F&B clients. Requires a Media score of 65+ and at least one verified edit.', ar: 'مونتاج إعلانات التواصل الاجتماعي وأفلام العلامات التجارية لعملاء التجزئة والأغذية. يتطلب مؤشر إعلام 65+ وعمل مونتاج موثّقًا واحدًا على الأقل.' },
         cta: { en: 'Apply', ar: 'تقدّم' }, done: { en: 'Applied', ar: 'تم التقديم' } },
-      { id: 's2', kind: { en: 'Paid sprint', ar: 'مشروع مدفوع' }, title: { en: '3-statement model for a café chain', ar: 'نموذج القوائم الثلاث لسلسلة مقاهٍ' }, meta: { en: '2 weeks · AED 3,500 · fee locked in escrow', ar: 'أسبوعان · 3,500 درهم · الأتعاب محفوظة في الضمان' },
-        body: { en: 'A 6-branch café chain needs a linked P&L, balance sheet and cash-flow model. You keep 90% of the fee; it is released when the client accepts delivery.', ar: 'تحتاج سلسلة مقاهٍ من 6 فروع إلى نموذج مترابط للدخل والميزانية والتدفقات النقدية. تحصل على 90٪ من الأتعاب، وتُصرف عند قبول العميل للتسليم.' },
+      { id: 'm2', kind: { en: 'Paid sprint', ar: 'مشروع مدفوع' }, title: { en: '30-second Ramadan ad for a café chain', ar: 'إعلان رمضاني مدته 30 ثانية لسلسلة مقاهٍ' }, meta: { en: '2 weeks · AED 3,500 · fee locked in escrow', ar: 'أسبوعان · 3,500 درهم · الأتعاب محفوظة في الضمان' },
+        body: { en: 'A 6-branch café chain needs a 30-second spot and three vertical cut-downs. You keep 90% of the fee; it is released when the client accepts delivery.', ar: 'تحتاج سلسلة مقاهٍ من 6 فروع إلى إعلان مدته 30 ثانية وثلاث نسخ عمودية قصيرة. تحصل على 90٪ من الأتعاب، وتُصرف عند قبول العميل للتسليم.' },
         cta: { en: 'Request sprint', ar: 'اطلب المشروع' }, done: { en: 'Requested', ar: 'تم الطلب' } },
-      { id: 's3', kind: { en: 'Simulation', ar: 'محاكاة' }, title: { en: 'Year-end audit sandbox', ar: 'بيئة محاكاة تدقيق نهاية العام' }, meta: { en: 'Self-paced · earns a Native badge', ar: 'بالوتيرة الذاتية · تمنح شارة أصيلة' },
-        body: { en: 'Work through a realistic audit file with planted errors. A mentor reviews your findings and a Native badge is added on approval.', ar: 'اعمل على ملف تدقيق واقعي يحتوي أخطاء مقصودة. يراجع مرشد نتائجك وتُضاف شارة أصيلة عند الاعتماد.' },
-        cta: { en: 'Join simulation', ar: 'انضم للمحاكاة' }, done: { en: 'Joined', ar: 'انضممت' } }
-    ],
-    res: [
-      { id: 'r1', kind: { en: 'Sponsorship', ar: 'رعاية' }, title: { en: 'Water-reuse lab study', ar: 'دراسة مختبرية لإعادة استخدام المياه' }, meta: { en: 'Corporate R&D team · 6 months', ar: 'فريق بحث وتطوير مؤسسي · 6 أشهر' },
-        body: { en: 'A utilities company will sponsor a 6-month study on greywater reuse for landscaping. Milestone-based funding through escrow.', ar: 'ستموّل شركة مرافق دراسة لمدة 6 أشهر حول إعادة استخدام المياه الرمادية في التشجير، بتمويل مرحلي عبر الضمان.' },
-        cta: { en: 'Express interest', ar: 'أبدِ اهتمامك' }, done: { en: 'Interest sent', ar: 'أُرسل الاهتمام' } },
-      { id: 'r2', kind: { en: 'Expert call', ar: 'استشارة خبير' }, title: { en: 'Advise on solar-panel soiling data', ar: 'استشارة حول بيانات اتساخ الألواح الشمسية' }, meta: { en: '45 min · paid · bookable', ar: '45 دقيقة · مدفوعة · قابلة للحجز' },
-        body: { en: 'An energy start-up wants a 45-minute call to sanity-check its cleaning-schedule model.', ar: 'تريد شركة طاقة ناشئة مكالمة لمدة 45 دقيقة لمراجعة نموذج جدولة التنظيف لديها.' },
-        cta: { en: 'Accept call', ar: 'اقبل المكالمة' }, done: { en: 'Accepted', ar: 'تم القبول' } },
-      { id: 'r3', kind: { en: 'Simulation', ar: 'محاكاة' }, title: { en: 'Grant-proposal review sprint', ar: 'مشروع مراجعة مقترح منحة' }, meta: { en: 'Mentor-reviewed · Native badge', ar: 'يراجعه مرشد · شارة أصيلة' },
-        body: { en: 'Review and strengthen a real (anonymised) grant proposal. Earns a Native badge on mentor approval.', ar: 'راجع وحسّن مقترح منحة حقيقي (مجهول الهوية). يمنح شارة أصيلة عند اعتماد المرشد.' },
-        cta: { en: 'Join sprint', ar: 'انضم للمشروع' }, done: { en: 'Joined', ar: 'انضممت' } }
-    ],
-    inv: [
-      { id: 'i1', kind: { en: 'Clinic', ar: 'عيادة' }, title: { en: 'University patent clinic slot', ar: 'موعد في عيادة البراءات الجامعية' }, meta: { en: 'Free · this Thursday, 4 pm', ar: 'مجاني · هذا الخميس، 4 مساءً' },
-        body: { en: 'A 30-minute session with the university legal clinic to review your claims before filing.', ar: 'جلسة 30 دقيقة مع العيادة القانونية الجامعية لمراجعة مطالباتك قبل التسجيل.' },
-        cta: { en: 'Book slot', ar: 'احجز الموعد' }, done: { en: 'Booked', ar: 'تم الحجز' } },
-      { id: 'i2', kind: { en: 'Showcase', ar: 'عرض' }, title: { en: 'Agri-tech scouting day', ar: 'يوم استكشاف التقنية الزراعية' }, meta: { en: 'Pitch to 6 verified corporate scouts', ar: 'قدّم لـ6 مستكشفين مؤسسيين موثّقين' },
-        body: { en: 'Present your vaulted invention to verified agri-tech scouts. Only the public summary is shown until a scout signs an NDA.', ar: 'اعرض اختراعك المحفوظ على مستكشفين موثّقين في التقنية الزراعية. لا يظهر إلا الملخص العام حتى يوقّع المستكشف اتفاقية عدم الإفصاح.' },
-        cta: { en: 'Register', ar: 'سجّل' }, done: { en: 'Registered', ar: 'تم التسجيل' } }
-    ],
-    fnd: [
-      { id: 'f1', kind: { en: 'Incubation', ar: 'احتضان' }, title: { en: 'Prototype-stage support', ar: 'دعم مرحلة النموذج الأولي' }, meta: { en: 'University incubator · mentor assigned', ar: 'حاضنة جامعية · مرشد مخصص' },
-        body: { en: 'Workspace, lab access and a dedicated mentor while you build your prototype.', ar: 'مساحة عمل ووصول للمختبر ومرشد مخصص أثناء بناء نموذجك الأولي.' },
-        cta: { en: 'Apply', ar: 'تقدّم' }, done: { en: 'Applied', ar: 'تم التقديم' } },
-      { id: 'f2', kind: { en: 'Demo day', ar: 'يوم العرض' }, title: { en: 'Monthly live Demo Fair', ar: 'معرض العروض الشهري' }, meta: { en: 'Pitch to verified angel investors', ar: 'قدّم لمستثمرين ملائكيين موثّقين' },
-        body: { en: 'Five-minute pitch slots in front of KYB-verified angels and family offices.', ar: 'فرص عرض مدتها خمس دقائق أمام مستثمرين ملائكيين ومكاتب عائلية موثّقة.' },
-        cta: { en: 'Request a slot', ar: 'اطلب موعدًا' }, done: { en: 'Requested', ar: 'تم الطلب' } },
-      { id: 'f3', kind: { en: 'Campaign', ar: 'حملة' }, title: { en: 'Launch a 30/40/30 pre-order campaign', ar: 'أطلق حملة طلب مسبق 30/40/30' }, meta: { en: '5% platform fee on success', ar: 'رسوم 5٪ عند النجاح' },
-        body: { en: 'Raise pre-orders into a three-stage Safe Box. Your mentor verifies each stage before funds are released.', ar: 'اجمع طلبات مسبقة في صندوق أمان من ثلاث مراحل. يتحقق مرشدك من كل مرحلة قبل صرف الأموال.' },
-        cta: { en: 'Start draft', ar: 'ابدأ مسودة' }, done: { en: 'Draft started', ar: 'بدأت المسودة' } }
+      { id: 'm3', kind: { en: 'Paid sprint', ar: 'مشروع مدفوع' }, title: { en: 'Brand photo set for a perfume launch', ar: 'جلسة تصوير لإطلاق عطر' }, meta: { en: '1 week · AED 2,800 · escrow', ar: 'أسبوع · 2,800 درهم · ضمان' },
+        body: { en: 'Shoot and retouch 20 product and lifestyle images. The client approves a selection before the fee is released.', ar: 'تصوير وتعديل 20 صورة للمنتج ونمط الحياة. يعتمد العميل مجموعة مختارة قبل صرف الأتعاب.' },
+        cta: { en: 'Request sprint', ar: 'اطلب المشروع' }, done: { en: 'Requested', ar: 'تم الطلب' } },
+      { id: 'm4', kind: { en: 'Simulation', ar: 'محاكاة' }, title: { en: 'Social content calendar sandbox', ar: 'بيئة محاكاة لتقويم محتوى التواصل' }, meta: { en: 'Self-paced · earns a Native badge', ar: 'بالوتيرة الذاتية · تمنح شارة أصيلة' },
+        body: { en: 'Plan a month of posts for a sample brand from a real brief. A mentor reviews it and a Native badge is added on approval.', ar: 'خطّط لمنشورات شهر كامل لعلامة تجريبية بناءً على موجز حقيقي. يراجعه مرشد وتُضاف شارة أصيلة عند الاعتماد.' },
+        cta: { en: 'Join simulation', ar: 'انضم للمحاكاة' }, done: { en: 'Joined', ar: 'انضممت' } },
+      { id: 'm5', kind: { en: 'Expert call', ar: 'استشارة خبير' }, title: { en: 'Podcast edit review for a publisher', ar: 'مراجعة مونتاج بودكاست لناشر' }, meta: { en: '45 min · paid · bookable', ar: '45 دقيقة · مدفوعة · قابلة للحجز' },
+        body: { en: 'A news publisher wants a 45-minute call to review the sound and pacing of its new Arabic podcast.', ar: 'يريد ناشر أخبار مكالمة لمدة 45 دقيقة لمراجعة الصوت والإيقاع في البودكاست العربي الجديد.' },
+        cta: { en: 'Accept call', ar: 'اقبل المكالمة' }, done: { en: 'Accepted', ar: 'تم القبول' } }
     ]
   };
 
   var PORTFOLIO = [
-    { id: 'dcf', type: 'legacy', title: { en: 'Retail DCF model (2025)', ar: 'نموذج تدفقات نقدية لقطاع التجزئة (2025)' } },
-    { id: 'audit', type: 'native', title: { en: 'Audit simulation · Pod 3', ar: 'محاكاة تدقيق · المجموعة 3' }, proof: { en: 'Mentor reviewed · 4.8 rating', ar: 'راجعه مرشد · تقييم 4.8' } },
-    { id: 'inv', type: 'native', title: { en: 'Paid sprint: inventory forecast', ar: 'مشروع مدفوع: التنبؤ بالمخزون' }, proof: { en: 'Delivered on time · escrow released', ar: 'سُلِّم في الموعد · صُرف الضمان' } }
+    { id: 'dcf', type: 'legacy', title: { en: 'Brand launch film (2025)', ar: 'فيلم إطلاق علامة تجارية (2025)' } },
+    { id: 'audit', type: 'native', title: { en: 'Retouching sandbox · Pod 3', ar: 'محاكاة تعديل الصور · المجموعة 3' }, proof: { en: 'Mentor reviewed · 4.8 rating', ar: 'راجعه مرشد · تقييم 4.8' } },
+    { id: 'inv', type: 'native', title: { en: 'Paid sprint: café social campaign', ar: 'مشروع مدفوع: حملة تواصل لمقهى' }, proof: { en: 'Delivered on time · escrow released', ar: 'سُلِّم في الموعد · صُرف الضمان' } }
   ];
 
   var PEOPLE = [
-    { id: 'la', i: 'LA', name: { en: 'Layla A.', ar: 'ليلى أ.' }, track: 'spec', role: { en: 'Financial modelling', ar: 'النمذجة المالية' }, score: 72, city: { en: 'Sharjah', ar: 'الشارقة' }, uae: true, langs: ['ar', 'en'], legacy: 2, native: 3,
-      about: { en: 'Finance student building retail and F&B models. Strong in three-statement modelling and forecasting.', ar: 'طالبة مالية تبني نماذج للتجزئة والأغذية. متميزة في نمذجة القوائم الثلاث والتنبؤ.' },
-      work: [['legacy', { en: 'Retail DCF model (2025)', ar: 'نموذج تدفقات نقدية للتجزئة (2025)' }], ['native', { en: 'Audit simulation · Pod 3', ar: 'محاكاة تدقيق · المجموعة 3' }], ['native', { en: 'Paid sprint: inventory forecast', ar: 'مشروع مدفوع: التنبؤ بالمخزون' }]] },
-    { id: 'om', i: 'OK', name: { en: 'Omar K.', ar: 'عمر ك.' }, track: 'spec', role: { en: 'Audit & controls', ar: 'التدقيق والرقابة' }, score: 81, city: { en: 'Abu Dhabi', ar: 'أبوظبي' }, uae: true, langs: ['ar', 'en'], legacy: 1, native: 5,
-      about: { en: 'Accounting graduate with five completed audit sprints and a focus on internal controls.', ar: 'خريج محاسبة أنجز خمسة مشاريع تدقيق ويركّز على الرقابة الداخلية.' },
-      work: [['native', { en: 'Internal-controls review · logistics client', ar: 'مراجعة الرقابة الداخلية · عميل لوجستي' }], ['native', { en: 'Year-end audit sandbox', ar: 'محاكاة تدقيق نهاية العام' }], ['legacy', { en: 'Graduation project: fraud red flags', ar: 'مشروع التخرج: مؤشرات الاحتيال' }]] },
-    { id: 'sr', i: 'SR', name: { en: 'Sara R.', ar: 'سارة ر.' }, track: 'spec', role: { en: 'Data & dashboards', ar: 'البيانات ولوحات المعلومات' }, score: 68, city: { en: 'Dubai', ar: 'دبي' }, uae: true, langs: ['ar', 'en'], legacy: 3, native: 1,
-      about: { en: 'Builds Power BI and SQL dashboards for sales and operations teams.', ar: 'تبني لوحات Power BI وSQL لفرق المبيعات والعمليات.' },
-      work: [['legacy', { en: 'Sales dashboard for a car dealer', ar: 'لوحة مبيعات لوكيل سيارات' }], ['native', { en: 'Paid sprint: churn report', ar: 'مشروع مدفوع: تقرير فقدان العملاء' }]] },
-    { id: 'ym', i: 'YM', name: { en: 'Yousef M.', ar: 'يوسف م.' }, track: 'spec', role: { en: 'Full-stack developer', ar: 'مطوّر متكامل' }, score: 77, city: { en: 'Dubai', ar: 'دبي' }, uae: true, langs: ['en'], legacy: 2, native: 4,
-      about: { en: 'React and Node developer with four delivered client sprints, including a booking system.', ar: 'مطوّر React وNode سلّم أربعة مشاريع لعملاء، منها نظام حجوزات.' },
-      work: [['native', { en: 'Clinic booking web app', ar: 'تطبيق ويب لحجز العيادات' }], ['legacy', { en: 'Open-source Arabic date picker', ar: 'منتقي تاريخ عربي مفتوح المصدر' }]] },
-    { id: 'rd', i: 'RD', name: { en: 'Rania D.', ar: 'رانيا د.' }, track: 'spec', role: { en: 'Brand & motion design', ar: 'تصميم الهوية والحركة' }, score: 63, city: { en: 'Amman (remote)', ar: 'عمّان (عن بُعد)' }, uae: false, langs: ['ar', 'en'], legacy: 3, native: 0,
-      about: { en: 'Designer with a strong bilingual typography portfolio. New to on-platform sprints.', ar: 'مصممة بملف قوي في الخطوط ثنائية اللغة. جديدة على مشاريع المنصة.' },
-      work: [['legacy', { en: 'Bilingual café brand identity', ar: 'هوية مقهى ثنائية اللغة' }], ['legacy', { en: 'Ramadan campaign motion pack', ar: 'حزمة حركة لحملة رمضان' }]] },
-    { id: 'nh', i: 'NH', name: { en: 'Dr. Noura H.', ar: 'د. نورة ح.' }, track: 'res', role: { en: 'Water-reuse researcher', ar: 'باحثة في إعادة استخدام المياه' }, score: 74, city: { en: 'Al Ain', ar: 'العين' }, uae: true, langs: ['ar', 'en'], legacy: 4, native: 2,
-      about: { en: 'Post-doctoral researcher in membrane filtration and greywater systems.', ar: 'باحثة ما بعد الدكتوراه في الترشيح الغشائي وأنظمة المياه الرمادية.' },
-      work: [['legacy', { en: 'Peer-reviewed paper: greywater membranes', ar: 'ورقة محكّمة: أغشية المياه الرمادية' }], ['native', { en: 'Expert call · utilities company', ar: 'استشارة خبير · شركة مرافق' }]] },
-    { id: 'tb', i: 'TB', name: { en: 'Tariq B.', ar: 'طارق ب.' }, track: 'res', role: { en: 'Materials science expert', ar: 'خبير علوم المواد' }, score: 52, city: { en: 'Cairo (remote)', ar: 'القاهرة (عن بُعد)' }, uae: false, langs: ['ar', 'en'], legacy: 2, native: 1,
-      about: { en: 'Researcher in heat-resistant polymers, available for expert calls.', ar: 'باحث في البوليمرات المقاومة للحرارة، متاح لاستشارات الخبراء.' },
-      work: [['legacy', { en: 'Thesis: polymer heat ageing', ar: 'أطروحة: التقادم الحراري للبوليمرات' }], ['native', { en: 'Grant-proposal review sprint', ar: 'مشروع مراجعة مقترح منحة' }]] },
-    { id: 'ka', i: 'KA', name: { en: 'Khalid A.', ar: 'خالد أ.' }, track: 'inv', role: { en: 'Agri-tech inventor', ar: 'مخترع في التقنية الزراعية' }, score: 66, city: { en: 'Ras Al Khaimah', ar: 'رأس الخيمة' }, uae: true, langs: ['ar'], legacy: 2, native: 1,
-      about: { en: 'Inventor of a low-water irrigation valve, date-stamped in the IP Vault.', ar: 'مخترع صمام ري موفّر للمياه، مختوم زمنيًا في خزنة الملكية.' },
-      work: [['legacy', { en: 'Irrigation valve prototype', ar: 'نموذج صمام الري' }], ['native', { en: 'Patent clinic review', ar: 'مراجعة عيادة البراءات' }]] },
-    { id: 'mf', i: 'MF', name: { en: 'Maryam F.', ar: 'مريم ف.' }, track: 'fnd', role: { en: 'Ed-tech founder', ar: 'مؤسسة في تقنيات التعليم' }, score: 59, city: { en: 'Ajman', ar: 'عجمان' }, uae: true, langs: ['ar', 'en'], legacy: 1, native: 2,
-      about: { en: 'Building an Arabic reading app for early learners; in incubation.', ar: 'تبني تطبيقًا لتعليم القراءة العربية للأطفال؛ في مرحلة الاحتضان.' },
-      work: [['native', { en: 'Prototype stage verified', ar: 'تم التحقق من مرحلة النموذج الأولي' }], ['legacy', { en: 'Pilot with 2 nurseries', ar: 'تجربة مع حضانتين' }]] }
+    { id: 'la', i: 'LA', name: { en: 'Layla A.', ar: 'ليلى أ.' }, track: 'media', spec: 'video', role: { en: 'Motion designer', ar: 'مصممة موشن' }, score: 72, city: { en: 'Sharjah', ar: 'الشارقة' }, uae: true, langs: ['ar', 'en'], legacy: 2, native: 3,
+      about: { en: 'Motion designer making brand films and social ads for retail and F&B.', ar: 'مصممة موشن تصنع أفلام العلامات التجارية وإعلانات التواصل للتجزئة والأغذية.' },
+      work: [['legacy', { en: 'Brand launch film (2025)', ar: 'فيلم إطلاق علامة تجارية (2025)' }], ['native', { en: 'Retouching sandbox · Pod 3', ar: 'محاكاة تعديل الصور · المجموعة 3' }], ['native', { en: 'Paid sprint: café social campaign', ar: 'مشروع مدفوع: حملة تواصل لمقهى' }]] },
+    { id: 'om', i: 'OK', name: { en: 'Omar K.', ar: 'عمر ك.' }, track: 'media', spec: 'video', role: { en: 'Video editor', ar: 'محرر فيديو' }, score: 81, city: { en: 'Abu Dhabi', ar: 'أبوظبي' }, uae: true, langs: ['ar', 'en'], legacy: 1, native: 5,
+      about: { en: 'Editor with five delivered ad sprints and a sharp eye for pacing.', ar: 'محرر أنجز خمسة مشاريع إعلانية ويتميز بإحساس قوي بالإيقاع.' },
+      work: [['native', { en: 'Ramadan ad · logistics brand', ar: 'إعلان رمضاني · علامة لوجستية' }], ['native', { en: 'Documentary trailer cut', ar: 'مونتاج إعلان فيلم وثائقي' }], ['legacy', { en: 'Graduation short film', ar: 'فيلم قصير للتخرج' }]] },
+    { id: 'sr', i: 'SR', name: { en: 'Sara R.', ar: 'سارة ر.' }, track: 'media', spec: 'design', role: { en: 'Product photographer', ar: 'مصورة منتجات' }, score: 68, city: { en: 'Dubai', ar: 'دبي' }, uae: true, langs: ['ar', 'en'], legacy: 3, native: 1,
+      about: { en: 'Studio and lifestyle photographer for beauty and fashion brands.', ar: 'مصورة استوديو ونمط حياة لعلامات الجمال والأزياء.' },
+      work: [['legacy', { en: 'Perfume campaign shoot', ar: 'جلسة تصوير حملة عطر' }], ['native', { en: 'Paid sprint: menu photography', ar: 'مشروع مدفوع: تصوير قائمة طعام' }]] },
+    { id: 'ym', i: 'YM', name: { en: 'Yousef M.', ar: 'يوسف م.' }, track: 'media', spec: 'design', role: { en: 'Brand designer', ar: 'مصمم هويات' }, score: 77, city: { en: 'Dubai', ar: 'دبي' }, uae: true, langs: ['en'], legacy: 2, native: 4,
+      about: { en: 'Brand and packaging designer with four delivered identity sprints.', ar: 'مصمم هويات وتغليف أنجز أربعة مشاريع هوية.' },
+      work: [['native', { en: 'Café brand identity', ar: 'هوية بصرية لمقهى' }], ['legacy', { en: 'Bilingual type system', ar: 'نظام خطوط ثنائي اللغة' }]] },
+    { id: 'rd', i: 'RD', name: { en: 'Rania D.', ar: 'رانيا د.' }, track: 'media', spec: 'design', role: { en: 'Illustrator', ar: 'رسّامة' }, score: 63, city: { en: 'Amman (remote)', ar: 'عمّان (عن بُعد)' }, uae: false, langs: ['ar', 'en'], legacy: 3, native: 0,
+      about: { en: 'Editorial illustrator with a strong bilingual portfolio. New to on-platform sprints.', ar: 'رسّامة تحريرية بملف قوي ثنائي اللغة. جديدة على مشاريع المنصة.' },
+      work: [['legacy', { en: 'Children’s book illustrations', ar: 'رسومات كتاب أطفال' }], ['legacy', { en: 'Ramadan campaign artwork', ar: 'رسومات حملة رمضان' }]] },
+    { id: 'mf', i: 'MF', name: { en: 'Maryam F.', ar: 'مريم ف.' }, track: 'media', spec: 'content', role: { en: 'Social media manager', ar: 'مديرة تواصل اجتماعي' }, score: 59, city: { en: 'Ajman', ar: 'عجمان' }, uae: true, langs: ['ar', 'en'], legacy: 1, native: 2,
+      about: { en: 'Runs social accounts for small F&B brands; strong on short-form video.', ar: 'تدير حسابات التواصل لعلامات أغذية صغيرة؛ متميزة في الفيديو القصير.' },
+      work: [['native', { en: 'Content calendar sandbox', ar: 'محاكاة تقويم المحتوى' }], ['legacy', { en: 'Bakery account growth case', ar: 'دراسة حالة نمو حساب مخبز' }]] },
+    { id: 'nh', i: 'NH', name: { en: 'Noura H.', ar: 'نورة ح.' }, track: 'media', spec: 'journalism', role: { en: 'Journalist', ar: 'صحفية' }, score: 74, city: { en: 'Al Ain', ar: 'العين' }, uae: true, langs: ['ar', 'en'], legacy: 4, native: 2,
+      about: { en: 'Feature writer covering culture and food, published in Arabic and English.', ar: 'كاتبة تقارير مطوّلة عن الثقافة والطعام، تنشر بالعربية والإنجليزية.' },
+      work: [['legacy', { en: 'Published feature: the last pearl divers', ar: 'تقرير منشور: آخر غواصي اللؤلؤ' }], ['native', { en: 'Expert call · news publisher', ar: 'استشارة خبير · ناشر أخبار' }]] },
+    { id: 'tb', i: 'TB', name: { en: 'Tariq B.', ar: 'طارق ب.' }, track: 'media', spec: 'journalism', role: { en: 'Podcast producer', ar: 'منتج بودكاست' }, score: 52, city: { en: 'Cairo (remote)', ar: 'القاهرة (عن بُعد)' }, uae: false, langs: ['ar', 'en'], legacy: 2, native: 1,
+      about: { en: 'Producer and sound editor for interview podcasts.', ar: 'منتج ومحرر صوت لبودكاست الحوارات.' },
+      work: [['legacy', { en: 'Interview series, season 1', ar: 'سلسلة حوارات، الموسم الأول' }], ['native', { en: 'Podcast edit review', ar: 'مراجعة مونتاج بودكاست' }]] },
+    { id: 'ka', i: 'KA', name: { en: 'Khalid A.', ar: 'خالد أ.' }, track: 'media', spec: 'video', role: { en: 'Documentary maker', ar: 'صانع أفلام وثائقية' }, score: 66, city: { en: 'Ras Al Khaimah', ar: 'رأس الخيمة' }, uae: true, langs: ['ar'], legacy: 2, native: 1,
+      about: { en: 'Creator of an original documentary series concept, date-stamped in the IP Vault.', ar: 'صاحب فكرة سلسلة وثائقية أصلية، مختومة زمنيًا في خزنة الملكية.' },
+      work: [['legacy', { en: 'Series treatment and mood reel', ar: 'معالجة السلسلة وفيديو المزاج' }], ['native', { en: 'IP & licensing clinic review', ar: 'مراجعة عيادة الملكية والترخيص' }]] }
   ];
 
   var STAGES = [
     { key: 'stPrototype', pct: 30, amount: 12000,
-      evidence: [{ en: 'Working prototype video (3 min)', ar: 'فيديو النموذج الأولي العامل (3 دقائق)' }, { en: 'Bill of materials', ar: 'قائمة المواد' }, { en: 'Lab heat-test report at 40°C and 45°C', ar: 'تقرير اختبار الحرارة المخبري عند 40 و45 درجة' }] },
+      evidence: [{ en: 'Final scripts for all 6 episodes', ar: 'النصوص النهائية للحلقات الست' }, { en: 'Shot list and location permits', ar: 'قائمة اللقطات وتصاريح المواقع' }, { en: 'Signed release forms from the interviewees', ar: 'نماذج موافقة موقّعة من الضيوف' }] },
     { key: 'stProduction', pct: 40, amount: 16000,
-      evidence: [{ en: 'Supplier contract for the first 500 units', ar: 'عقد المورّد لأول 500 وحدة' }, { en: 'Quality-check sample photos', ar: 'صور عينة فحص الجودة' }] },
+      evidence: [{ en: 'Rough cut of episodes 1–3', ar: 'نسخة أولية للحلقات 1–3' }, { en: 'Raw footage log', ar: 'سجل اللقطات الخام' }] },
     { key: 'stDelivery', pct: 30, amount: 12000,
-      evidence: [{ en: 'Shipping confirmations for backer pre-orders', ar: 'تأكيدات شحن طلبات الداعمين' }, { en: 'Backer satisfaction survey', ar: 'استبيان رضا الداعمين' }] }
+      evidence: [{ en: 'Final masters with Arabic and English subtitles', ar: 'النسخ النهائية مع ترجمة عربية وإنجليزية' }, { en: 'Delivery receipt from the streaming partner', ar: 'إيصال استلام من شريك البث' }] }
   ];
   var SAFEBOX = 40000;
   var NDA_FEE = 2000;
 
   var SESSIONS = [
-    { d: '2026-11-22T18:00:00', title: { en: 'Cohort pod 3 critique', ar: 'جلسة نقد المجموعة 3' }, meta: { en: '6 talents · Specialist track', ar: '6 مواهب · مسار المتخصصين' }, where: { en: 'Online', ar: 'عن بُعد' } },
-    { d: '2026-11-24T17:00:00', title: { en: 'Squad formation: Desert Cool', ar: 'تشكيل فريق: ديزرت كول' }, meta: { en: 'Founders + finance specialist', ar: 'المؤسسون + متخصص مالي' }, where: { en: 'Incubation Centre, room 2', ar: 'مركز الاحتضان، غرفة 2' } },
-    { d: '2026-11-26T16:00:00', title: { en: 'Patent clinic office hours', ar: 'ساعات عيادة البراءات' }, meta: { en: 'With the university legal clinic', ar: 'مع العيادة القانونية الجامعية' }, where: { en: 'Law faculty', ar: 'كلية القانون' } }
+    { d: '2026-11-22T18:00:00', title: { en: 'Cohort pod 3 critique', ar: 'جلسة نقد المجموعة 3' }, meta: { en: '6 talents · Media path', ar: '6 مواهب · مسار الإعلام' }, where: { en: 'Online', ar: 'عن بُعد' } },
+    { d: '2026-11-24T17:00:00', title: { en: 'Crew formation: Souq Stories', ar: 'تشكيل الفريق: حكايات السوق' }, meta: { en: 'Director + editor + sound', ar: 'مخرج + محرر + صوت' }, where: { en: 'Incubation Centre, room 2', ar: 'مركز الاحتضان، غرفة 2' } },
+    { d: '2026-11-26T16:00:00', title: { en: 'IP & licensing clinic', ar: 'عيادة الملكية والترخيص' }, meta: { en: 'With the university legal clinic', ar: 'مع العيادة القانونية الجامعية' }, where: { en: 'Law faculty', ar: 'كلية القانون' } }
   ];
 
   /* ------------------------------------------------------------------ state */
   function initialState() {
     return {
-      track: 'spec',
+      track: 'media',
       dc: { status: 'idle', result: null, attest: null, inProgress: false, inProgressClaim: null },
       verified: [],
       cv: null,
@@ -685,13 +663,12 @@
     var tr = TRACKS.find(function (x) { return x.id === id; });
     // signed in: start from the account's real score (KYC etc.), not the sample talent's
     var s = ACCOUNT ? ((ACCOUNT.score && ACCOUNT.score.total) || 0) : tr.score;
-    if (id === 'spec') {
+    if (id === 'media') {
       var works = S.verified.filter(function (v) { return v.kind === 'work' && v.status === 'passed'; }).length;
       var certs = S.verified.filter(function (v) { return v.kind === 'cert' && v.status === 'passed'; }).length;
       s += Math.min(8, works * 4) + Math.min(3, certs);
       if (S.sprint.status === 'approved') s += 3;
     }
-    if (id === 'fnd' && Object.keys(S.squad).some(function (k) { return S.squad[k]; })) s += 2;
     return Math.min(100, s);
   }
   function level(score) { return score >= 85 ? 3 : score >= 70 ? 2 : score >= 50 ? 1 : 0; }
@@ -721,7 +698,7 @@
     document.querySelectorAll('[data-role]').forEach(function (a) {
       if (a.dataset.role === role) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
     });
-    var who = { talent: ['whoTalent', ME_INITIALS, ''], business: ['whoBusiness', 'GR', 'navy'], mentor: ['whoMentor', 'DH', 'gold'], admin: ['whoAdmin', 'SH', 'navy'] }[role];
+    var who = { talent: ['whoTalent', ME_INITIALS, ''], business: ['whoBusiness', 'GM', 'navy'], mentor: ['whoMentor', 'DH', 'gold'], admin: ['whoAdmin', 'SH', 'navy'] }[role];
     document.getElementById('who').innerHTML = '<span class="avatar ' + who[2] + '" aria-hidden="true">' + who[1] + '</span>' + esc(t(who[0]));
     var html = { talent: renderTalent, business: renderBusiness, mentor: renderMentor, admin: renderAdmin }[role]();
     if (!storageOk) html = '<p class="note-box" style="margin-bottom:20px">' + I('alert') + '<span>' + t('storageWarn') + '</span></p>' + html;
@@ -753,12 +730,6 @@
     if (UI.talentTab === 'cv') return h + renderCvTab() + '</div>';
     if (UI.talentTab === 'certs') return h + renderCertTab() + '</div>';
 
-    // track tabs
-    h += '<div class="track-tabs" role="tablist" aria-label="' + esc(t('tTracks')) + '">' + TRACKS.map(function (x) {
-      var sel = x.id === tr.id;
-      return '<button type="button" class="track-tab" role="tab" aria-selected="' + sel + '" tabindex="' + (sel ? 0 : -1) + '" data-act="track" data-arg="' + x.id + '">' +
-        '<span class="ticon">' + I(x.icon) + '</span><span><span class="tname">' + esc(L(x.short)) + '</span><span class="tscore">' + t('tTrackScore', { n: trackScore(x.id) }) + '</span></span></button>';
-    }).join('') + '</div>';
 
     h += '<div class="grid-main"><div class="stack">';
 
@@ -785,9 +756,8 @@
     h += '</section>';
 
     // track-specific tools
-    if (tr.id === 'inv') h += vaultCard();
-    if (tr.id === 'fnd') h += ventureCard();
-    if (tr.id === 'inv' || tr.id === 'fnd') h += squadCard();
+    h += squadCard();
+    h += vaultCard();
 
     h += '</div><div class="stack">';
     h += DC.claim ? '' : defenseCard();
@@ -1237,8 +1207,8 @@
       if (p.id === 'dcf') { if (!S.verified.some(function (v) { return v.kind === 'work' && v.status !== 'failed'; })) items.push({ type: 'legacy', title: p.title, proof: { en: 'Upload it to verify', ar: 'ارفعه لتوثيقه' }, hint: true }); }
       else items.push({ type: p.type, title: p.title, proof: p.proof });
     });
-    if (S.sprint.status === 'approved') items.unshift({ type: 'native', title: { en: 'Cash-flow forecasting sprint', ar: 'مشروع التنبؤ بالتدفقات النقدية' }, proof: { en: 'Mentor approved · just now', ar: 'اعتمده المرشد · الآن' } });
-    else if (S.sprint.status === 'pending' || S.sprint.status === 'changes') items.push({ type: 'native', title: { en: 'Cash-flow forecasting sprint', ar: 'مشروع التنبؤ بالتدفقات النقدية' }, proof: { en: S.sprint.status === 'changes' ? 'Mentor asked for changes' : 'Submitted', ar: S.sprint.status === 'changes' ? 'طلب المرشد تعديلات' : 'تم التقديم' }, pending: true, waiting: true });
+    if (S.sprint.status === 'approved') items.unshift({ type: 'native', title: { en: 'Café social campaign sprint', ar: 'مشروع حملة تواصل لمقهى' }, proof: { en: 'Mentor approved · just now', ar: 'اعتمده المرشد · الآن' } });
+    else if (S.sprint.status === 'pending' || S.sprint.status === 'changes') items.push({ type: 'native', title: { en: 'Café social campaign sprint', ar: 'مشروع حملة تواصل لمقهى' }, proof: { en: S.sprint.status === 'changes' ? 'Mentor asked for changes' : 'Submitted', ar: S.sprint.status === 'changes' ? 'طلب المرشد تعديلات' : 'تم التقديم' }, pending: true, waiting: true });
 
     var shown = items.filter(function (x) { return UI.pf === 'all' || x.type === UI.pf; });
     var h = '<section class="card" aria-labelledby="pf-h"><div class="card-head"><h2 id="pf-h">' + t('pfTitle') + '</h2></div>' +
@@ -1489,7 +1459,7 @@
 
   function vaultCard() {
     return '<section class="card dark" aria-labelledby="vt-h"><div class="card-head"><h2 id="vt-h">' + t('vaultTitle') + '</h2>' + I('vault') + '</div>' +
-      '<div><strong>' + esc(lang() === 'ar' ? 'صمام ري موفّر للمياه لمزارع النخيل' : 'Low-water date-palm irrigation valve') + '</strong></div>' +
+      '<div><strong>' + esc(lang() === 'ar' ? 'سلسلة «آخر غواصي اللؤلؤ» — معالجة ونصوص' : '“The Last Pearl Divers” — series treatment & scripts') + '</strong></div>' +
       '<div class="vault-meta"><div>' + I('calendar', 'icon-sm') + t('vaultStamped', { date: when('2026-10-12T00:00:00') }) + '</div><div>' + I('hash', 'icon-sm') + '<code>a91f…3c0e</code></div></div>' +
       (S.nda ? '<div class="success-box" role="status"><strong>' + I('unlock') + t('ipOpen') + '</strong><p>' + t('vaultSigned') + '</p></div>'
              : '<div class="locked">' + I('lock') + '<p>' + t('vaultWaiting') + '</p></div>') + '</section>';
@@ -1502,11 +1472,12 @@
   }
 
   function squadCard() {
+    var mine = (ACCOUNT && ACCOUNT.track) || 'video';
     var team = [
-      { i: ME_INITIALS, name: { en: T.whoTalent[0] + ' (' + t('you') + ')', ar: T.whoTalent[1] + ' (' + t('you') + ')' }, role: S.track === 'inv' ? { en: 'Inventor', ar: 'مخترعة' } : { en: 'Founder · finance', ar: 'مؤسسة · مالية' } },
-      { i: 'HS', name: { en: 'Hessa S.', ar: 'حصة س.' }, role: { en: 'Founder · engineering', ar: 'مؤسسة · هندسة' } }
+      { i: ME_INITIALS, name: { en: T.whoTalent[0] + ' (' + t('you') + ')', ar: T.whoTalent[1] + ' (' + t('you') + ')' }, role: specOf(mine).label },
+      { i: 'HS', name: { en: 'Hessa S.', ar: 'حصة س.' }, role: { en: 'Director · documentary', ar: 'مخرجة · أفلام وثائقية' } }
     ];
-    var sugg = PEOPLE.filter(function (p) { return p.track === 'spec' && p.id !== 'la'; }).slice(0, 3);
+    var sugg = PEOPLE.filter(function (p) { return p.id !== 'la' && p.spec !== mine; }).sort(function (a, b) { return b.score - a.score; }).slice(0, 3);
     var h = '<section class="card" aria-labelledby="sq-h"><div class="card-head"><h2 id="sq-h">' + t('squadTitle') + '</h2>' + I('users') + '</div><p class="card-sub">' + t('squadSub') + '</p>' +
       '<div><p class="small muted" style="margin-bottom:8px">' + t('squadTeam') + '</p><div class="row-gap">' + team.map(function (m) {
         return '<span class="row" style="padding:8px 12px"><span class="avatar sm" aria-hidden="true">' + m.i + '</span><span class="grow"><span class="title">' + esc(L(m.name)) + '</span><span class="meta">' + esc(L(m.role)) + '</span></span></span>';
@@ -1542,7 +1513,7 @@
     return '<section class="card" aria-label="' + esc(t('bTabFind')) + '"><div class="filters">' +
       '<div class="search-wrap"><label for="q" class="sr-only">' + t('bSearch') + '</label>' + I('search') + '<input id="q" class="input" type="search" autocomplete="off" placeholder="' + esc(t('bSearch')) + '" value="' + esc(UI.q) + '" data-filter="q"></div>' +
       '<div class="filter-row">' +
-      '<div class="field"><label for="f-track">' + t('bTrack') + '</label><select id="f-track" class="select" data-filter="fTrack">' + opt('all', t('bAllTracks'), UI.fTrack) + TRACKS.map(function (x) { return opt(x.id, esc(L(x.short)), UI.fTrack); }).join('') + '</select></div>' +
+      '<div class="field"><label for="f-track">' + t('bTrack') + '</label><select id="f-track" class="select" data-filter="fTrack">' + opt('all', t('bAllTracks'), UI.fTrack) + SPECS.map(function (x) { return opt(x.id, esc(L(x.label)), UI.fTrack); }).join('') + '</select></div>' +
       '<div class="field"><label for="f-min">' + t('bMin') + '</label><select id="f-min" class="select" data-filter="fMin">' + opt(0, t('bAny'), UI.fMin) + [50, 60, 70, 80].map(function (v) { return opt(v, v + '+', UI.fMin); }).join('') + '</select></div>' +
       '<div class="field"><label for="f-sort">' + t('bSort') + '</label><select id="f-sort" class="select" data-filter="sort">' + opt('score', t('bSortScore'), UI.sort) + opt('proof', t('bSortProof'), UI.sort) + opt('name', t('bSortName'), UI.sort) + '</select></div>' +
       '</div><div class="chips" role="group" aria-label="Filters">' +
@@ -1556,7 +1527,7 @@
     var q = UI.q.trim().toLowerCase();
     var list = PEOPLE.filter(function (p) {
       if (ACCOUNT && p.id === 'la') return false;   // that card is the sample talent's record, not the signed-in person's
-      if (UI.fTrack !== 'all' && p.track !== UI.fTrack) return false;
+      if (UI.fTrack !== 'all' && p.spec !== UI.fTrack) return false;
       if (p.score < Number(UI.fMin)) return false;
       if (UI.chips.native && !p.native) return false;
       if (UI.chips.bi && !(p.langs.indexOf('ar') > -1 && p.langs.indexOf('en') > -1)) return false;
@@ -1600,7 +1571,7 @@
 
   function candCard(p) {
     var on = !!S.shortlist[p.id];
-    var tr = TRACKS.find(function (x) { return x.id === p.track; });
+    var tr = { short: specOf(p.spec).label, label: specOf(p.spec).label };
     return '<li class="cand"><div class="person"><span class="avatar" aria-hidden="true">' + p.i + '</span><div class="person-meta"><span class="person-name">' + esc(L(p.name)) + '</span><span class="person-role">' + esc(L(p.role)) + '</span></div>' +
       '<div class="score" aria-label="' + esc(t('rsTitle')) + ' ' + p.score + '"><strong>' + p.score + '</strong><span>' + esc(L(tr.short)) + '</span></div></div>' +
       '<div class="tags">' + (p.legacy ? '<span class="badge badge-legacy">' + I('history') + t('bLegacyN', { n: p.legacy }) + '</span>' : '') + (p.native ? '<span class="badge badge-native">' + I('sparkle') + t('bNativeN', { n: p.native }) + '</span>' : '') + '</div>' +
@@ -1614,7 +1585,7 @@
     if (!list.length) return '<div class="empty"><span class="ei">' + I('bookmark') + '</span><h3>' + t('bShortEmpty') + '</h3><p>' + t('bShortEmptyBody') + '</p><button type="button" class="btn btn-primary" data-act="biztab" data-arg="find">' + I('search', 'icon-sm') + t('bTabFind') + '</button></div>';
     return '<section class="card" aria-labelledby="sl-h"><div class="card-head"><h2 id="sl-h">' + t('bTabShort') + ' (' + list.length + ')</h2><span class="hint">' + t('bShortHint') + '</span></div><ul class="rows" role="list">' +
       list.map(function (p) {
-        var tr = TRACKS.find(function (x) { return x.id === p.track; });
+        var tr = { short: specOf(p.spec).label, label: specOf(p.spec).label };
         return '<li class="row wrap-sm"><span class="avatar sm" aria-hidden="true">' + p.i + '</span><div class="grow"><span class="title">' + esc(L(p.name)) + ' · <span style="color:var(--teal-700)">' + p.score + '</span></span><span class="meta">' + esc(L(p.role)) + ' · ' + esc(L(tr.short)) + ' · ' + esc(L(p.city)) + '</span></div>' +
           '<div class="row-actions"><button type="button" class="btn btn-outline btn-sm" data-act="profile" data-arg="' + p.id + '">' + t('bProfile') + '<span class="sr-only">: ' + esc(L(p.name)) + '</span></button>' +
           '<button type="button" class="btn btn-danger-ghost btn-sm" data-act="shortlist" data-arg="' + p.id + '">' + I('trash', 'icon-sm') + t('bRemove') + '<span class="sr-only">: ' + esc(L(p.name)) + '</span></button></div></li>';
@@ -1644,7 +1615,7 @@
       '<p>' + t('ipSummary') + '</p>';
     if (!S.nda) h += '<div class="locked">' + I('lock') + '<p>' + t('ipLocked') + '</p><button type="button" class="btn btn-accent" style="justify-self:start" data-act="nda">' + I('unlock', 'icon-sm') + t('ipSign') + '</button></div>';
     else h += '<div class="success-box" role="status"><strong>' + I('unlock') + t('ipOpen') + '</strong><p>' + t('ipOpenBody') + '</p></div>' +
-      '<div class="deal-files">' + ['Blueprints_v3.pdf', 'Field_test_data.xlsx', 'Licence_terms.pdf'].map(function (f) { return '<div>' + I('file', 'icon-sm') + '<span dir="ltr">' + f + '</span></div>'; }).join('') + '</div><p class="small">' + t('ipFiles') + '</p>';
+      '<div class="deal-files">' + ['Series_treatment_v3.pdf', 'Pilot_script.pdf', 'Mood_reel.mp4', 'Licence_terms.pdf'].map(function (f) { return '<div>' + I('file', 'icon-sm') + '<span dir="ltr">' + f + '</span></div>'; }).join('') + '</div><p class="small">' + t('ipFiles') + '</p>';
     return h + '</section></div>';
   }
 
@@ -1672,7 +1643,7 @@
     if (S.sprint.status === 'pending' || S.sprint.status === 'changes') {
       items += '<article class="review"><div class="review-top"><span class="badge badge-native">' + I('sparkle') + t('mSprintKind') + '</span><span class="small muted">' + t('mSubmitted', { d: when('2026-11-20T00:00:00') }) + '</span></div>' +
         '<h3>' + t('mSprintTitle') + '</h3><p class="small muted">' + t('mSprintBody') + '</p>' +
-        '<div class="evidence">' + [{ en: '12-month cash-flow model (.xlsx)', ar: 'نموذج تدفقات نقدية لـ12 شهرًا (.xlsx)' }, { en: 'Client brief and acceptance note', ar: 'موجز العميل ومذكرة القبول' }].map(function (e) { return '<div>' + I('file') + '<span>' + esc(L(e)) + '</span></div>'; }).join('') + '</div>';
+        '<div class="evidence">' + [{ en: 'Content calendar and 12 post designs', ar: 'تقويم المحتوى و12 تصميمًا للمنشورات' }, { en: 'Client brief and acceptance note', ar: 'موجز العميل ومذكرة القبول' }].map(function (e) { return '<div>' + I('file') + '<span>' + esc(L(e)) + '</span></div>'; }).join('') + '</div>';
       if (S.sprint.status === 'changes') items += '<div class="feedback"><strong>' + t('mYourNote') + '</strong>' + esc(S.sprint.note) + '</div><div class="review-actions"><button type="button" class="btn btn-outline" data-act="resub" data-arg="sprint">' + I('refresh', 'icon-sm') + t('mSimResubmit') + '</button></div>';
       else items += '<div class="review-actions"><button type="button" class="btn btn-primary" data-act="approve-sprint">' + I('check', 'icon-sm') + t('mApprove') + '</button><button type="button" class="btn btn-outline" data-act="changes" data-arg="sprint">' + I('edit', 'icon-sm') + t('mChanges') + '</button></div>';
       items += '</article>';
@@ -1917,7 +1888,7 @@
     },
     profile: function (id) {
       var p = PEOPLE.find(function (x) { return x.id === id; });
-      var tr = TRACKS.find(function (x) { return x.id === p.track; });
+      var tr = { short: specOf(p.spec).label, label: specOf(p.spec).label };
       var on = !!S.shortlist[id];
       openModal({ title: esc(L(p.name)), sub: esc(L(p.role)) + ' · ' + esc(L(p.city)),
         body: '<div class="score-row"><div class="ring" style="--val:' + p.score + ';--size:72px;--thick:8px;--ring-bg:var(--bg)" role="img" aria-label="' + esc(t('rsTitle')) + ' ' + p.score + '"><div class="ring-val"><strong>' + p.score + '</strong></div></div><div><strong>' + t('rsTitle') + '</strong><p class="small muted">' + esc(L(tr.label)) + ' · ' + t('lvl' + level(p.score)) + '</p></div></div>' +
@@ -2114,8 +2085,7 @@
           fresh.log = fresh.log.filter(function (e) { return e.ev !== 'evAudit'; });
           try { var raw = localStorage.getItem(STATE_KEY); S = raw ? Object.assign(fresh, JSON.parse(raw)) : fresh; } catch (e) { S = fresh; }
           if (!Array.isArray(S.verified)) S.verified = [];
-          var tk = { specialist: 'spec', researcher: 'res', inventor: 'inv', founder: 'fnd' }[data.user.track];
-          if (tk && !localStorage.getItem(STATE_KEY)) S.track = tk;
+          S.track = 'media';
           applyAccount(data.user); render();
         }
       })

@@ -1000,3 +1000,8 @@ body.is-locked { overflow: hidden; }
   .auth-btn .icon { display: inline-block; }
   .auth-btn .lbl { display: none; }
 }
+
+/* Media path: four specialty cards (not links) + one call to action */
+div.track-card:hover { transform: none; box-shadow: none; border-color: var(--border); }
+.track-cta { margin-top: 24px; display: grid; gap: 16px; justify-items: start; }
+.track-cta .squad-note { margin-top: 0; width: 100%; }

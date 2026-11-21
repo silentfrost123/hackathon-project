@@ -33,7 +33,7 @@ def signup(email="layla@example.com", phone="501234567", id_type="emirates_id", 
            name="Layla Al Mansouri", institution="", ip="10.0.0.1", stop_at=None):
     """Runs the whole flow; returns the last (status, body, cookie)."""
     s, b, _ = call("/api/auth/signup/start", {"fullName": name, "email": email, "password": "bridge2026",
-                                              "role": "talent", "track": "specialist"}, ip=ip)
+                                              "role": "talent", "track": "video"}, ip=ip)
     if s != 200:
         return s, b, None
     tok = b["signup"]["token"]
@@ -167,7 +167,7 @@ class Flow(unittest.TestCase):
 
     def test_11_name_mismatch_needs_review(self):
         s, b, _ = call("/api/auth/signup/start", {"fullName": "Reem Khalid", "email": "reem@example.com", "password": "bridge2026",
-                                                  "role": "talent", "track": "founder"}, ip="10.0.0.11")
+                                                  "role": "talent", "track": "content"}, ip="10.0.0.11")
         tok = b["signup"]["token"]
         call("/api/auth/signup/verify-email", {"token": tok, "code": "123456"}, ip="10.0.0.11")
         call("/api/auth/signup/phone", {"token": tok, "countryCode": "+971", "phone": "508111111"}, ip="10.0.0.11")

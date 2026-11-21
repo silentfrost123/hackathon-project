@@ -116,6 +116,41 @@ def _db():
     return con
 
 
+def _migrate_media_tracks():
+    """Migration 002: allow the Media specialties in users.track. SQLite can't alter a CHECK
+    constraint, so the table is rebuilt (the documented 12-step way) and every row is kept."""
+    con = _db()
+    try:
+        row = con.execute("SELECT sql FROM sqlite_master WHERE type='table' AND name='users'").fetchone()
+        if not row or "'video'" in row["sql"]:
+            return
+        new_sql = row["sql"].replace("CREATE TABLE users", "CREATE TABLE users_new", 1).replace(
+            "CHECK (track IN ('specialist', 'researcher', 'inventor', 'founder'))",
+            "CHECK (track IN ('video', 'design', 'content', 'journalism', 'specialist', 'researcher', 'inventor', 'founder'))")
+        if "'video'" not in new_sql:
+            raise RuntimeError("migration 002: unexpected users table definition")
+        con.execute("PRAGMA foreign_keys = OFF")
+        con.execute("BEGIN IMMEDIATE")
+        try:
+            con.execute(new_sql)
+            con.execute("INSERT INTO users_new SELECT * FROM users")
+            con.execute("DROP TABLE users")
+            con.execute("ALTER TABLE users_new RENAME TO users")
+            bad = con.execute("PRAGMA foreign_key_check").fetchall()
+            if bad:
+                raise RuntimeError(f"migration 002: foreign key problems {bad[:3]}")
+            con.execute("INSERT OR IGNORE INTO schema_migrations (version, applied_at) VALUES (2, ?)", (int(time.time()),))
+            con.execute("COMMIT")
+            print("[auth] migration 002 applied: Media specialties allowed in users.track", flush=True)
+        except Exception:
+            con.execute("ROLLBACK")
+            raise
+        finally:
+            con.execute("PRAGMA foreign_keys = ON")
+    finally:
+        con.close()
+
+
 def init():
     os.makedirs(os.path.dirname(DB_PATH) or ".", exist_ok=True)
     con = _db()
@@ -125,6 +160,7 @@ def init():
             con.executescript(fh.read())
     finally:
         con.close()
+    _migrate_media_tracks()
     _pepper()
     global _DUMMY_HASH
     _DUMMY_HASH = hash_password(secrets.token_hex(8))
@@ -271,7 +307,7 @@ def _account_fields(body):
         raise AuthError(400, "invalid_role", "Choose how you'll use JISR.", field="role")
     track = body.get("track") if role == "talent" else None
     if role == "talent" and track not in idn.TRACKS:
-        raise AuthError(400, "invalid_track", "Choose your track.", field="track")
+        raise AuthError(400, "invalid_track", "Choose your media specialty.", field="track")
     return name, pw, role, track
 
 

@@ -30,7 +30,8 @@
     iAm: ['I\'m joining as', 'أنضم بصفتي'],
     talent: ['Talent', 'موهبة'], talentSub: ['Build a verified portfolio', 'ابنِ ملف أعمال موثّقًا'],
     partner: ['Partner', 'شريك'], partnerSub: ['Company or investor', 'شركة أو مستثمر'],
-    track: ['Your track', 'مسارك'],
+    track: ['Your media specialty', 'تخصصك الإعلامي'],
+    video: ['Video & motion', 'الفيديو والموشن'], design: ['Design & photo', 'التصميم والتصوير'], content: ['Content & social', 'المحتوى والتواصل'], journalism: ['Journalism & audio', 'الصحافة والصوت'],
     specialist: ['Specialist', 'متخصص'], researcher: ['Researcher', 'باحث'], inventor: ['Inventor', 'مخترع'], founder: ['Founder', 'مؤسس'],
     fullName: ['Full name', 'الاسم الكامل'],
     fullNameHelp: ['As you\'d like it on your profile.', 'كما تريده أن يظهر في ملفك.'],
@@ -98,7 +99,7 @@
     e_weak_password: ['Use at least 8 characters with letters and numbers.', 'استخدم 8 أحرف على الأقل تتضمن حروفًا وأرقامًا.'],
     e_required: ['This field is required.', 'هذا الحقل مطلوب.'],
     e_invalid_role: ['Choose how you\'ll use JISR.', 'اختر كيف ستستخدم جسر.'],
-    e_invalid_track: ['Choose your track.', 'اختر مسارك.'],
+    e_invalid_track: ['Choose your media specialty.', 'اختر تخصصك الإعلامي.'],
     e_invalid_phone: ['Enter a valid mobile number.', 'أدخل رقم جوال صحيحًا.'],
     e_bad_code: ['That code isn\'t right. {n} tries left.', 'الرمز غير صحيح. تبقّى {n} محاولات.'],
     e_code_format: ['Enter the 6-digit code.', 'أدخل الرمز المكوّن من 6 أرقام.'],
@@ -127,7 +128,7 @@
   };
   var UNIS = ['United Arab Emirates University', 'Khalifa University', 'University of Sharjah', 'American University of Sharjah',
     'Zayed University', 'Higher Colleges of Technology', 'NYU Abu Dhabi', 'American University in Dubai', 'Abu Dhabi University', 'Ajman University'];
-  var TRACKS = [['specialist', 'briefcase'], ['researcher', 'flask'], ['inventor', 'bulb'], ['founder', 'rocket']];
+  var TRACKS = [['video', 'video'], ['design', 'camera'], ['content', 'message'], ['journalism', 'mic']];
   var SS_KEY = 'jisr.signup';
 
   function lang() { return window.JISR && window.JISR.lang ? window.JISR.lang() : 'en'; }
@@ -151,7 +152,7 @@
     signin: { email: '', password: '' },
     step: 1,
     sub: 'form',               // 'form' | 'code' (steps 1 and 2)
-    acct: { fullName: '', email: '', password: '', role: 'talent', track: 'specialist' },
+    acct: { fullName: '', email: '', password: '', role: 'talent', track: 'video' },
     phone: { cc: '+971', number: '' },
     ident: { idType: 'emirates_id', idNumber: '', nameOnId: '', institution: '', file: null, tradeLicense: '' },
     code: '',
@@ -174,6 +175,8 @@
     if (!r || !r.token) return;
     S.token = r.token; S.step = r.step || 1; S.sub = r.sub || 'form';
     Object.assign(S.acct, r.acct || {}); Object.assign(S.phone, r.phone || {});
+    // a sign-up started before the Media path may still say "specialist" etc.
+    if (!TRACKS.some(function (tr) { return tr[0] === S.acct.track; })) S.acct.track = 'video';
     api('/api/auth/signup/status', { token: S.token }).then(function (res) {
       S.signup = res.signup;
       // never land past what the server says is verified

@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS users (
   phone_verified_at INTEGER NOT NULL,
   password_hash     TEXT    NOT NULL,                -- scrypt$n$r$p$salt$hash
   role              TEXT    NOT NULL CHECK (role IN ('talent', 'partner')),
-  track             TEXT    CHECK (track IN ('specialist', 'researcher', 'inventor', 'founder')),
+  track             TEXT    CHECK (track IN ('video', 'design', 'content', 'journalism', 'specialist', 'researcher', 'inventor', 'founder')),   -- Media specialty (old values kept for older accounts)
   kyb_status        TEXT    CHECK (kyb_status IN ('not_started', 'pending')),   -- partners only (KYB later)
   trade_license     TEXT,                            -- partners only, placeholder until KYB
   created_at        INTEGER NOT NULL

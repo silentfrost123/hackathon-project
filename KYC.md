@@ -2,7 +2,7 @@
 
 ## What was built
 - **`auth.html`** (`#signin`, `#signup`): sign in, and a 4-step KYC sign-up with a progress bar.
-  1. **Account**: role (Talent with track Specialist / Researcher / Inventor / Founder, or Partner), full name, email, password, then a 6-digit email code.
+  1. **Account**: role (Talent with a Media specialty: Video & motion / Design & photo / Content & social / Journalism & audio, or Partner), full name, email, password, then a 6-digit email code.
   2. **Phone**: country code (UAE +971 by default) + mobile, then an SMS code.
   3. **Identity**: Emirates ID or University ID (+ university), ID number, name as on the ID, optional ID photo. Partners also see a "KYB coming soon" box with an optional trade licence number.
   4. **Done**: the "KYC verified" tag in the landing-page style, a masked summary (`****5677`), Identity & Trust 20/20, then on to `app.html#talent` (partners go to `#business`).
@@ -62,3 +62,5 @@ Password reset; real email/SMS providers; real ID checks (UAE PASS / ICP, univer
 - `/api/auth/me` answers 200 with `user: null` when signed out (no console error on every visit).
 - The server no longer serves `.md`, `.sql`, `.log` or `.json` files.
 - The portal keeps a separate demo state per account (starting empty, with the account's real score), shows "(demo check)" / "ID under review" on the KYC badge, and the sign-in page sends signed-in users to their dashboard.
+
+- **Media path (migration 002)**: JISR has one path, Media. `users.track` now holds the specialty (`video`, `design`, `content`, `journalism`); old values stay allowed for older accounts. `auth_api.init()` rebuilds the users table once on an older database, keeping every row.
