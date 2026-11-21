@@ -1,0 +1,465 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>JISR — App with 4-view switcher</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;family=IBM+Plex+Sans+Arabic:wght@500;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#1E6F68}a:hover{color:#0F1B2D}
+button{font-family:inherit;cursor:pointer}
+</style>
+</helmet>
+<div style="font-family: Inter, system-ui, sans-serif; color: #0F1B2D; background: #F2F1EC; min-height: 100vh">
+
+<header style="background: #0F1B2D; color: #F7F6F2">
+<div style="max-width: 1320px; margin: 0 auto; padding: 14px 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px">
+<a href="Main.dc.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: #F7F6F2">
+<span style="width: 36px; height: 36px; border-radius: 9px; background: #F2B33D; display: flex; align-items: center; justify-content: center">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0F1B2D" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M3 17h18"></path><path d="M5 17c0-5 3-8 7-8s7 3 7 8"></path><path d="M9 17v-4"></path><path d="M15 17v-4"></path></svg>
+</span>
+<span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 20px; letter-spacing: 0.04em">JISR</span>
+<span style="font-family: 'IBM Plex Sans Arabic', sans-serif; font-weight: 700; font-size: 17px; color: #F2B33D">جسر</span>
+</a>
+<div role="group" aria-label="Switch view" style="display: flex; flex-wrap: wrap; gap: 4px; background: #1A2A42; border-radius: 12px; padding: 4px; flex-grow: 1; max-width: 620px">
+<sc-for list="{{ tabs }}" as="t" hint-placeholder-count="4">
+<sc-if value="{{ t.active }}" hint-placeholder-val="{{ false }}">
+<button type="button" aria-pressed="true" onClick="{{ t.pick }}" style="flex: 1 1 120px; min-height: 44px; border: 0; border-radius: 9px; background: #F2B33D; color: #0F1B2D; font-weight: 700; font-size: 15px">{{ t.label }}</button>
+</sc-if>
+<sc-if value="{{ t.inactive }}" hint-placeholder-val="{{ true }}">
+<button type="button" aria-pressed="false" onClick="{{ t.pick }}" style="flex: 1 1 120px; min-height: 44px; border: 0; border-radius: 9px; background: transparent; color: #D9DEE6; font-weight: 600; font-size: 15px">{{ t.label }}</button>
+</sc-if>
+</sc-for>
+</div>
+<div style="display: flex; align-items: center; gap: 12px; margin-left: auto">
+<span style="border: 1px solid #3A4A63; border-radius: 999px; padding: 5px 12px; font-size: 12px; color: #C9D2DE">Demo data</span>
+<span style="font-size: 14px; color: #D9DEE6">{{ who }}</span>
+</div>
+</div>
+</header>
+
+<main style="max-width: 1320px; margin: 0 auto; padding: 28px 24px 64px; display: flex; flex-direction: column; gap: 24px">
+
+<sc-if value="{{ isTalent }}" hint-placeholder-val="{{ true }}">
+<div style="display: flex; flex-direction: column; gap: 24px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 12px">
+<div style="display: flex; flex-direction: column; gap: 4px">
+<span style="font-size: 14px; color: #4D5869">Talent app</span>
+<h1 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 34px">Welcome back, Layla</h1>
+</div>
+<span style="display: inline-flex; align-items: center; gap: 6px; background: #E3F2EF; color: #17665F; border-radius: 999px; padding: 8px 14px; font-size: 14px; font-weight: 600"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg>KYC verified · University ID</span>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 24px; align-items: start">
+<section aria-labelledby="score-h" style="background: #FFFFFF; border-radius: 18px; padding: 26px; display: flex; flex-direction: column; gap: 20px">
+<h2 id="score-h" style="margin: 0; font-size: 18px">Readiness Score</h2>
+<div style="display: flex; align-items: center; gap: 22px">
+<div style="width: 128px; height: 128px; flex-shrink: 0; border-radius: 50%; background: conic-gradient(#1E8F86 0 {{ scorePct }}, #E4E7EC {{ scorePct }} 100%); display: flex; align-items: center; justify-content: center">
+<div style="width: 100px; height: 100px; border-radius: 50%; background: #FFFFFF; display: flex; flex-direction: column; align-items: center; justify-content: center">
+<span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 36px">{{ score }}</span>
+<span style="font-size: 12px; color: #5B6678">/ 100</span>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<span style="font-weight: 700; font-size: 17px">{{ trackLabel }} track</span>
+<span style="font-size: 15px; color: #4D5869; line-height: 1.45">{{ trackNext }}</span>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 13px; font-weight: 600; color: #5B6678">Switch track</span>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
+<sc-for list="{{ tracks }}" as="tr" hint-placeholder-count="4">
+<sc-if value="{{ tr.active }}" hint-placeholder-val="{{ false }}">
+<button type="button" aria-pressed="true" onClick="{{ tr.pick }}" style="min-height: 44px; border-radius: 10px; border: 2px solid #1E8F86; background: #E3F2EF; color: #0F1B2D; font-weight: 700; font-size: 14px">{{ tr.label }} · {{ tr.score }}</button>
+</sc-if>
+<sc-if value="{{ tr.inactive }}" hint-placeholder-val="{{ true }}">
+<button type="button" aria-pressed="false" onClick="{{ tr.pick }}" style="min-height: 44px; border-radius: 10px; border: 1px solid #D5D9E0; background: #FFFFFF; color: #344054; font-weight: 600; font-size: 14px">{{ tr.label }} · {{ tr.score }}</button>
+</sc-if>
+</sc-for>
+</div>
+</div>
+</section>
+
+<section aria-labelledby="dc-h" style="background: #0F1B2D; color: #F7F6F2; border-radius: 18px; padding: 26px; display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 12px">
+<h2 id="dc-h" style="margin: 0; font-size: 18px">Defense Check</h2>
+<span style="background: #FBEFD5; color: #7A5410; border-radius: 6px; padding: 4px 8px; font-size: 12px; font-weight: 700">LEGACY BADGE</span>
+</div>
+<span style="font-size: 15px; color: #C9D2DE; line-height: 1.5">Uploaded: <strong style="color: #F7F6F2">Retail_DCF_model_v7.xlsx</strong> — source file and edit history found.</span>
+<sc-if value="{{ dcIdle }}" hint-placeholder-val="{{ true }}">
+<div style="display: flex; flex-direction: column; gap: 14px">
+<span style="font-size: 15px; color: #C9D2DE; line-height: 1.5">AI will ask 3 questions about your own file. You have 5 minutes.</span>
+<button type="button" onClick="{{ startDc }}" style="align-self: flex-start; min-height: 48px; padding: 0 22px; border: 0; border-radius: 10px; background: #F2B33D; color: #0F1B2D; font-weight: 700; font-size: 15px">Start 5-min check</button>
+</div>
+</sc-if>
+<sc-if value="{{ dcAsking }}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 12px">
+<ol style="margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 10px; font-size: 15px; line-height: 1.45; color: #E6EAF0">
+<li>Why does the terminal growth rate in cell F42 differ from the base case?</li>
+<li>Which sheet drives the working-capital assumptions, and why?</li>
+<li>What breaks if store count stays flat in year 3?</li>
+</ol>
+<div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap">
+<button type="button" onClick="{{ passDc }}" style="min-height: 48px; padding: 0 22px; border: 0; border-radius: 10px; background: #F2B33D; color: #0F1B2D; font-weight: 700; font-size: 15px">Submit answers</button>
+<span style="font-size: 14px; color: #C9D2DE">04:12 left</span>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{ dcPassed }}" hint-placeholder-val="{{ false }}">
+<div style="background: #163B3A; border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 6px">
+<span style="font-weight: 700; font-size: 16px; color: #A6E3DA">Passed — Legacy Badge added</span>
+<span style="font-size: 14px; color: #D9DEE6">Readiness Score +4. Optional: send an attestation link to your professor.</span>
+</div>
+</sc-if>
+</section>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 24px; align-items: start">
+<section aria-labelledby="port-h" style="background: #FFFFFF; border-radius: 18px; padding: 26px; display: flex; flex-direction: column; gap: 14px">
+<h2 id="port-h" style="margin: 0; font-size: 18px">Living portfolio</h2>
+<sc-for list="{{ badges }}" as="b" hint-placeholder-count="3">
+<div style="display: flex; align-items: center; gap: 12px; border: 1px solid #ECEEF2; border-radius: 12px; padding: 14px">
+<sc-if value="{{ b.legacy }}" hint-placeholder-val="{{ false }}">
+<span style="background: #FBEFD5; color: #7A5410; border-radius: 6px; padding: 4px 8px; font-size: 12px; font-weight: 700">LEGACY</span>
+</sc-if>
+<sc-if value="{{ b.native }}" hint-placeholder-val="{{ true }}">
+<span style="background: #E3F2EF; color: #17665F; border-radius: 6px; padding: 4px 8px; font-size: 12px; font-weight: 700">NATIVE</span>
+</sc-if>
+<div style="display: flex; flex-direction: column; gap: 2px; flex-grow: 1">
+<span style="font-weight: 600; font-size: 15px">{{ b.title }}</span>
+<span style="font-size: 13px; color: #5B6678">{{ b.proof }}</span>
+</div>
+</div>
+</sc-for>
+</section>
+
+<section aria-labelledby="opp-h" style="background: #FFFFFF; border-radius: 18px; padding: 26px; display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px">
+<h2 id="opp-h" style="margin: 0; font-size: 18px">Unlocked for you</h2>
+<span style="font-size: 13px; color: #5B6678">{{ trackLabel }} track</span>
+</div>
+<sc-for list="{{ opps }}" as="o" hint-placeholder-count="3">
+<div style="display: flex; align-items: center; gap: 14px; border: 1px solid #ECEEF2; border-radius: 12px; padding: 14px">
+<div style="display: flex; flex-direction: column; gap: 4px; flex-grow: 1">
+<span style="font-size: 12px; font-weight: 700; color: #1E6F68; text-transform: uppercase; letter-spacing: 0.05em">{{ o.kind }}</span>
+<span style="font-weight: 600; font-size: 15px">{{ o.title }}</span>
+<span style="font-size: 13px; color: #5B6678">{{ o.meta }}</span>
+</div>
+<a href="#" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border-radius: 10px; border: 1px solid #1E8F86; color: #17665F; font-weight: 600; font-size: 14px; text-decoration: none">View</a>
+</div>
+</sc-for>
+</section>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isBusiness }}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 24px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 12px">
+<div style="display: flex; flex-direction: column; gap: 4px">
+<span style="font-size: 14px; color: #4D5869">Partner portal · Gulf Retail Group (demo)</span>
+<h1 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 34px">Find verified talent</h1>
+</div>
+<span style="display: inline-flex; align-items: center; gap: 6px; background: #E3F2EF; color: #17665F; border-radius: 999px; padding: 8px 14px; font-size: 14px; font-weight: 600"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg>KYB verified · Trade licence</span>
+</div>
+
+<section aria-labelledby="search-h" style="background: #FFFFFF; border-radius: 18px; padding: 24px; display: flex; flex-direction: column; gap: 18px">
+<h2 id="search-h" style="margin: 0; font-size: 18px">Candidates · Specialist track · score 60+</h2>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<span style="border-radius: 999px; background: #0F1B2D; color: #F7F6F2; padding: 8px 14px; font-size: 13px; font-weight: 600">Financial modelling</span>
+<span style="border-radius: 999px; border: 1px solid #D5D9E0; padding: 8px 14px; font-size: 13px">Has Native badge</span>
+<span style="border-radius: 999px; border: 1px solid #D5D9E0; padding: 8px 14px; font-size: 13px">Arabic + English</span>
+<span style="border-radius: 999px; border: 1px solid #D5D9E0; padding: 8px 14px; font-size: 13px">UAE-based</span>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px">
+<sc-for list="{{ candidates }}" as="c" hint-placeholder-count="3">
+<div style="border: 1px solid #ECEEF2; border-radius: 14px; padding: 18px; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; align-items: center; gap: 12px">
+<span style="width: 44px; height: 44px; border-radius: 50%; background: #DCE7E5; color: #1E6F68; display: flex; align-items: center; justify-content: center; font-weight: 700">{{ c.initials }}</span>
+<div style="display: flex; flex-direction: column; gap: 2px; flex-grow: 1">
+<span style="font-weight: 700; font-size: 15px">{{ c.name }}</span>
+<span style="font-size: 13px; color: #5B6678">{{ c.role }}</span>
+</div>
+<span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 22px; color: #1E6F68">{{ c.score }}</span>
+</div>
+<span style="font-size: 13px; color: #4D5869">{{ c.badges }}</span>
+<sc-if value="{{ c.listed }}" hint-placeholder-val="{{ false }}">
+<button type="button" aria-pressed="true" onClick="{{ c.toggle }}" style="min-height: 44px; border-radius: 10px; border: 0; background: #1E8F86; color: #FFFFFF; font-weight: 700; font-size: 14px">Shortlisted</button>
+</sc-if>
+<sc-if value="{{ c.unlisted }}" hint-placeholder-val="{{ true }}">
+<button type="button" aria-pressed="false" onClick="{{ c.toggle }}" style="min-height: 44px; border-radius: 10px; border: 1px solid #1E8F86; background: #FFFFFF; color: #17665F; font-weight: 700; font-size: 14px">Add to shortlist</button>
+</sc-if>
+</div>
+</sc-for>
+</div>
+</section>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 24px; align-items: start">
+<section aria-labelledby="escrow-h" style="background: #FFFFFF; border-radius: 18px; padding: 24px; display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap">
+<h2 id="escrow-h" style="margin: 0; font-size: 18px">Backed venture: Desert Cool</h2>
+<span style="font-size: 14px; color: #4D5869">AED 40,000 in Safe Box</span>
+</div>
+<span style="font-size: 14px; color: #4D5869">Evaporative cooling vest · founder squad of 3 · mentor: Dr. Hamad (demo)</span>
+<div style="display: flex; gap: 6px">
+<sc-for list="{{ stages }}" as="s" hint-placeholder-count="3">
+<div style="flex: {{ s.weight }} 1 0; display: flex; flex-direction: column; gap: 6px">
+<div style="height: 14px; border-radius: 6px; background: {{ s.color }}"></div>
+<span style="font-size: 13px; font-weight: 600">{{ s.label }}</span>
+<span style="font-size: 12px; color: #5B6678">{{ s.status }}</span>
+</div>
+</sc-for>
+</div>
+<span style="font-size: 15px; font-weight: 600">Released so far: {{ released }}</span>
+</section>
+
+<section aria-labelledby="vault-h" style="background: #0F1B2D; color: #F7F6F2; border-radius: 18px; padding: 24px; display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 12px">
+<h2 id="vault-h" style="margin: 0; font-size: 18px">IP Vault · Low-water date-palm irrigation valve</h2>
+</div>
+<span style="font-size: 14px; color: #C9D2DE">Inventor track · date-stamped 12 Oct 2026 · hash a91f…3c0e</span>
+<span style="font-size: 15px; line-height: 1.5; color: #E6EAF0">Public summary: a pressure-sensing valve that cuts drip-irrigation water use on palm farms. Seeking licence or buyout.</span>
+<sc-if value="{{ ndaLocked }}" hint-placeholder-val="{{ true }}">
+<div style="border: 1px dashed #4A5B76; border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 12px">
+<span style="font-size: 14px; color: #C9D2DE">Full blueprints locked. Sign the 1-click NDA and deposit the option fee to open the deal room.</span>
+<button type="button" onClick="{{ signNda }}" style="align-self: flex-start; min-height: 48px; padding: 0 20px; border: 0; border-radius: 10px; background: #F2B33D; color: #0F1B2D; font-weight: 700; font-size: 15px">Sign NDA &amp; unlock</button>
+</div>
+</sc-if>
+<sc-if value="{{ ndaSigned }}" hint-placeholder-val="{{ false }}">
+<div style="background: #163B3A; border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 6px">
+<span style="font-weight: 700; color: #A6E3DA">NDA signed — deal room open</span>
+<span style="font-size: 14px; color: #D9DEE6">Blueprints, test data and the inventor's terms are now visible. 7% brokerage applies on close.</span>
+</div>
+</sc-if>
+</section>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isMentor }}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 24px">
+<div style="display: flex; flex-direction: column; gap: 4px">
+<span style="font-size: 14px; color: #4D5869">Mentor portal · University Incubation Centre (demo)</span>
+<h1 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 34px">Good evening, Dr. Hamad</h1>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 24px; align-items: start">
+<section aria-labelledby="verify-h" style="background: #FFFFFF; border-radius: 18px; padding: 24px; display: flex; flex-direction: column; gap: 16px">
+<h2 id="verify-h" style="margin: 0; font-size: 18px">Milestones waiting for you</h2>
+<sc-if value="{{ hasPending }}" hint-placeholder-val="{{ true }}">
+<div style="border: 1px solid #ECEEF2; border-radius: 14px; padding: 18px; display: flex; flex-direction: column; gap: 12px">
+<span style="font-size: 12px; font-weight: 700; color: #8A5A00; text-transform: uppercase; letter-spacing: 0.05em">Escrow release · {{ pendingShare }}</span>
+<span style="font-weight: 700; font-size: 17px">Desert Cool — {{ pendingLabel }}</span>
+<span style="font-size: 14px; color: #4D5869; line-height: 1.5">{{ pendingEvidence }}</span>
+<div style="display: flex; gap: 10px; flex-wrap: wrap">
+<button type="button" onClick="{{ approve }}" style="min-height: 48px; padding: 0 20px; border: 0; border-radius: 10px; background: #1E8F86; color: #FFFFFF; font-weight: 700; font-size: 15px">Verify &amp; release funds</button>
+<button type="button" style="min-height: 48px; padding: 0 20px; border-radius: 10px; border: 1px solid #D5D9E0; background: #FFFFFF; color: #344054; font-weight: 600; font-size: 15px">Request changes</button>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{ allDone }}" hint-placeholder-val="{{ false }}">
+<div style="background: #E3F2EF; border-radius: 14px; padding: 18px; color: #17665F; font-weight: 600">All 3 stages verified. 100% of the Safe Box has been released.</div>
+</sc-if>
+<div style="border: 1px solid #ECEEF2; border-radius: 14px; padding: 18px; display: flex; flex-direction: column; gap: 6px">
+<span style="font-size: 12px; font-weight: 700; color: #1E6F68; text-transform: uppercase; letter-spacing: 0.05em">Sprint review</span>
+<span style="font-weight: 600; font-size: 15px">Layla A. — Audit simulation, Pod 3</span>
+<span style="font-size: 14px; color: #4D5869">Approving adds a Native badge to her portfolio.</span>
+</div>
+</section>
+<section aria-labelledby="sess-h" style="background: #FFFFFF; border-radius: 18px; padding: 24px; display: flex; flex-direction: column; gap: 14px">
+<h2 id="sess-h" style="margin: 0; font-size: 18px">This week</h2>
+<sc-for list="{{ sessions }}" as="m" hint-placeholder-count="3">
+<div style="display: flex; gap: 14px; align-items: center; border-bottom: 1px solid #ECEEF2; padding-bottom: 12px">
+<span style="min-width: 72px; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 15px; color: #1E6F68">{{ m.when }}</span>
+<div style="display: flex; flex-direction: column; gap: 2px">
+<span style="font-weight: 600; font-size: 15px">{{ m.title }}</span>
+<span style="font-size: 13px; color: #5B6678">{{ m.meta }}</span>
+</div>
+</div>
+</sc-for>
+</section>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isAdmin }}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 24px">
+<div style="display: flex; flex-direction: column; gap: 4px">
+<span style="font-size: 14px; color: #4D5869">Shams Admin command centre</span>
+<h1 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 34px">Programme overview</h1>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px">
+<sc-for list="{{ kpis }}" as="k" hint-placeholder-count="4">
+<div style="background: #FFFFFF; border-radius: 16px; padding: 20px; display: flex; flex-direction: column; gap: 6px">
+<span style="font-size: 13px; color: #5B6678">{{ k.label }}</span>
+<span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 32px">{{ k.value }}</span>
+<span style="font-size: 13px; color: #4D5869">{{ k.note }}</span>
+</div>
+</sc-for>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 24px; align-items: start">
+<section aria-labelledby="stages-h" style="background: #FFFFFF; border-radius: 18px; padding: 24px; display: flex; flex-direction: column; gap: 16px">
+<h2 id="stages-h" style="margin: 0; font-size: 18px">Programme stages</h2>
+<sc-for list="{{ programme }}" as="p" hint-placeholder-count="4">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<div style="display: flex; justify-content: space-between; gap: 12px; font-size: 14px">
+<span style="font-weight: 600">{{ p.name }}</span>
+<span style="color: #5B6678">{{ p.months }} · {{ p.budget }} budget</span>
+</div>
+<div style="height: 10px; border-radius: 6px; background: #ECEEF2">
+<div style="height: 10px; border-radius: 6px; width: {{ p.progress }}; background: #1E8F86"></div>
+</div>
+</div>
+</sc-for>
+</section>
+<section aria-labelledby="ledger-h" style="background: #FFFFFF; border-radius: 18px; padding: 24px; display: flex; flex-direction: column; gap: 12px">
+<h2 id="ledger-h" style="margin: 0; font-size: 18px">Escrow ledger &amp; audit log</h2>
+<div style="overflow-x: auto">
+<table style="width: 100%; border-collapse: collapse; font-size: 14px; min-width: 420px">
+<thead>
+<tr style="text-align: left; color: #5B6678">
+<th style="padding: 8px 6px; font-weight: 600; border-bottom: 1px solid #ECEEF2">Event</th>
+<th style="padding: 8px 6px; font-weight: 600; border-bottom: 1px solid #ECEEF2">By</th>
+<th style="padding: 8px 6px; font-weight: 600; border-bottom: 1px solid #ECEEF2">Amount</th>
+</tr>
+</thead>
+<tbody>
+<sc-for list="{{ ledger }}" as="l" hint-placeholder-count="3">
+<tr>
+<td style="padding: 10px 6px; border-bottom: 1px solid #F2F3F5">{{ l.event }}</td>
+<td style="padding: 10px 6px; border-bottom: 1px solid #F2F3F5; color: #4D5869">{{ l.by }}</td>
+<td style="padding: 10px 6px; border-bottom: 1px solid #F2F3F5; font-weight: 600">{{ l.amount }}</td>
+</tr>
+</sc-for>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+</div>
+</sc-if>
+
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"startView":{"editor":"enum","options":["talent","business","mentor","admin"],"default":"talent"},"$preview":{"width":1440,"height":1700}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { view: null, track: 'spec', dc: 0, nda: false, stage: 0, shortlist: {} };
+  }
+  renderVals() {
+    const s = this.state;
+    const view = s.view || this.props.startView || 'talent';
+    const TABS = [['talent', 'Talent'], ['business', 'Business'], ['mentor', 'Mentor'], ['admin', 'Shams Admin']];
+    const WHO = { talent: 'Layla A.', business: 'Gulf Retail Group', mentor: 'Dr. Hamad', admin: 'Shams team' };
+    const TRACKS = [
+      { id: 'spec', label: 'Specialist', score: 72, next: 'Ready for paid client sprints. One mentor-reviewed sprint adds about 8 points.' },
+      { id: 'res', label: 'Researcher', score: 64, next: 'Publish one verified study summary to reach corporate lab sponsors.' },
+      { id: 'inv', label: 'Inventor', score: 58, next: 'Date-stamp an invention in the IP Vault to open NDA deal rooms.' },
+      { id: 'fnd', label: 'Founder', score: 49, next: 'Recruit one verified specialist with the Squad Builder to pass 50.' }
+    ];
+    const OPPS = {
+      spec: [
+        { kind: 'Job', title: 'Junior FP&A analyst', meta: 'Retail group · Dubai · full-time' },
+        { kind: 'Paid sprint', title: '3-statement model for a café chain', meta: '2 weeks · fee locked in escrow · you keep 90%' },
+        { kind: 'Simulation', title: 'Year-end audit sandbox', meta: 'Earns a Native badge on completion' }
+      ],
+      res: [
+        { kind: 'Sponsorship', title: 'Water-reuse lab study', meta: 'Corporate R&D team · 6 months' },
+        { kind: 'SME call', title: 'Advise on solar panel soiling data', meta: '45 min · paid · bookable' },
+        { kind: 'Simulation', title: 'Grant-proposal review sprint', meta: 'Mentor-reviewed · Native badge' }
+      ],
+      inv: [
+        { kind: 'Licence interest', title: 'Agri-tech scout viewed your summary', meta: 'Awaiting NDA signature' },
+        { kind: 'Clinic', title: 'University patent clinic slot', meta: 'Free · this Thursday' },
+        { kind: 'Squad', title: 'Find a verified finance specialist', meta: 'Squad Builder · Track 1 talent' }
+      ],
+      fnd: [
+        { kind: 'Incubation', title: 'Prototype stage support', meta: 'University incubator · mentor assigned' },
+        { kind: 'Demo day', title: 'Monthly live Demo Fair', meta: 'Pitch to verified angels' },
+        { kind: 'Campaign', title: 'Launch a 30/40/30 pre-order campaign', meta: '5% platform fee on success' }
+      ]
+    };
+    const tr = TRACKS.find((t) => t.id === s.track) || TRACKS[0];
+    const bonus = s.dc === 2 ? 4 : 0;
+    const score = Math.min(100, tr.score + bonus);
+
+    const STAGES = [
+      { label: '30% Prototype', weight: 30, amount: 12000, evidence: 'Working prototype video, bill of materials and lab heat-test report uploaded.' },
+      { label: '40% Production', weight: 40, amount: 16000, evidence: 'Supplier contract for the first 500 units and a quality-check sample.' },
+      { label: '30% Delivery', weight: 30, amount: 12000, evidence: 'Shipping confirmations for backer pre-orders.' }
+    ];
+    const fmt = (n) => 'AED ' + n.toLocaleString('en-US');
+    const releasedAmt = STAGES.slice(0, s.stage).reduce((a, x) => a + x.amount, 0);
+    const pending = STAGES[s.stage];
+
+    const people = [
+      { id: 'la', initials: 'LA', name: 'Layla A.', role: 'Financial modelling · Sharjah', score: 72, badges: '2 Legacy · 3 Native badges' },
+      { id: 'om', initials: 'OK', name: 'Omar K.', role: 'Audit & controls · Abu Dhabi', score: 81, badges: '1 Legacy · 5 Native badges' },
+      { id: 'sr', initials: 'SR', name: 'Sara R.', role: 'Data & dashboards · Dubai', score: 68, badges: '3 Legacy · 1 Native badge' }
+    ];
+
+    const ledger = [
+      { event: 'Desert Cool Safe Box funded', by: 'Backers (pre-orders)', amount: fmt(40000) }
+    ];
+    STAGES.slice(0, s.stage).forEach((x) => ledger.push({ event: 'Released: ' + x.label, by: 'Dr. Hamad (mentor)', amount: fmt(x.amount) }));
+    if (s.nda) ledger.push({ event: 'NDA signed · irrigation valve', by: 'Gulf Retail Group', amount: 'Option fee held' });
+    if (s.dc === 2) ledger.push({ event: 'Legacy badge issued · Defense Check', by: 'System', amount: '—' });
+
+    return {
+      who: WHO[view],
+      tabs: TABS.map(([id, label]) => ({ label, active: id === view, inactive: id !== view, pick: () => this.setState({ view: id }) })),
+      isTalent: view === 'talent', isBusiness: view === 'business', isMentor: view === 'mentor', isAdmin: view === 'admin',
+
+      score, scorePct: score + '%', trackLabel: tr.label, trackNext: tr.next,
+      tracks: TRACKS.map((t) => ({ label: t.label, score: t.score, active: t.id === tr.id, inactive: t.id !== tr.id, pick: () => this.setState({ track: t.id }) })),
+      dcIdle: s.dc === 0, dcAsking: s.dc === 1, dcPassed: s.dc === 2,
+      startDc: () => this.setState({ dc: 1 }), passDc: () => this.setState({ dc: 2 }),
+      badges: [
+        { legacy: true, native: false, title: 'Retail DCF model (2025)', proof: s.dc === 2 ? 'Source audit + Defense Check passed' : 'Source audit done · Defense Check pending' },
+        { legacy: false, native: true, title: 'Audit simulation · Pod 3', proof: 'Mentor reviewed · 4.8 client rating' },
+        { legacy: false, native: true, title: 'Paid sprint: inventory forecast', proof: 'Delivered on time · escrow released' }
+      ],
+      opps: OPPS[tr.id],
+
+      candidates: people.map((p) => ({ ...p, listed: !!s.shortlist[p.id], unlisted: !s.shortlist[p.id], toggle: () => this.setState({ shortlist: { ...s.shortlist, [p.id]: !s.shortlist[p.id] } }) })),
+      stages: STAGES.map((x, i) => ({ label: x.label, weight: x.weight, color: i < s.stage ? '#1E8F86' : (i === s.stage ? '#F2B33D' : '#E4E7EC'), status: i < s.stage ? 'Released' : (i === s.stage ? 'Awaiting mentor' : 'Locked') })),
+      released: fmt(releasedAmt) + ' of ' + fmt(40000),
+      ndaLocked: !s.nda, ndaSigned: s.nda, signNda: () => this.setState({ nda: true }),
+
+      hasPending: !!pending, allDone: !pending,
+      pendingLabel: pending ? pending.label.replace(/^\d+% /, '') + ' stage' : '',
+      pendingShare: pending ? pending.label.split(' ')[0] + ' · ' + fmt(pending.amount) : '',
+      pendingEvidence: pending ? pending.evidence : '',
+      approve: () => this.setState({ stage: Math.min(3, s.stage + 1) }),
+      sessions: [
+        { when: 'Sun 6pm', title: 'Cohort pod 3 critique', meta: '6 talents · Specialist track' },
+        { when: 'Tue 5pm', title: 'Squad formation: Desert Cool', meta: 'Founder + finance specialist' },
+        { when: 'Thu 4pm', title: 'Patent clinic office hours', meta: 'With university legal clinic' }
+      ],
+
+      kpis: [
+        { label: 'KYC-verified talent', value: '1,240', note: '4 tracks · Stage 1' },
+        { label: 'Badges issued', value: String(3610 + (s.dc === 2 ? 1 : 0)), note: 'Legacy + Native' },
+        { label: 'Score 50+', value: '58%', note: 'Stage 2 target' },
+        { label: 'Escrow released', value: fmt(releasedAmt), note: 'Desert Cool Safe Box' }
+      ],
+      programme: [
+        { name: 'Stage 1 · Attract, KYC & select', months: 'Months 1–2', budget: '15%', progress: '100%' },
+        { name: 'Stage 2 · Train, mentor & produce', months: 'Months 3–5', budget: '35%', progress: '70%' },
+        { name: 'Stage 3 · Connect & commercialise', months: 'Months 6–8', budget: '25%', progress: '25%' },
+        { name: 'Stage 4 · Incubate & scale', months: 'Months 9–12', budget: '25%', progress: Math.round(s.stage / 3 * 100) + '%' }
+      ],
+      ledger: ledger.reverse()
+    };
+  }
+}
+</script>
+</body>
+</html>
