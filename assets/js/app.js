@@ -7,6 +7,7 @@
   'use strict';
 
   var I = window.icon;
+  var ME_INITIALS = 'LA';   // replaced by the signed-in person's initials (see applyAccount)
   var STATE_KEY = 'jisr.demo.v2';
   var view = document.getElementById('view');
 
@@ -716,7 +717,7 @@
     document.querySelectorAll('[data-role]').forEach(function (a) {
       if (a.dataset.role === role) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
     });
-    var who = { talent: ['whoTalent', 'LA', ''], business: ['whoBusiness', 'GR', 'navy'], mentor: ['whoMentor', 'DH', 'gold'], admin: ['whoAdmin', 'SH', 'navy'] }[role];
+    var who = { talent: ['whoTalent', ME_INITIALS, ''], business: ['whoBusiness', 'GR', 'navy'], mentor: ['whoMentor', 'DH', 'gold'], admin: ['whoAdmin', 'SH', 'navy'] }[role];
     document.getElementById('who').innerHTML = '<span class="avatar ' + who[2] + '" aria-hidden="true">' + who[1] + '</span>' + esc(t(who[0]));
     var html = { talent: renderTalent, business: renderBusiness, mentor: renderMentor, admin: renderAdmin }[role]();
     if (!storageOk) html = '<p class="note-box" style="margin-bottom:20px">' + I('alert') + '<span>' + t('storageWarn') + '</span></p>' + html;
@@ -2018,8 +2019,63 @@
   document.addEventListener('jisr:lang', function () { render(); });
   window.addEventListener('storage', function (e) { if (e.key === STATE_KEY) { S = load(); render(); } });
 
+  /* ------------------------------------------------------------------ signed-in account
+     When the person signed in through auth.html, the Talent view uses their real name
+     and verified ID type instead of the sample profile "Layla A.". Everything else stays
+     demo data. With no session (or static hosting) the demo is unchanged. */
+  function applyAccount(u) {
+    var parts = String(u.fullName || '').trim().split(/\s+/).filter(Boolean);
+    if (!parts.length) return;
+    var first = parts[0], last = parts.length > 1 ? parts[parts.length - 1] : '';
+    var short = first + (last ? ' ' + last.charAt(0) + '.' : '');
+    var full = parts.join(' ');
+    ME_INITIALS = esc((first.charAt(0) + (last ? last.charAt(0) : '')).toUpperCase());
+    var swaps = [['Layla Ahmed', full], ['Layla A.', short], ['ليلى أ.', short], ['Layla', first], ['ليلى', first]];
+    Object.keys(T).forEach(function (k) {
+      T[k] = T[k].map(function (str) {
+        if (typeof str !== 'string') return str;
+        swaps.forEach(function (sw) { str = str.split(sw[0]).join(sw[1]); });
+        return str;
+      });
+    });
+    var me = PEOPLE.filter(function (p) { return p.id === 'la'; })[0];
+    if (me) { me.name = { en: short, ar: short }; me.i = ME_INITIALS; }
+    if (CERT) CERT.name = full;
+    if (u.identity && u.identity.type === 'emirates_id') T.kycVerified = ['KYC verified · Emirates ID', 'هوية موثّقة · الهوية الإماراتية'];
+  }
+
+  function accountButton(u) {
+    var host = document.getElementById('who');
+    if (!host || document.getElementById('auth-btn')) return;
+    var el;
+    if (u) {
+      el = document.createElement('button');
+      el.type = 'button';
+      el.addEventListener('click', function () {
+        fetch('/api/auth/logout', { method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': 'application/json' }, body: '{}' })
+          .catch(function () {}).then(function () { location.href = 'auth.html' + (lang() === 'ar' ? '?lang=ar' : '') + '#signin'; });
+      });
+    } else {
+      el = document.createElement('a');
+      el.href = 'auth.html' + (lang() === 'ar' ? '?lang=ar' : '') + '#signin';
+    }
+    el.id = 'auth-btn';
+    el.className = 'btn btn-outline-light btn-sm';
+    var label = function () { el.textContent = lang() === 'ar' ? (u ? 'تسجيل الخروج' : 'تسجيل الدخول') : (u ? 'Sign out' : 'Sign in'); };
+    label();
+    document.addEventListener('jisr:lang', label);
+    host.parentNode.insertBefore(el, host.nextSibling);
+  }
+
   // reset button in banner needs an accessible name on small screens where its label is hidden
   document.addEventListener('DOMContentLoaded', function () {
     render();
+    fetch('/api/auth/me', { credentials: 'same-origin' })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (data) {
+        accountButton(data && data.user);
+        if (data && data.user) { applyAccount(data.user); render(); }
+      })
+      .catch(function () { /* static hosting: keep the demo profile */ });
   });
 })();
